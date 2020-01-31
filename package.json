@@ -1,0 +1,29 @@
+{
+  "name": "astrunumia",
+  "version": "1.0.0",
+  "description": "Projet Tuteuré MMI 2019-2020",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JF-GIAMMARI/Astrunumia.git"
+  },
+  "keywords": [
+    "projet",
+    "tuteure",
+    "rest",
+    "api",
+    "mmi"
+  ],
+  "author": "Jean-François Giammari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JF-GIAMMARI/Astrunumia/issues"
+  },
+  "homepage": "https://github.com/JF-GIAMMARI/Astrunumia#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
