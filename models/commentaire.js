@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     idUSER: DataTypes.INTEGER,
     idDESTINATION: DataTypes.INTEGER,
     content: DataTypes.STRING,
-    date: DataTypes.DATE
   }, {});
   Commentaire.associate = function(models) {
     // associations can be defined here
