@@ -8,20 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idUSER: {
-        type: Sequelize.INTEGER
-      },
-      like: {
-        type: Sequelize.INTEGER
-      },
-      dislike: {
-        type: Sequelize.INTEGER
-      },
       titre: {
+        allowNull: false,
         type: Sequelize.STRING
-      },
-      vues: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

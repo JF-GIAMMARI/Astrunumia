@@ -9,24 +9,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       username: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       password: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       isDonateur: {
+        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       isAdmin: {
+        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       isSub: {
+        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       iconNumber: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {

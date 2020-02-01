@@ -8,6 +8,17 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Commentaire.associate = function(models) {
     // associations can be defined here
+    models.Commentaire.belongsTo.User,{
+      foreignKey:{
+        allowNull:false
+      }
+    }
+
+    models.Commentaire.belongsTo.Destination,{
+      foreignKey:{
+        allowNull:false
+      }
+    }
   };
   return Commentaire;
 };
