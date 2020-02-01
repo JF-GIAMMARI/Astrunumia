@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "PROJETTUTi8VgHn4W7Tij557LnE",
-    "database": "database_development",
+    "database": "database_development_astrunumia",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
@@ -10,7 +10,7 @@
   "test": {
     "username": "root",
     "password": "PROJETTUTi8VgHn4W7Tij557LnE",
-    "database": "database_test",
+    "database": "database_test_astrunumia",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
@@ -18,7 +18,7 @@
   "production": {
     "username": "root",
     "password": "PROJETTUTi8VgHn4W7Tij557LnE",
-    "database": "database_production",
+    "database": "database_production_astrunumia",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
