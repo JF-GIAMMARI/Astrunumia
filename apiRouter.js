@@ -1,17 +1,17 @@
 
-//Imports 
-var express = require('express');
-var usersCtrl = require('./routes/usersCtrl');
+// Importations des dépendances
+var express      = require('express');
+// Lien avec le controlleur d'authentification
+var usersCtrl    = require('./routes/usersCtrl');
 
-//Définitions du Routeur
-exports.router = (function(){
-    var apiRouter = express.Router();
+// Routes de l'API
+exports.router = (function() {
+  var apiRouter = express.Router();
 
+  // Routes vers les fonctions du controlleur d'authentification
+  apiRouter.route('/users/register/').post(usersCtrl.register);
+  apiRouter.route('/users/login/').post(usersCtrl.login);
+ 
 
-// Systéme d'authentification avec assignation des routes
-    apiRouter.route('users/register/').post(usersCtrl.register);
-    apiRouter.route('users/login/').post(usersCtrl.login);
-
-    return apiRouter;
-
+  return apiRouter;
 })();

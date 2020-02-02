@@ -1,4 +1,5 @@
 'use strict';
+// Définition du modèle de la table user
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     email: DataTypes.STRING,
@@ -9,8 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     isSub: DataTypes.BOOLEAN,
     iconNumber: DataTypes.INTEGER
   }, {});
-  User.associate = function(models) {
-    // associations can be defined here
-  };
+
+  User.associate = function(models) {};
   return User;
 };
