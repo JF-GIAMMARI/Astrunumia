@@ -6,6 +6,10 @@ var apiRouter = require('./apiRouter').router;
 //Instanciation du serveur web
 var server = express();
 
+//EJS
+server.set('views', './views')
+server.set('view engine','ejs')
+
 // Configuations de Body Parser
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
@@ -14,8 +18,7 @@ server.use(bodyParser.json());
 
 //Route Principale
 server.get('/', function (req,res){
-    res.setHeader('Content-Type','text/html');
-    res.status(200).send('<h1>Bienvenue sur Astrunumia</h1>');
+    res.render('main');
 });
 
 //Lien vers les routes de l'API
@@ -23,5 +26,5 @@ server.use('/api/', apiRouter);
 
 // Lancement du serveur port 8080
 server.listen(8080,function(){
-console.log('Serveur en écoute :)');
+console.log('Serveur en écoute lol');
 });

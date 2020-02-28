@@ -1,8 +1,8 @@
 
 // Importations des dépendances
-var express      = require('express');
+var express = require('express');
 // Lien avec le controlleur d'authentification
-var usersCtrl    = require('./routes/usersCtrl');
+var usersCtrl = require('./routes/usersCtrl');
 
 // Routes de l'API
 exports.router = (function() {
@@ -11,7 +11,8 @@ exports.router = (function() {
   // Routes vers les fonctions du controlleur d'authentification
   apiRouter.route('/users/register/').post(usersCtrl.register);
   apiRouter.route('/users/login/').post(usersCtrl.login);
- 
+  apiRouter.route('/users/profil').get(usersCtrl.getUserProfile);
+  apiRouter.route('/users/profil').put(usersCtrl.updateUserProfile);
 
   return apiRouter;
 })();

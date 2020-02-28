@@ -6,7 +6,7 @@ var asyncLib  = require('async');
 
 // Constantes REGEX
 const EMAIL_REGEX     = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const PASSWORD_REGEX  = /^(?=.*\d).{4,8}$/;
+const PASSWORD_REGEX  = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{5,20}$/;
 
 // Fonctions d'autentification
 module.exports = {
@@ -32,8 +32,9 @@ module.exports = {
     if (!EMAIL_REGEX.test(email)) {
       return res.status(400).json({ 'error': 'Email invalide' });
     }
+    
     if (!PASSWORD_REGEX.test(password)) {
-      return res.status(400).json({ 'error': 'Mot de passe invalide' });
+      return res.status(400).json({ 'error': 'Mot de passe invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial, > 5 caractère' });
     }
 
     // Waterfall de promesse pour vérification des éléments avec le model (BDD)
@@ -61,7 +62,7 @@ module.exports = {
             done(null, userFound, bcryptedPassword); 
           });
         } else {
-          return res.status(409).json({ 'error': 'Mot de passe invalide' });
+          return res.status(409).json({ 'error': 'Utilisateur deja existant' });
         }
       },
 
@@ -150,13 +151,120 @@ module.exports = {
       //Fonction retour et validation de la connexion
     ], function(userFound) {
       if (userFound) {
+        return res.render('main',{username : userFound.id,email :jwtUtils.generateTokenForUser(userFound) });
+        /*
         return res.status(201).json({
           'userId': userFound.id,
           'token': jwtUtils.generateTokenForUser(userFound)
         });
+
+        */
       } else {
         return res.status(500).json({ 'error': 'Impossible de ce connecter' });
       }
     });
-}
+  },
+  getUserProfile: function(req, res) {
+    var headerAuth  = req.headers['authorization'];
+    var userId      = jwtUtils.getUserId(headerAuth);
+
+    if (userId < 0) // Vérification de sécurité
+      return res.status(400).json({ 'error': 'wrong token' });
+
+    models.User.findOne({ //Récupération en fonction de l'id présent dans le token
+      attributes: [ 'id', 'email', 'username', 'isAdmin','isDonateur','isSub' ],
+      where: { id: userId }
+    }).then(function(user) {
+      if (user) {
+        res.status(201).json(user);
+      } else {
+        res.status(404).json({ 'error': 'Utilisateur inexistant' });
+      }
+    }).catch(function(err) {
+      res.status(500).json({ 'error': 'Acces impossible  '});
+    });
+  },
+  updateUserProfile: function(req, res) {
+    var headerAuth  = req.headers['authorization'];
+    var userId      = jwtUtils.getUserId(headerAuth);
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var isSub = req.body.isSub;
+    var isDonateur = req.body.isDonateur;
+
+    asyncLib.waterfall([
+      function(done) {
+        models.User.findOne({
+          attributes: ['id', 'username', 'email', 'password','isSub', 'isDonateur'],
+          where: { id: userId }
+        }).then(function (userFound) {
+          done(null, userFound);
+        })
+        .catch(function(err) {
+          return res.status(500).json({ 'error': 'Impossible de vérifier l\'utilisateur' });
+        });
+      },
+      function(userFound, done) {
+        if(userFound) {
+
+          if(username){
+            if (username.length >= 13 || username.length <= 4) {
+              return res.status(400).json({ 'error': 'Nom utilisateur invalide' });
+            }
+          }
+          
+          if(password){
+            if (!PASSWORD_REGEX.test(password)) {
+              return res.status(400).json({ 'error': 'Mot de passe invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial, > 5 caractère' });
+            }
+            var salt = bcrypt.genSaltSync(5); // Salage MDP
+            password = bcrypt.hashSync(password, salt);
+          }
+
+          if(email){
+            if (!EMAIL_REGEX.test(email)) {
+              return res.status(400).json({ 'error': 'Email invalide' });
+            }
+            
+          }
+
+          if(isDonateur){
+            if (isDonateur != "true" || isDonateur != "false") {
+              isDonateur = userFound.isDonateur;
+            }
+          }
+
+          if(isSub){
+            if (isSub != "true" || isSub != "false") {
+              isSub = userFound.isSub;
+            }
+          }
+
+          
+          
+          userFound.update({
+            username: (username ? username : userFound.username),
+            email: (email ? email: userFound.email),
+            password: ( password ?  password : userFound.password),
+            isDonateur: ( isDonateur ? isDonateur : userFound.isDonateur),
+            isSub: ( isSub ? isSub : userFound.isSub)
+          }).then(function() {
+            done(userFound);
+          }).catch(function(err) {
+            res.status(500).json({ 'error': 'Impossible de mettre a jour le nom d\'utilisateur' });
+          });
+
+        } else {
+          res.status(404).json({ 'error': 'Utilisateur inexistant' });
+        }
+      },
+    ], function(userFound) {
+      if (userFound) {
+        return res.status(201).json(userFound);
+      } else {
+        return res.status(500).json({ 'error': 'Impossible de mettre a jour le nom d\'utilisateur' });
+      }
+    });
+  }
 }
