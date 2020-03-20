@@ -1,12 +1,33 @@
-<form action="/api/users/login" method="POST">
-    <label for="email">Email :</label><br>
-    <input type="email" id="email" name="email"><br>
-    <label for="password">Password :</label><br>
-    <input type="password" id="password" name="password"><br><br>
-    <input type="submit" value="Submit">
-  </form>
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Ceci est une description pour le robot Google">
+	<meta name="keywords" content="Ceci est un keyword pour le robot Google">
+	<meta name="author" content="Jean-François Giammari ">
+  <link rel="stylesheet" type="text/css" href="/css/reset.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=GFS+Didot&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<title>Astrunumia</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row" >
+        <div class="col-xs-12 debug ">
+          <img  src="img/main/logo.png" class="logo">
+          <h1 class="textelogo">ASTRUNUMIÀ</h1>
+          <h6 class="texte">Prenez plaisir à comprendre ce qui vous entoures</h6>
+          <a  href="/accueil" class="bouton">Découvrir</a>
+        </div>
+    </div>
+</div>
 
 
-
-<% if (locals.username) { %><%=username%><% } %>
-<% if (locals.email) { %><%=email%><% } %>
+</body>
+</html>

@@ -193,6 +193,7 @@ module.exports = {
     var isSub = req.body.isSub;
     var isDonateur = req.body.isDonateur;
 
+
     asyncLib.waterfall([
       function(done) {
         models.User.findOne({

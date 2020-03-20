@@ -1,0 +1,52 @@
+.debug{
+    border: solid red;
+}
+
+
+body{
+    background: #1B1B1B;
+    opacity: 1;
+}
+
+
+.container{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+
+    padding-top : 5%;
+}
+
+.logo{
+    padding-bottom: 15%;
+}
+.textelogo{
+
+    font-family: 'GFS Didot', serif;
+    letter-spacing: 22px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.texte{
+    font-family: 'Poppins', serif;
+    color: #FFFFFF;
+}
+
+.bouton{
+background: #5800FF33;
+border: 2px solid #5800FF;
+color: white;
+
+}
+
+.bouton:hover{
+background: #5800FF33;
+border: 2px solid #5800FF;
+color: white;
+}
+    
