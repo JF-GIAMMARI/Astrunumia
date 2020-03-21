@@ -17,7 +17,7 @@ module.exports = {
     var globalvote3 = 0;
 
     if (userID < 0) // Vérification de la connection
-      return res.status(400).json({ 'error': 'wrong token' });
+      return res.status(400).json({ 'error': 'Vous n\'êtes pas connecter' });
 
     if (vote1 == null || vote2== null || vote3 == null ) { // Vérification des paramétres
       return res.status(400).json({ 'error': 'Il manque des paramètres ' });
