@@ -32,6 +32,21 @@ server.get('/equipage', function (req,res){
     res.render('equipage');
 });
 
+server.get('/destinations/:id', function (req,res){ //Gestion Automatique des articles
+    var id = req.params.id;
+    var file = "destination"+id;
+    var path = "views/"+file+".ejs";
+    const fs = require("fs"); 
+    if (fs.existsSync(path)) {
+        res.render(file);
+    }
+    else{
+        res.redirect('/');
+    }
+
+    
+});
+
 
 
 //Lien vers les routes de l'API

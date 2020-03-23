@@ -3,8 +3,6 @@ var jwtUtils  = require('../utils/jwt.utils');
 var models    = require('../models');
 var asyncLib  = require('async');
 
-
-// Fonctions d'autentification
 module.exports = {
   updateVote: function(req, res) {
     var headerAuth = req.headers['authorization'];

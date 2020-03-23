@@ -151,14 +151,7 @@ module.exports = {
       //Fonction retour et validation de la connexion
     ], function(userFound) {
       if (userFound) {
-        return res.render('main',{username : userFound.id,email :jwtUtils.generateTokenForUser(userFound) });
-        /*
-        return res.status(201).json({
-          'userId': userFound.id,
-          'token': jwtUtils.generateTokenForUser(userFound)
-        });
-
-        */
+        return res.render('main',{username : userFound.username,email :jwtUtils.generateTokenForUser(userFound) });
       } else {
         return res.status(500).json({ 'error': 'Impossible de ce connecter' });
       }

@@ -4,6 +4,7 @@ var express = require('express');
 // Lien avec le controlleur d'authentification
 var usersCtrl = require('./routes/usersCtrl');
 var voteCtrl = require('./routes/voteCtrl');
+var destCtrl = require('./routes/destinationCtrl');
 
 // Routes de l'API
 exports.router = (function() {
@@ -17,6 +18,9 @@ exports.router = (function() {
 
   apiRouter.route('/users/vote').put(voteCtrl.updateVote);
 
-  
+  apiRouter.route('/destinations/avis').post(destCtrl.avis);
+
+
   return apiRouter;
 })();
+
