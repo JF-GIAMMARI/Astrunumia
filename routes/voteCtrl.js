@@ -17,6 +17,8 @@ module.exports = {
     if (userID < 0) // Vérification de la connection
       return res.status(400).json({ 'error': 'Vous n\'êtes pas connecter' });
 
+   
+
     if (vote1 == null || vote2== null || vote3 == null ) { // Vérification des paramétres
       return res.status(400).json({ 'error': 'Il manque des paramètres ' });
     }
@@ -40,10 +42,10 @@ asyncLib.waterfall([
     }
     else
     {
+      
       vote1 = vote1 | 0; // Traitement de type
       vote2 = vote2 | 0;
       vote3 = vote3 | 0;
-  
       if (vote1 > 1 || vote1 < 0 ) { //T raitement de Valeur
         vote1 = 0;
       }

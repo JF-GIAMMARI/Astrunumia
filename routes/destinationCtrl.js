@@ -1,5 +1,4 @@
 // Importations des dépendances
-var bcrypt    = require('bcryptjs');
 var jwtUtils  = require('../utils/jwt.utils');
 var models    = require('../models');
 var asyncLib  = require('async');
@@ -21,9 +20,12 @@ module.exports = {
       return res.status(400).json({ 'error': 'Vous devez être connecter pour donner votre avis' });
     }
     // Tests de validité de la saisie
-    if (valeur == null || idDestination == null ){
+    iddestination = iddestination | 0; 
+    if (valeur == null || idDestination == null || idDestination == 0 ){
       return res.status(400).json({ 'error': 'Il manque des paramètres ' });
     }
+
+   
 
     if (valeur <1 || valeur > 2) {
       valeur = 1;
@@ -116,34 +118,76 @@ module.exports = {
   commentaire: function(req, res) {
     
     // Récupération des éléments de requêtes
-    var valeur    = req.body.valeur; // SI 1 J'aime, SI 2, j'aime pas
+    var texte   = req.body.texte;
+    var iddestination = req.body.iddestination;
     var headerAuth  = req.headers['authorization'];
-    var userId = jwtUtils.getUserId(headerAuth);
+    var userid = jwtUtils.getUserId(headerAuth);
    
-    if(userId < 0){ // Vérification de sécurité
+    if(userid < 0){ // Vérification de sécurité
       return res.status(400).json({ 'error': 'Vous devez être connecter pour donner votre avis' });
     }
-    // Tests de validité de la saisie
-    if (valeur == nul ){
+    iddestination = iddestination | 0; 
+    if (texte == null  || iddestination == 0 || iddestination == null){
       return res.status(400).json({ 'error': 'Il manque des paramètres ' });
     }
-
-
+   
     asyncLib.waterfall([
-        function(callback){ //////
-        callback(null);
+        function(callback){ ////// Vérification du type d'utilisateur
+          models.User.findOne({ 
+            attributes: ['isSub'],
+            where: { id: userid }
+          })
+          .then(function(userlevel) {
+            if(userlevel['isSub']==1){
+              callback(null);
+            }else{
+              return res.status(500).json({ 'error': 'Vous n\'avez pas le grade pour commenter'});
+            }
+              
+          })
+          .catch(function(err) {
+            return res.status(500).json({ 'error': 'Impossible de vérifier'});
+          });
+        
         },/////!
 
-        function(callback){  //////
-              callback(null);
+        function(callback){  ////// Traitement du texte
+        if(texte.match(/<.*?>/)){
+          
+          return res.status(500).json({ 'error': 'Tu essaie de faire quelque chose en particulier ?'});
+        }
+        else{
+          var motinterdit = ['astrologie','fake','fakenews','pute','enculé','encule','ntm','nique','enfoiré','pédé','pd','salot','mbdtc','fu','fuck','fucker','facka','maddafacka','bitch','biatch','motherfucker','fum','ass','asshole','fucking','fdp','bite','fuckoff','fuq','fuqa'];
+
+          if(motinterdit.indexOf(texte.toLowerCase()) >= 0) {
+            return res.status(500).json({ 'error': 'Texte inaproprier'});
+          }
+          else{
+            callback(null);
+          }
+        }
+          
         },///////!
 
-        function(callback){  ///////
-          callback(null,'done');
+        function(callback){  /////// Création dans la base de donner
+          
+          models.Commentaire.create({  //Archivage du vote par utilisateur
+            userid: userid,
+            destinationid: iddestination,
+            texte : texte,
+          })
+          .then(function(VoteCheck) {
+            callback(null,'done');
+          })
+          .catch(function(err) {
+            return res.status(400).json({ 'error': 'Impossible de créer' });
+          });
+
+          
         }], ///////!
         
         function (err, result) {
-          return res.status(201).json("A commenter");
+          return res.status(201).json("A Voter");
         });
   },
   }

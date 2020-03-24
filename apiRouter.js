@@ -19,6 +19,7 @@ exports.router = (function() {
   apiRouter.route('/users/vote').put(voteCtrl.updateVote);
 
   apiRouter.route('/destinations/avis').post(destCtrl.avis);
+  apiRouter.route('/destinations/commentaire').post(destCtrl.commentaire);
 
 
   return apiRouter;
