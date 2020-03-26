@@ -1,0 +1,51 @@
+
+<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
+
+
+Donateur :<% if (locals.isDonateur) { %><%=isDonateur%><% } %>
+
+
+<form action="/passager/profile/update" method="post">
+    <div>
+        <label for="username">Username :</label>
+        <input type="texte" id="username" name="username" placeholder="<% if (locals.username) { %><%=username%><% } %>">
+    </div>
+    <div>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder ="<% if (locals.email) { %><%=email%><% } %>">
+    </div>
+    <div>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" placeholder="**********">
+    </div>
+    <div></div>
+
+   
+    <%if (locals.isSub == true) { %>
+        <input type="checkbox" id="isSub" name="isSub" checked>
+        <% } 
+        else{
+        %>
+        <input type="checkbox" id="isSub" name="isSub">
+        <%}%>
+    
+
+    <label for="isSub"> Newsletter</label><br>
+</div>
+    <div class="button">
+        <button type="submit">Modifier</button>
+        
+    </div>
+</form>
+
+
+
+<form action="/passager/deconnexion" method="post">
+    <div class="button">
+        <button type="submit">Déconnexion</button>
+    </div>
+</form>
+<a href="/passager/authentification">Connexion</a><br>
+<a href="/passager/enregistrement">Inscription</a><br>
+<a href="/passager/vote">Vote</a><br>
+<a href="/accueil">Accueil</a><br>

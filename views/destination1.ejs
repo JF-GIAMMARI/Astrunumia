@@ -1,1 +1,23 @@
 Destination 1
+
+<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
+
+<form action="/destinations/avis" method="post">   
+    <input type="hidden" id="valeur" name="valeur" value="1">
+    <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+    <div class="button">
+        <button type="submit">J'aime</button>
+    </div>
+
+    <form action="/destinations/avis" method="post">   
+        <input type="hidden" id="valeur" name="valeur" value="2">
+        <input type="hidden" id="idDestination" name="iddestination" value="<% if (locals.id) { %><%=id%><% } %>">
+        <div class="button">
+            <button type="submit">J'aime pas</button>
+        </div>
+
+
+Aime -->    <% if (locals.aime) { %><%=aime%><% } %><br>
+Aimepas -->    <% if (locals.aimepas) { %><%=aimepas%><% } %><br>
+Vues -->    <% if (locals.vues) { %><%=vues%>><% } %><br>
+</form>

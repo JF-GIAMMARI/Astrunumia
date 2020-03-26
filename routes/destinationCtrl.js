@@ -5,21 +5,58 @@ var asyncLib = require('async');
 
 
 module.exports = {
+  getDestination: function(req, res) {
+    var alertcookie = req.cookies.alert;
+    var id = req.params.id;
+
+    var getaime = 0;
+    var getaimepas = 0;
+    var getvues = 0;
+
+    var file = "destination"+id;
+    var path = "views/"+file+".ejs";
+    const fs = require("fs"); 
+    if (fs.existsSync(path)) {
+      asyncLib.waterfall([
+        function(callback){
+          models.Destination.findOne({
+            where: { destinationid : id} // Verification des doublons
+          })
+          .then(function(AvisCount) {
+            getaime = AvisCount["aime"];
+            getaimepas = AvisCount["aimepas"];
+            getvues = AvisCount["vues"];
+            callback(null, 'done');
+          })
+          .catch(function(err) {
+            return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+            .redirect(301, '/passager/vote');
+          });
+        },
+        ], function (err, result) {
+          return res.render(file,{alert : alertcookie,id: id, aime : getaime, aimepas : getaimepas,vues : getvues});
+        });    
+    }
+    else{
+        return res.redirect('/');
+    }
+  },
+
+
+
  avis: function(req, res) {
 
   // Récupération des éléments de requêtes
   var valeur = req.body.valeur; // SI 1 J'aime, SI 2, j'aime pas
   var idDestination = req.body.iddestination;
-  var headerAuth = req.headers['authorization'];
+  var headerAuth  = req.cookies.authorization;
   var userId = jwtUtils.getUserId(headerAuth);
   var globalaime = 0;
   var globalaimepas = 0;
   var recupval = 0;
-
+  
   if (userId < 0) { // Vérification de sécurité
-   return res.status(400).json({
-    'error': 'Vous devez être connecter pour donner votre avis'
-   });
+    return res.status(400).redirect(301, '/passager/authentification');
   }
   // Tests de validité de la saisie
   idDestination = idDestination | 0;
@@ -136,13 +173,11 @@ module.exports = {
   // Récupération des éléments de requêtes
   var texte = req.body.texte;
   var iddestination = req.body.iddestination;
-  var headerAuth = req.headers['authorization'];
+  var headerAuth  = req.cookies.authorization;
   var userid = jwtUtils.getUserId(headerAuth);
 
   if (userid < 0) { // Vérification de sécurité
-   return res.status(400).json({
-    'error': 'Vous devez être connecter pour donner votre avis'
-   });
+    return res.status(400).redirect(301, '/passager/authentification');
   }
   iddestination = iddestination | 0;
   if (texte == null || iddestination == 0 || iddestination == null) {
@@ -154,13 +189,13 @@ module.exports = {
   asyncLib.waterfall([
     function(callback) { ////// Vérification du type d'utilisateur
      models.User.findOne({
-       attributes: ['isSub'],
+       attributes: ['isDonateur'],
        where: {
         id: userid
        }
       })
       .then(function(userlevel) {
-       if (userlevel['isSub'] == 1) {
+       if (userlevel['isDonateur'] == 1) {
         callback(null);
        } else {
         return res.status(500).json({

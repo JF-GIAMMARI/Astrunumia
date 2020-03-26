@@ -2,10 +2,38 @@
 var jwtUtils  = require('../utils/jwt.utils');
 var models    = require('../models');
 var asyncLib  = require('async');
+const idvoteencour = 1; ////////// A MODIFIER PAR SESSION DE VOTE
 
 module.exports = {
+  getVote: function(req, res) {
+    var alertcookie = req.cookies.alert;
+    var getvote1 = 0;
+    var getvote2 = 0;
+    var getvote3 = 0;
+    asyncLib.waterfall([
+      function(callback){
+        models.VoteCount.findOne({
+          where: { id : idvoteencour} // Verification des doublons
+        })
+        .then(function(VoteCount) {
+          getvote1 = VoteCount["vote1"];
+          getvote2 = VoteCount["vote2"];
+          getvote3 = VoteCount["vote3"];
+          callback(null, 'done');
+        })
+        .catch(function(err) {
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/vote');
+        });
+      },
+    
+      ], function (err, result) {
+        return res.render('vote',{alert : alertcookie, vote1 : getvote1, vote2 : getvote2, vote3 : getvote3});
+      });
+    
+  },
   updateVote: function(req, res) {
-    var headerAuth = req.headers['authorization'];
+    var headerAuth  = req.cookies.authorization;
     var userID = jwtUtils.getUserId(headerAuth);
     var vote1 = req.body.vote1;
     var vote2 = req.body.vote2;
@@ -14,13 +42,14 @@ module.exports = {
     var globalvote2 = 0;
     var globalvote3 = 0;
 
-    if (userID < 0) // Vérification de la connection
-      return res.status(400).json({ 'error': 'Vous n\'êtes pas connecter' });
-
-   
+    if (userID < 0){ // Vérification de la connection
+      return res.status(400).cookie('alert', 'Vous devez être connecter pour voter', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/vote');
+   }
 
     if (vote1 == null || vote2== null || vote3 == null ) { // Vérification des paramétres
-      return res.status(400).json({ 'error': 'Il manque des paramètres ' });
+      return res.status(400).cookie('alert', 'Il manque des paramétres', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/vote');
     }
 
 
@@ -33,12 +62,14 @@ asyncLib.waterfall([
       callback(null, userCheck);
     })
     .catch(function(err) {
-      return res.status(400).json({ 'error': 'Impossible de vérifier' });
+      return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/vote');
     });
   },
   function(userCheck, callback){
     if(userCheck != null){
-      return res.status(400).json({ 'error': 'Vous avez deja voter' });
+      return res.status(400).cookie('alert', 'Vous avez deja voter pour cette session de vote', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/vote');
     }
     else
     {
@@ -86,7 +117,8 @@ asyncLib.waterfall([
         callback(null);
       })
       .catch(function(err) {
-        return res.status(400).json({ 'error': 'Impossible de créer' });
+        return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+        .redirect(301, '/passager/vote');
       });
     },
     function(callback){    // Ajout des votes dans les compteur
@@ -110,18 +142,21 @@ asyncLib.waterfall([
         }).then(function() {
           callback(null,'done');
         }).catch(function(err) {
-          res.status(500).json({ 'error': 'Impossible de mettre a jour le compteur ' });
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/vote');
         });
       })
       .catch(function(err) {
-        return res.status(400).json({ 'error': 'Impossible de récupérer' });
+        return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+        .redirect(301, '/passager/vote');
       });
     },
 
   ], function (err, result) {
-    return res.status(201).json("A voté!");
+    return res.status(400).redirect(301, '/passager/vote');
   });
 
       
   },
+
 }

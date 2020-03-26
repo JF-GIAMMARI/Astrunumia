@@ -1,7 +1,10 @@
 //Importations des dépendances
 var express = require('express'); 
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var apiRouter = require('./apiRouter').router;
+const noCache = require('nocache')
+
 
 //Instanciation du serveur web
 var server = express();
@@ -13,7 +16,9 @@ server.set('view engine','ejs')
 // Configuations de Body Parser
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
+server.use(cookieParser());
 server.use(express.static("public"));
+server.use(noCache());
 
 //Configuration des routes
 
@@ -24,33 +29,19 @@ server.get('/', function (req,res){
 server.get('/accueil', function (req,res){
     res.render('accueil');
 });
-server.get('/vote', function (req,res){
-    res.render('vote');
-});
+
+
 
 server.get('/equipage', function (req,res){
     res.render('equipage');
 });
 
-server.get('/destinations/:id', function (req,res){ //Gestion Automatique des articles
-    var id = req.params.id;
-    var file = "destination"+id;
-    var path = "views/"+file+".ejs";
-    const fs = require("fs"); 
-    if (fs.existsSync(path)) {
-        res.render(file);
-    }
-    else{
-        res.redirect('/');
-    }
 
-    
-});
 
 
 
 //Lien vers les routes de l'API
-server.use('/api/', apiRouter); 
+server.use('/', apiRouter); 
 
 // Lancement du serveur port 8080
 server.listen(8080,function(){

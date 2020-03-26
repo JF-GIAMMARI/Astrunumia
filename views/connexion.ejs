@@ -1,0 +1,20 @@
+
+<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
+<form action="/passager/authentification" method="post">
+    <div class="button">
+        <div>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Envoyer le message</button>
+    </div>
+</form>
+
+<a href="/passager/authentification">Connexion</a><br>
+<a href="/passager/enregistrement">Inscription</a><br>
+<a href="/passager/vote">Vote</a><br>
+<a href="/accueil">Accueil</a><br>

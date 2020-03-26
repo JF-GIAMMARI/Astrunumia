@@ -4,12 +4,39 @@ var jwtUtils  = require('../utils/jwt.utils');
 var models    = require('../models');
 var asyncLib  = require('async');
 
+
 // Constantes REGEX
 const EMAIL_REGEX     = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PASSWORD_REGEX  = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{5,20}$/;
 
 // Fonctions d'autentification
 module.exports = {
+
+  getUserProfile: function(req, res) {
+    var headerAuth  = req.cookies.authorization;
+    var alertcookie = req.cookies.alert;
+    var userId      = jwtUtils.getUserId(headerAuth);
+    
+    if (userId < 0) // Vérification de sécurité
+    return res.status(400).redirect(301, '/accueil');
+
+    models.User.findOne({ //Récupération en fonction de l'id présent dans le token
+      attributes: [ 'id', 'email', 'username', 'isAdmin','isDonateur','isSub' ],
+      where: { id: userId }
+    }).then(function(user) {
+      if (user) {
+        
+        return res.render('profile',{
+          alert : alertcookie,username : user.username,email : user.email,isSub : user.isSub,isDonateur : user.isDonateur});
+      } else {
+        return res.status(400).redirect(301, '/passager/authentification');
+      }
+    }).catch(function(err) {
+      return res.status(400).cookie('alert', 'Erreur Serveur : Impossible de trouver votre profile', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/profile');
+    });
+  },
+
   register: function(req, res) {
     
     // Récupération des éléments de requêtes
@@ -20,22 +47,26 @@ module.exports = {
     // Tests de validité de la saisie
     // Vérification de l'existance de la saisie
     if (email == null || username == null || password == null) {
-      return res.status(400).json({ 'error': 'Il manque des paramètres ' });
+      return res.status(400).cookie('alert', 'Il manque des paramétres', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/enregistrement');
     }
 
     // Vérification de la taille du nom d'utilisateur ( 4-13 )
     if (username.length >= 13 || username.length <= 4) {
-      return res.status(400).json({ 'error': 'Nom utilisateur invalide' });
+      return res.status(400).cookie('alert', 'Le nom d\'utilisateur est invalide ( Entre 4 et 13 charactéres)', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/enregistrement');
     }
 
     //Comparaison aux contraintes REGEX des saisies importantes
     if (!EMAIL_REGEX.test(email)) {
-      return res.status(400).json({ 'error': 'Email invalide' });
+      return res.status(400).cookie('alert', 'L\'email est invalide', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/enregistrement');
     }
     
     if (!PASSWORD_REGEX.test(password)) {
-      return res.status(400).json({ 'error': 'Mot de passe invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial, > 5 caractère' });
-    }
+      return res.status(400).cookie('alert', 'Le mot de passe est invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial)', {expires: new Date(Date.now() + 1000) })
+      .redirect(301, '/passager/enregistrement');
+      }
 
     // Waterfall de promesse pour vérification des éléments avec le model (BDD)
     asyncLib.waterfall([
@@ -51,18 +82,20 @@ module.exports = {
         })
 
         .catch(function(err) {
-          return res.status(500).json({ 'error': 'Impossible de vérifier'});
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/enregistrement');
         });
       },
 
       // Hashage du mot de passe saisie
       function(userFound, done) {
-        if (!userFound) {
+        if (!userFound) { 
           bcrypt.hash(password, 5, function( err, bcryptedPassword ) {
             done(null, userFound, bcryptedPassword); 
           });
         } else {
-          return res.status(409).json({ 'error': 'Utilisateur deja existant' });
+          return res.status(400).cookie('alert', 'Vous êtes deja enregistrer sur ce vaisseau', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/authentification');
         }
       },
 
@@ -81,7 +114,8 @@ module.exports = {
           done(newUser); // Call Back final du Waterfall
         })
         .catch(function(err) {
-          return res.status(500).json({ 'error': 'Impossible de creer' });
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/enregistrement');
         });
       }
 
@@ -91,11 +125,10 @@ module.exports = {
     //Fonction retour et validation de la création
     function(newUser) {
       if (newUser) {
-        return res.status(201).json({
-          'userId': newUser.id
-        });
+        return res.redirect(301, 'authentification');
       } else {
-        return res.status(500).json({ 'error': 'Impossible de creer' });
+        return res.status(400).cookie('alert', 'Erreur Serveur : Impossible de creer votre profile', {expires: new Date(Date.now() + 1000) })
+        .redirect(301, '/passager/enregistrement');
       }
     });
   },
@@ -105,13 +138,15 @@ module.exports = {
  login: function(req, res) {
     
     // Récupération des éléments de requêtes
+    var alertcookie = req.cookies.alert;
     var email    = req.body.email;
     var password = req.body.password;
 
     // Tests de validité de la saisie
     // Vérification de l'existance de la saisie
     if (email == null ||  password == null) {
-      return res.status(400).json({ 'error': 'Il manque des paramètres' });
+      return res.status(400).cookie('alert', 'Il manque des paramétres', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/authentification');
     }
 
     // Waterfall de promesse pour vérification des éléments avec le model (BDD)
@@ -124,7 +159,8 @@ module.exports = {
           done(null, userFound);
         })
         .catch(function(err) {
-          return res.status(500).json({ 'error': 'unable to verify user' });
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/authentification');
         });
       },
 
@@ -135,7 +171,8 @@ module.exports = {
           });
 
         } else {
-          return res.status(404).json({ 'error': 'user not exist in DB' });
+          return res.status(400).cookie('alert', 'Vous ne faite pas parti du vaisseau, enregistrer vous si vous le shouaitez', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/enregistrement');
         }
       },
 
@@ -143,7 +180,8 @@ module.exports = {
         if(resBycrypt) {
           done(userFound);
         } else {
-          return res.status(403).json({ 'error': 'invalid password' });
+          return res.status(400).cookie('alert', 'Mauvais mot de passe', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/authentification');
         }
       }
 
@@ -151,34 +189,27 @@ module.exports = {
       //Fonction retour et validation de la connexion
     ], function(userFound) {
       if (userFound) {
-        return res.render('main',{username : userFound.username,email :jwtUtils.generateTokenForUser(userFound) });
-      } else {
-        return res.status(500).json({ 'error': 'Impossible de ce connecter' });
+
+        return res
+        .status(201)
+        .cookie('authorization', 'Bearer ' + jwtUtils.generateTokenForUser(userFound), {
+          expires: new Date(Date.now() + 1 * 3600000) })
+        .redirect(301, 'profile');
+        
+       } else {
+        return res.status(400).cookie('alert', 'Erreur Serveur : Impossible de creer votre session', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/authentification');
       }
     });
   },
-  getUserProfile: function(req, res) {
-    var headerAuth  = req.headers['authorization'];
-    var userId      = jwtUtils.getUserId(headerAuth);
 
-    if (userId < 0) // Vérification de sécurité
-      return res.status(400).json({ 'error': 'wrong token' });
 
-    models.User.findOne({ //Récupération en fonction de l'id présent dans le token
-      attributes: [ 'id', 'email', 'username', 'isAdmin','isDonateur','isSub' ],
-      where: { id: userId }
-    }).then(function(user) {
-      if (user) {
-        res.status(201).json(user);
-      } else {
-        res.status(404).json({ 'error': 'Utilisateur inexistant' });
-      }
-    }).catch(function(err) {
-      res.status(500).json({ 'error': 'Acces impossible  '});
-    });
-  },
+  
+
+
+  /////////// MISE A JOUR DU PROFILE
   updateUserProfile: function(req, res) {
-    var headerAuth  = req.headers['authorization'];
+    var headerAuth  = req.cookies.authorization;
     var userId      = jwtUtils.getUserId(headerAuth);
     var username = req.body.username;
     var email = req.body.email;
@@ -186,6 +217,9 @@ module.exports = {
     var isSub = req.body.isSub;
     var isDonateur = req.body.isDonateur;
 
+    if (userId < 0) // Vérification de sécurité
+       return res.status(400).redirect(301, '/accueil');
+    
 
     asyncLib.waterfall([
       function(done) {
@@ -196,7 +230,8 @@ module.exports = {
           done(null, userFound);
         })
         .catch(function(err) {
-          return res.status(500).json({ 'error': 'Impossible de vérifier l\'utilisateur' });
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
         });
       },
       function(userFound, done) {
@@ -204,61 +239,88 @@ module.exports = {
 
           if(username){
             if (username.length >= 13 || username.length <= 4) {
-              return res.status(400).json({ 'error': 'Nom utilisateur invalide' });
+              return res.status(400).cookie('alert', 'Nom utilisateur invalide', {expires: new Date(Date.now() + 1000) })
+              .redirect(301, '/passager/profile');
             }
           }
           
           if(password){
             if (!PASSWORD_REGEX.test(password)) {
-              return res.status(400).json({ 'error': 'Mot de passe invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial, > 5 caractère' });
-            }
+              return res.status(400).cookie('alert', 'Le mot de passe est invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial)', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
+ }
             var salt = bcrypt.genSaltSync(5); // Salage MDP
             password = bcrypt.hashSync(password, salt);
           }
 
           if(email){
             if (!EMAIL_REGEX.test(email)) {
-              return res.status(400).json({ 'error': 'Email invalide' });
+              return res.status(400).cookie('alert', 'L\'email est invalide', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
             }
             
           }
-
-          if(isDonateur){
-            if (isDonateur != "true" || isDonateur != "false") {
-              isDonateur = userFound.isDonateur;
-            }
+          
+          if(isSub == 'on'){
+            isSub = true;
+          }
+          else if(isSub == undefined){
+            isSub = false;
           }
 
-          if(isSub){
-            if (isSub != "true" || isSub != "false") {
-              isSub = userFound.isSub;
-            }
-          }
-
-          
-          
           userFound.update({
             username: (username ? username : userFound.username),
             email: (email ? email: userFound.email),
             password: ( password ?  password : userFound.password),
-            isDonateur: ( isDonateur ? isDonateur : userFound.isDonateur),
-            isSub: ( isSub ? isSub : userFound.isSub)
+            isSub: isSub
           }).then(function() {
             done(userFound);
           }).catch(function(err) {
-            res.status(500).json({ 'error': 'Impossible de mettre a jour le nom d\'utilisateur' });
+            return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
           });
 
         } else {
-          res.status(404).json({ 'error': 'Utilisateur inexistant' });
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
         }
       },
     ], function(userFound) {
       if (userFound) {
-        return res.status(201).json(userFound);
+        return res.redirect(301, '/passager/profile');
       } else {
-        return res.status(500).json({ 'error': 'Impossible de mettre a jour le nom d\'utilisateur' });
+        
+        return res.status(400).cookie('alert', 'Erreur Serveur : Impossible de mettre a jour l\'utilisateur', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
       }
     });
-  }
+  },
+  leaveUser: function(req, res) {
+    console.log("test");
+    res.clearCookie('authorization');
+    return res.redirect(301, '/accueil');
+  },
+
+  autoconnectlogin: function(req, res) {
+    var headerAuth  = req.cookies.authorization;
+    var userId      = jwtUtils.getUserId(headerAuth);
+    var alertcookie = req.cookies.alert;
+    console.log(userId);
+    if (userId > 0){ // Vérification de sécurité
+      return res.status(301).redirect(301, '/passager/profile');
+    }else{
+      return res.render('connexion',{alert : alertcookie});
+    }
+  },
+  autoconnectregister: function(req, res) {
+    var headerAuth  = req.cookies.authorization;
+    var userId      = jwtUtils.getUserId(headerAuth);
+    var alertcookie = req.cookies.alert;
+    console.log(userId);
+    if (userId > 0){ // Vérification de sécurité
+      return res.status(301).redirect(301, '/passager/profile');
+    }else{
+      return res.render('inscription',{alert : alertcookie});
+    }
+  },
 }
