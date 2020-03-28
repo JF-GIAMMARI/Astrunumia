@@ -27,18 +27,14 @@ server.get('/', function (req,res){
     res.render('main');
 });
 server.get('/accueil', function (req,res){
-    res.render('accueil');
+    var alertcookie = req.cookies.alert;
+    res.render('accueil',{
+        alert : alertcookie});
 });
-
-
 
 server.get('/equipage', function (req,res){
     res.render('equipage');
 });
-
-
-
-
 
 //Lien vers les routes de l'API
 server.use('/', apiRouter); 

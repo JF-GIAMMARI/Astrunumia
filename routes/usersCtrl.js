@@ -21,13 +21,12 @@ module.exports = {
     return res.status(400).redirect(301, '/accueil');
 
     models.User.findOne({ //Récupération en fonction de l'id présent dans le token
-      attributes: [ 'id', 'email', 'username', 'isAdmin','isDonateur','isSub' ],
+      attributes: [ 'id', 'email', 'username', 'isAdmin','isDonateur','isSub','iconNumber' ],
       where: { id: userId }
     }).then(function(user) {
       if (user) {
         
-        return res.render('profile',{
-          alert : alertcookie,username : user.username,email : user.email,isSub : user.isSub,isDonateur : user.isDonateur});
+        return res.render('profile',{alert : alertcookie,username : user.username,email : user.email,isSub : user.isSub,isDonateur : user.isDonateur});
       } else {
         return res.status(400).redirect(301, '/passager/authentification');
       }
@@ -296,8 +295,9 @@ module.exports = {
     });
   },
   leaveUser: function(req, res) {
-    console.log("test");
     res.clearCookie('authorization');
+    res.clearCookie('ico');
+    res.clearCookie('HeaderUsername');
     return res.redirect(301, '/accueil');
   },
 

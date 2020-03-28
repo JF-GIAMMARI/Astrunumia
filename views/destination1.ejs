@@ -1,5 +1,10 @@
-Destination 1
+<%- include('header'); -%>
+<body>
 
+Aime -->    <% if (locals.aime) { %><%=aime%><% }else{%>0<%} %><br>
+Aimepas -->    <% if (locals.aimepas) { %><%=aimepas%><% }else{%>0<%} %><br>
+Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
+<br>
 <% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
 
 <form action="/destinations/avis" method="post">   
@@ -8,16 +13,37 @@ Destination 1
     <div class="button">
         <button type="submit">J'aime</button>
     </div>
-
-    <form action="/destinations/avis" method="post">   
-        <input type="hidden" id="valeur" name="valeur" value="2">
-        <input type="hidden" id="idDestination" name="iddestination" value="<% if (locals.id) { %><%=id%><% } %>">
-        <div class="button">
-            <button type="submit">J'aime pas</button>
-        </div>
-
-
-Aime -->    <% if (locals.aime) { %><%=aime%><% } %><br>
-Aimepas -->    <% if (locals.aimepas) { %><%=aimepas%><% } %><br>
-Vues -->    <% if (locals.vues) { %><%=vues%>><% } %><br>
 </form>
+
+<form action="/destinations/avis" method="post">   
+    <input type="hidden" id="valeur" name="valeur" value="2">
+    <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+    <div class="button">
+        <button type="submit">J'aime pas</button>
+    </div>
+</form>
+
+<form action="/destinations/commentaire" method="post">   
+    
+    <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+    <textarea id="texte" name="texte" rows="5" cols="33" required maxlength="500" minlength="4"></textarea>
+    <div class="button">
+        <button type="submit">Poster le commentaire</button>
+    </div>
+</form>
+
+<div>
+
+    <% if (locals.commentaire){
+        for(let i = locals.commentaire.length-1 ; i != -1 ; i--){ %>
+            <div><b><%=utilisateurcom[i]%></b></div>
+            <div><%=commentaire[i]%></div><br>  
+            <%}}%>
+
+    
+
+    
+</div>
+</body>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

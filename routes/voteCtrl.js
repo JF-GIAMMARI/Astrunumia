@@ -41,6 +41,7 @@ module.exports = {
     var globalvote1 = 0;
     var globalvote2 = 0;
     var globalvote3 = 0;
+    var supp = false;
 
     if (userID < 0){ // Vérification de la connection
       return res.status(400).cookie('alert', 'Vous devez être connecter pour voter', {expires: new Date(Date.now() + 1000) })
@@ -54,6 +55,27 @@ module.exports = {
 
 
 asyncLib.waterfall([
+  function(callback) { ////// Vérification du type d'utilisateur
+     models.User.findOne({
+       attributes: ['isDonateur'],
+       where: {
+        id: userID
+       }
+      })
+      .then(function(userlevel) {
+       if (userlevel['isDonateur'] == 1) {
+        supp == true;
+       } else {
+        supp == false
+       }
+       callback(null);
+      })
+      .catch(function(err) {
+        return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+        .redirect(req.get('referer'));
+      });
+
+    }, 
   function(callback){
     models.Vote.findOne({
       where: { userid: userID } // Verification des doublons
@@ -90,17 +112,14 @@ asyncLib.waterfall([
       if(vote1 == 1){   // Traitement des doublons
         vote2 =0;
         vote3 = 0;
-        console.log(vote1+""+vote2+""+vote3);
       }
       if(vote2== 1){
         vote1 =0;
         vote3 = 0;
-        console.log(vote1+""+vote2+""+vote3);
       }
       if(vote3== 1){
         vote1 =0;
         vote2 = 0;
-        console.log(vote1+""+vote2+""+vote3);
       }
 
       callback(null, callback);
@@ -131,10 +150,22 @@ asyncLib.waterfall([
         globalvote2 = VoteCount["vote2"];
         globalvote3 = VoteCount["vote3"];
 
+        /// Traitement du x2 donateur
+        if(vote1 == 1){
+          vote1++;
+        }
+        if(vote2 == 1){
+          vote2++;
+        }
+        if(vote3 == 1){
+          vote3++;
+        }
+
+
         globalvote1 += vote1;
         globalvote2 += vote2;
         globalvote3 += vote3;
-        //
+        
         VoteCount.update({
           vote1: globalvote1,
           vote2: globalvote2,
