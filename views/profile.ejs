@@ -1,11 +1,33 @@
-
+<%- include('header'); -%>
 <% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
 
 
-Donateur :<% if (locals.isDonateur) { %><%=isDonateur%><% } %>
+
 
 
 <form action="/passager/profile/update" method="post">
+    <div>
+        <span>
+        <input type="radio" id="iconeNumber" name="iconeNumber" value="1">
+        <img class='nonIcoDonateur' src='/img/profileico/1.png' alt='Icone Défault' >
+        </span>
+        <span>
+        <input type="radio" id="iconeNumber" name="iconeNumber" value="2">
+        <img class='nonIcoDonateur' src='/img/profileico/2.png' alt='Icone Défault' >
+        </span>
+        <span>
+        <input type="radio" id="iconeNumber" name="iconeNumber" value="3">
+        <img class='nonIcoDonateur' src='/img/profileico/3.png' alt='Icone Défault' >
+        </span>
+        <span>
+        <input type="radio" id="iconeNumber" name="iconeNumber" value="4">
+        <img class='nonIcoDonateur' src='/img/profileico/4.png' alt='Icone Défault' >
+        </span>
+        <span>
+        <input type="radio" id="iconeNumber" name="iconeNumber" value="5">
+        <img class='nonIcoDonateur' src='/img/profileico/5.png' alt='Icone Défault' >
+        </span>
+    </div>
     <div>
         <label for="username">Username :</label>
         <input type="texte" id="username" name="username" placeholder="<% if (locals.username) { %><%=username%><% } %>">
@@ -31,6 +53,7 @@ Donateur :<% if (locals.isDonateur) { %><%=isDonateur%><% } %>
     
 
     <label for="isSub"> Newsletter</label><br>
+    Donateur : <% if (locals.isDonateur) { %><%=isDonateur%><% }else{%>0<%} %><br>
 </div>
     <div class="button">
         <button type="submit">Modifier</button>

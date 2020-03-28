@@ -7,6 +7,9 @@ const idvoteencour = 1; ////////// A MODIFIER PAR SESSION DE VOTE
 module.exports = {
   getVote: function(req, res) {
     var alertcookie = req.cookies.alert;
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
+    
     var getvote1 = 0;
     var getvote2 = 0;
     var getvote3 = 0;
@@ -28,7 +31,7 @@ module.exports = {
       },
     
       ], function (err, result) {
-        return res.render('vote',{alert : alertcookie, vote1 : getvote1, vote2 : getvote2, vote3 : getvote3});
+        return res.render('vote',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername, vote1 : getvote1, vote2 : getvote2, vote3 : getvote3});
       });
     
   },

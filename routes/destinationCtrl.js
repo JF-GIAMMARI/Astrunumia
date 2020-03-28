@@ -7,6 +7,8 @@ var asyncLib = require('async');
 module.exports = {
   getDestination: function(req, res) {
     var alertcookie = req.cookies.alert;
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
     var id = req.params.id;
     var commentairetab = [];
     var idtab = [];
@@ -88,7 +90,7 @@ module.exports = {
            
          },
         ], function (err, result) {
-          return res.render(file,{alert : alertcookie,commentaire : commentairetab,utilisateurcom : nomutilisateurtab,id: id, aime : getaime, aimepas : getaimepas,vues : getvues});
+          return res.render(file,{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername,commentaire : commentairetab,utilisateurcom : nomutilisateurtab,id: id, aime : getaime, aimepas : getaimepas,vues : getvues});
         });    
     }
     else{

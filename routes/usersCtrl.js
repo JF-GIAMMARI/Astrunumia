@@ -14,6 +14,8 @@ module.exports = {
 
   getUserProfile: function(req, res) {
     var headerAuth  = req.cookies.authorization;
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
     var alertcookie = req.cookies.alert;
     var userId      = jwtUtils.getUserId(headerAuth);
     
@@ -25,8 +27,7 @@ module.exports = {
       where: { id: userId }
     }).then(function(user) {
       if (user) {
-        
-        return res.render('profile',{alert : alertcookie,username : user.username,email : user.email,isSub : user.isSub,isDonateur : user.isDonateur});
+        return res.render('profile',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername,username : user.username,email : user.email,isSub : user.isSub,isDonateur : user.isDonateur});
       } else {
         return res.status(400).redirect(301, '/passager/authentification');
       }
@@ -188,11 +189,22 @@ module.exports = {
       //Fonction retour et validation de la connexion
     ], function(userFound) {
       if (userFound) {
+        
+        var img = "";
+        if(userFound.isDonateur == false){
+          img = "<img class='nonIcoDonateur' src='/img/profileico/"+userFound.iconNumber+".png' alt='Icone' > ";
+        }
+        if(userFound.isDonateur == true){
+          img = "<img class='ouiIcoDonateur' src='/img/profileico/"+userFound.iconNumber+".png' alt='Icone' > ";
+        }
+        console.log(img);
+        
+        res.cookie('HeaderIco', img, {expires: new Date(Date.now() + 1 * 3600000) });
+        res.cookie('HeaderUsername', userFound.username, {expires: new Date(Date.now() + 1 * 3600000) });
 
         return res
         .status(201)
-        .cookie('authorization', 'Bearer ' + jwtUtils.generateTokenForUser(userFound), {
-          expires: new Date(Date.now() + 1 * 3600000) })
+        .cookie('authorization', 'Bearer ' + jwtUtils.generateTokenForUser(userFound), {expires: new Date(Date.now() + 1 * 3600000) })
         .redirect(301, 'profile');
         
        } else {
@@ -211,6 +223,7 @@ module.exports = {
     var headerAuth  = req.cookies.authorization;
     var userId      = jwtUtils.getUserId(headerAuth);
     var username = req.body.username;
+    var iconNumber = req.body.iconNumber;
     var email = req.body.email;
     var password = req.body.password;
     var isSub = req.body.isSub;
@@ -218,14 +231,15 @@ module.exports = {
 
     if (userId < 0) // Vérification de sécurité
        return res.status(400).redirect(301, '/accueil');
-    
+       console.log(iconNumber);
 
     asyncLib.waterfall([
       function(done) {
         models.User.findOne({
-          attributes: ['id', 'username', 'email', 'password','isSub', 'isDonateur'],
+          attributes: ['id', 'username', 'email', 'password','isSub', 'isDonateur','iconNumber'],
           where: { id: userId }
         }).then(function (userFound) {
+         
           done(null, userFound);
         })
         .catch(function(err) {
@@ -259,6 +273,12 @@ module.exports = {
             }
             
           }
+
+          if(iconNumber){
+            if(iconNumber < 0 || iconNumber > 100){
+              iconNumber = 1;
+            }
+          }
           
           if(isSub == 'on'){
             isSub = true;
@@ -271,7 +291,8 @@ module.exports = {
             username: (username ? username : userFound.username),
             email: (email ? email: userFound.email),
             password: ( password ?  password : userFound.password),
-            isSub: isSub
+            isSub: isSub,
+            iconNumber : (iconNumber ? iconNumber : userFound.iconNumber)
           }).then(function() {
             done(userFound);
           }).catch(function(err) {
@@ -286,6 +307,18 @@ module.exports = {
       },
     ], function(userFound) {
       if (userFound) {
+        var img = "";
+        if(userFound.isDonateur == false){
+          img = "<img class='nonIcoDonateur' src='/img/profileico/"+userFound.iconNumber+".png' alt='Icone' > ";
+        }
+        if(userFound.isDonateur == true){
+          img = "<img class='ouiIcoDonateur' src='/img/profileico/"+userFound.iconNumber+".png' alt='Icone' > ";
+        }
+        console.log(img);
+        res.clearCookie('HeaderIco');
+        res.clearCookie('HeaderUsername');
+        res.cookie('HeaderIco', img, {expires: new Date(Date.now() + 1 * 3600000) });
+        res.cookie('HeaderUsername', userFound.username, {expires: new Date(Date.now() + 1 * 3600000) });
         return res.redirect(301, '/passager/profile');
       } else {
         
@@ -296,7 +329,7 @@ module.exports = {
   },
   leaveUser: function(req, res) {
     res.clearCookie('authorization');
-    res.clearCookie('ico');
+    res.clearCookie('HeaderIco');
     res.clearCookie('HeaderUsername');
     return res.redirect(301, '/accueil');
   },
@@ -304,23 +337,26 @@ module.exports = {
   autoconnectlogin: function(req, res) {
     var headerAuth  = req.cookies.authorization;
     var userId      = jwtUtils.getUserId(headerAuth);
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
+
     var alertcookie = req.cookies.alert;
-    console.log(userId);
     if (userId > 0){ // Vérification de sécurité
       return res.status(301).redirect(301, '/passager/profile');
     }else{
-      return res.render('connexion',{alert : alertcookie});
+      return res.render('connexion',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
     }
   },
   autoconnectregister: function(req, res) {
     var headerAuth  = req.cookies.authorization;
     var userId      = jwtUtils.getUserId(headerAuth);
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
     var alertcookie = req.cookies.alert;
-    console.log(userId);
     if (userId > 0){ // Vérification de sécurité
       return res.status(301).redirect(301, '/passager/profile');
     }else{
-      return res.render('inscription',{alert : alertcookie});
+      return res.render('inscription',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
     }
   },
 }

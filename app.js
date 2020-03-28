@@ -18,6 +18,7 @@ server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
 server.use(cookieParser());
 server.use(express.static("public"));
+server.use('/static', express.static(__dirname + '/public'));
 server.use(noCache());
 
 //Configuration des routes
@@ -28,14 +29,32 @@ server.get('/', function (req,res){
 });
 server.get('/accueil', function (req,res){
     var alertcookie = req.cookies.alert;
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
+    
     res.render('accueil',{
-        alert : alertcookie});
+        alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
 });
 
 server.get('/equipage', function (req,res){
-    res.render('equipage');
+    var alertcookie = req.cookies.alert;
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
+    
+    res.render('equipage',{
+        alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
 });
 
+server.get('/t/inscription', function (req,res){
+    var alertcookie = req.cookies.alert;
+    var HeaderIco = req.cookies.HeaderIco;
+    var HeaderUsername = req.cookies.HeaderUsername;
+    
+    return res.render('inscription',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
+ 
+});
+
+  
 //Lien vers les routes de l'API
 server.use('/', apiRouter); 
 
