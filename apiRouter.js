@@ -20,6 +20,7 @@ exports.router = (function() {
   apiRouter.route('/passager/profile').get(usersCtrl.getUserProfile);
   apiRouter.route('/passager/profile/update').post(usersCtrl.updateUserProfile);
   apiRouter.route('/passager/deconnexion').post(usersCtrl.leaveUser);
+  apiRouter.route('/passager/gradeup').post(usersCtrl.gradeup);
   
 // Routes des votes
   apiRouter.route('/passager/vote').post(voteCtrl.updateVote);

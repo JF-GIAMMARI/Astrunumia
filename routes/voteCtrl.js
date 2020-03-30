@@ -46,6 +46,7 @@ module.exports = {
     var globalvote3 = 0;
     var supp = false;
 
+
     if (userID < 0){ // Vérification de la connection
       return res.status(400).cookie('alert', 'Vous devez être connecter pour voter', {expires: new Date(Date.now() + 1000) })
       .redirect(301, '/passager/vote');

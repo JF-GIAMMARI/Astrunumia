@@ -223,15 +223,16 @@ module.exports = {
     var headerAuth  = req.cookies.authorization;
     var userId      = jwtUtils.getUserId(headerAuth);
     var username = req.body.username;
-    var iconNumber = req.body.iconNumber;
+    var iconNumber = req.body.iconeNumber;
     var email = req.body.email;
     var password = req.body.password;
     var isSub = req.body.isSub;
     var isDonateur = req.body.isDonateur;
-
     if (userId < 0) // Vérification de sécurité
        return res.status(400).redirect(301, '/accueil');
-       console.log(iconNumber);
+      
+    
+
 
     asyncLib.waterfall([
       function(done) {
@@ -274,12 +275,13 @@ module.exports = {
             
           }
 
-          if(iconNumber){
-            if(iconNumber < 0 || iconNumber > 100){
-              iconNumber = 1;
-            }
+          if(!iconNumber){
+            iconNumber = userFound.iconNumber;
           }
-          
+          if(iconNumber == 0){
+            iconNumber = userFound.iconNumber;
+          }
+          console.log("ICONNNE"+iconNumber);
           if(isSub == 'on'){
             isSub = true;
           }
@@ -287,12 +289,15 @@ module.exports = {
             isSub = false;
           }
 
+          
+
           userFound.update({
             username: (username ? username : userFound.username),
             email: (email ? email: userFound.email),
             password: ( password ?  password : userFound.password),
             isSub: isSub,
-            iconNumber : (iconNumber ? iconNumber : userFound.iconNumber)
+            iconNumber : iconNumber
+            
           }).then(function() {
             done(userFound);
           }).catch(function(err) {
@@ -309,10 +314,10 @@ module.exports = {
       if (userFound) {
         var img = "";
         if(userFound.isDonateur == false){
-          img = "<img class='nonIcoDonateur' src='/img/profileico/"+userFound.iconNumber+".png' alt='Icone' > ";
+          img = "<img class='nonIcoDonateur' src='/img/profileico/"+iconNumber+".png' alt='Icone' > ";
         }
         if(userFound.isDonateur == true){
-          img = "<img class='ouiIcoDonateur' src='/img/profileico/"+userFound.iconNumber+".png' alt='Icone' > ";
+          img = "<img class='ouiIcoDonateur' src='/img/profileico/"+iconNumber+".png' alt='Icone' > ";
         }
         console.log(img);
         res.clearCookie('HeaderIco');
@@ -327,6 +332,53 @@ module.exports = {
       }
     });
   },
+
+  gradeup: function(req, res) {
+    var headerAuth  = req.cookies.authorization;
+    var userId      = jwtUtils.getUserId(headerAuth);
+    var valeur = true;
+    if (userId < 0) // Vérification de sécurité
+       return res.status(400).redirect(301, '/accueil');
+
+    asyncLib.waterfall([
+      function(done) {
+        models.User.findOne({
+          attributes: ['id','isDonateur'],
+          where: { id: userId }
+        }).then(function (userFound) {
+          done(null, userFound);
+        })
+        .catch(function(err) {
+          return res.status(400).cookie('alert', 'Erreur Serveur 1 : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
+        });
+      },
+      function(userFound, done) {
+        if(userFound) {
+          if(userFound.isDonateur == true){
+            valeur = false;
+          }else{
+            valeur = true;
+          }
+          userFound.update({
+            isDonateur : valeur
+          }).then(function() {
+            done(null, 'done');
+          }).catch(function(err) {
+            return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
+          });
+
+        } else {
+          return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+          .redirect(301, '/passager/profile');
+        }
+      },
+    ], function (err, result) {
+      return res.status(400).redirect(301, '/passager/profile');
+    });
+  },
+
   leaveUser: function(req, res) {
     res.clearCookie('authorization');
     res.clearCookie('HeaderIco');

@@ -7,28 +7,29 @@
 
 <form action="/passager/profile/update" method="post">
     <div>
-        <span>
-        <input type="radio" id="iconeNumber" name="iconeNumber" value="1">
-        <img class='nonIcoDonateur' src='/img/profileico/1.png' alt='Icone Défault' >
-        </span>
-        <span>
-        <input type="radio" id="iconeNumber" name="iconeNumber" value="2">
-        <img class='nonIcoDonateur' src='/img/profileico/2.png' alt='Icone Défault' >
-        </span>
-        <span>
-        <input type="radio" id="iconeNumber" name="iconeNumber" value="3">
-        <img class='nonIcoDonateur' src='/img/profileico/3.png' alt='Icone Défault' >
-        </span>
-        <span>
-        <input type="radio" id="iconeNumber" name="iconeNumber" value="4">
-        <img class='nonIcoDonateur' src='/img/profileico/4.png' alt='Icone Défault' >
-        </span>
-        <span>
-        <input type="radio" id="iconeNumber" name="iconeNumber" value="5">
-        <img class='nonIcoDonateur' src='/img/profileico/5.png' alt='Icone Défault' >
-        </span>
+        <input type="hidden" id="iconeNumber" name="iconeNumber" value="0">
+        <img class='nonSelect' src='/img/profileico/1.png' alt='Icone 1'  id="1" value="1" onclick="change(this.id)" >
+        <img class='nonSelect' src='/img/profileico/2.png' alt='Icone 2'  id="2" value="2" onclick="change(this.id)" >
+        <img class='nonSelect' src='/img/profileico/3.png' alt='Icone 3' id="3" value="3" onclick="change(this.id)">
+        <img class='nonSelect' src='/img/profileico/4.png' alt='Icone 4' id="4" value="4" onclick="change(this.id)">
+        <img class='nonSelect' src='/img/profileico/5.png' alt='Icone 5' id="5" value="5" onclick="change(this.id)">
+        <script>
+            function change(value) {
+         document.getElementById(1).className = "nonSelect"; 
+         document.getElementById(2).className = "nonSelect"; 
+         document.getElementById(3).className = "nonSelect"; 
+         document.getElementById(4).className = "nonSelect"; 
+         document.getElementById(5).className = "nonSelect"; 
+         element = document.getElementById(value);
+         element.className = "ouiSelect"; 
+         nombre = document.getElementById("iconeNumber");
+         nombre.value = value;
+         }
+        </script>
     </div>
+
     <div>
+        
         <label for="username">Username :</label>
         <input type="texte" id="username" name="username" placeholder="<% if (locals.username) { %><%=username%><% } %>">
     </div>
@@ -53,13 +54,28 @@
     
 
     <label for="isSub"> Newsletter</label><br>
-    Donateur : <% if (locals.isDonateur) { %><%=isDonateur%><% }else{%>0<%} %><br>
+
 </div>
     <div class="button">
-        <button type="submit">Modifier</button>
+        <button type="submit">Enregistrer les modification</button>
         
     </div>
 </form>
+<%if(locals.isDonateur == false){%>
+        <form action="/passager/gradeup" method="post">
+            <div class="button">
+                <button type="submit">Devenir Commandant</button>
+            </div>
+        </form><%
+    }else{%>
+        <form action="/passager/gradeup" method="post">
+            <div class="button">
+                <button type="submit">Redevenir Passager</button>
+            </div>
+        </form><%
+    }
+%>
+
 
 
 

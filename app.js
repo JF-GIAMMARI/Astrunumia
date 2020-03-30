@@ -25,8 +25,10 @@ server.use(noCache());
 
 //Route Principale
 server.get('/', function (req,res){
+
     res.render('main');
 });
+
 server.get('/accueil', function (req,res){
     var alertcookie = req.cookies.alert;
     var HeaderIco = req.cookies.HeaderIco;
@@ -45,18 +47,13 @@ server.get('/equipage', function (req,res){
         alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
 });
 
-server.get('/t/inscription', function (req,res){
-    var alertcookie = req.cookies.alert;
-    var HeaderIco = req.cookies.HeaderIco;
-    var HeaderUsername = req.cookies.HeaderUsername;
-    
-    return res.render('inscription',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
- 
-});
 
-  
 //Lien vers les routes de l'API
 server.use('/', apiRouter); 
+
+server.use(function(req, res, next) {
+    return res.status(404).redirect('/accueil');
+});
 
 // Lancement du serveur port 8080
 server.listen(8080,function(){

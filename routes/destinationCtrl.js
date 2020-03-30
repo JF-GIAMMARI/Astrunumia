@@ -16,6 +16,7 @@ module.exports = {
     var getaime = 0;
     var getaimepas = 0;
     var getvues = 0;
+    var vuesup = 0;
     var i = 0;
 
     var file = "destination"+id;
@@ -38,6 +39,7 @@ module.exports = {
             .redirect(req.get('referer'));
           });
         },
+        
         function(callback){ 
          models.Commentaire.findAll({
           attributes: ['userid', 'texte'],
@@ -64,9 +66,10 @@ module.exports = {
           });
           
         },
+        
         function(callback){ 
           if(idtab[0] == null){
-            callback(null,'done');
+            callback(null);
           }else{
             for(let i = 0 ; i != idtab.length; i++){
               models.User.findOne({
@@ -76,7 +79,7 @@ module.exports = {
                   nomutilisateurtab.push(GetUsername['username']);
     
                   if(i == idtab.length-1){
-                    callback(null,'done');
+                    callback(null);
                   }
                 }).catch(function(err) {
                 return res.status(400).cookie('alert', 'Erreur Serveur 1 : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
@@ -84,17 +87,40 @@ module.exports = {
                 });
               }
           }
-          
         
-           
-           
          },
+         function(callback) {
+          models.Destination.findOne({
+            attributes: ['id','destinationid','vues'],
+            where: { destinationid: id }
+          }).then(function (vuesGet) {
+            vuesup = vuesGet.vues;
+            vuesup++;
+            callback(null,vuesGet);
+          })
+          .catch(function(err) {
+            return res.status(400).cookie('alert', 'Erreur Serveur 1: Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+            .redirect(req.get('referer'));
+          });
+        },
+        function(vuesGet,callback){ 
+          vuesGet.update({
+            vues : vuesup,
+          }).then(function() {
+            callback(null,'done');
+          }).catch(function(err) {
+            return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
+            .redirect(req.get('referer'));
+          });
+
+    },
+
         ], function (err, result) {
-          return res.render(file,{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername,commentaire : commentairetab,utilisateurcom : nomutilisateurtab,id: id, aime : getaime, aimepas : getaimepas,vues : getvues});
+          return res.render(file,{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername,commentaire : commentairetab,utilisateurcom : nomutilisateurtab,id: id, aime : getaime, aimepas : getaimepas,vues : vuesup});
         });    
     }
     else{
-        return res.redirect('/');
+        return res.redirect('/accueil');
     }
   },
 
