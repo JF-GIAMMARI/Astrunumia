@@ -7,29 +7,29 @@ const noCache = require('nocache')
 
 
 //Instanciation du serveur web
-var server = express();
+var app = express();
 
 //EJS
-server.set('views', './views')
-server.set('view engine','ejs')
+app.set('views', './views')
+app.set('view engine','ejs')
 
 // Configuations de Body Parser
-server.use(bodyParser.urlencoded({extended:true}));
-server.use(bodyParser.json());
-server.use(cookieParser());
-server.use(express.static("public"));
-server.use('/static', express.static(__dirname + '/public'));
-server.use(noCache());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(express.static("public"));
+app.use('/static', express.static(__dirname + '/public'));
+app.use(noCache());
 
 //Configuration des routes
 
 //Route Principale
-server.get('/', function (req,res){
+app.get('/', function (req,res){
 
     res.render('main');
 });
 
-server.get('/accueil', function (req,res){
+app.get('/accueil', function (req,res){
     var alertcookie = req.cookies.alert;
     var HeaderIco = req.cookies.HeaderIco;
     var HeaderUsername = req.cookies.HeaderUsername;
@@ -38,7 +38,7 @@ server.get('/accueil', function (req,res){
         alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
 });
 
-server.get('/equipage', function (req,res){
+app.get('/equipage', function (req,res){
     var alertcookie = req.cookies.alert;
     var HeaderIco = req.cookies.HeaderIco;
     var HeaderUsername = req.cookies.HeaderUsername;
@@ -49,13 +49,13 @@ server.get('/equipage', function (req,res){
 
 
 //Lien vers les routes de l'API
-server.use('/', apiRouter); 
+app.use('/', apiRouter); 
 
-server.use(function(req, res, next) {
+app.use(function(req, res, next) {
     return res.status(404).redirect('/accueil');
 });
 
 // Lancement du serveur port 8080
-server.listen(8080,function(){
+app.listen(8080,function(){
 console.log('Serveur Astrunumia en écoute (Port 8080)');
 });

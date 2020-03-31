@@ -2,19 +2,38 @@
 var jwtUtils  = require('../utils/jwt.utils');
 var models    = require('../models');
 var asyncLib  = require('async');
-const idvoteencour = 1; ////////// A MODIFIER PAR SESSION DE VOTE
+
 
 module.exports = {
   getVote: function(req, res) {
     var alertcookie = req.cookies.alert;
     var HeaderIco = req.cookies.HeaderIco;
     var HeaderUsername = req.cookies.HeaderUsername;
-    
+    var VoteActif = true;
+    var idvoteencour = 0;
     var getvote1 = 0;
     var getvote2 = 0;
     var getvote3 = 0;
     asyncLib.waterfall([
       function(callback){
+        models.VoteCount.findAll({
+          limit: 1,
+          order: [ [ 'createdAt', 'DESC' ]]
+        }).then(function(LastId){
+          
+          if(LastId[0] == undefined)
+          {
+            VoteActif = false;
+          }
+          else{
+            idvoteencour = LastId[0].id;
+          }
+          callback(null);
+        });
+        
+      },
+      function(callback){
+        if(VoteActif == true){
         models.VoteCount.findOne({
           where: { id : idvoteencour} // Verification des doublons
         })
@@ -27,11 +46,15 @@ module.exports = {
         .catch(function(err) {
           return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', {expires: new Date(Date.now() + 1000) })
           .redirect(301, '/passager/vote');
-        });
+        });}
+        else{
+          callback(null, 'done');
+        }
       },
     
       ], function (err, result) {
-        return res.render('vote',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername, vote1 : getvote1, vote2 : getvote2, vote3 : getvote3});
+        console.log(VoteActif);
+        return res.render('vote',{alert : alertcookie,voteisactif : VoteActif,headerico : HeaderIco,headerusername:HeaderUsername, vote1 : getvote1, vote2 : getvote2, vote3 : getvote3});
       });
     
   },
@@ -67,10 +90,11 @@ asyncLib.waterfall([
        }
       })
       .then(function(userlevel) {
-       if (userlevel['isDonateur'] == 1) {
-        supp == true;
+        console.log(userlevel.isDonateur);
+       if (userlevel['isDonateur'] == true) {
+        supp = true;
        } else {
-        supp == false
+        supp = false;
        }
        callback(null);
       })
@@ -155,14 +179,11 @@ asyncLib.waterfall([
         globalvote3 = VoteCount["vote3"];
 
         /// Traitement du x2 donateur
-        if(vote1 == 1){
-          vote1++;
-        }
-        if(vote2 == 1){
-          vote2++;
-        }
-        if(vote3 == 1){
-          vote3++;
+        if(supp == true){
+          console.log("YEs is true man");
+          vote1 = vote1 * 2;
+           vote2 = vote2 * 2;
+          vote3 = vote3 * 2;
         }
 
 

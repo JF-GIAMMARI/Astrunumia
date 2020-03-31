@@ -1,5 +1,7 @@
 <%- include('header'); -%>
 <% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
+<% if(locals.voteisactif == true){%>
+
 
 <form action="/passager/vote" method="post">   
     <input type="hidden" id="vote1" name="vote1" value="1">
@@ -28,7 +30,9 @@
 Vote D1 -> <% if (locals.vote1) { %><%=vote1%><% } %><br>
 Vote D2 -> <% if (locals.vote2) { %><%=vote2%><% } %><br>
 Vote D3 -> <% if (locals.vote3) { %><%=vote3%><% } %><br>
-
+<%}else{%>
+Aucun vote actuellement
+<%}%>
 <a href="/passager/authentification">Connexion</a><br>
 <a href="/passager/enregistrement">Inscription</a><br>
 <a href="/passager/vote">Vote</a><br>
