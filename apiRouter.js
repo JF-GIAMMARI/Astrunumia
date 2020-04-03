@@ -31,7 +31,8 @@ exports.router = (function() {
   apiRouter.route('/destinations/commentaire').post(destCtrl.commentaire);
   apiRouter.route('/destinations/:id').get(destCtrl.getDestination);
   
-
+// Demande Cookie 
+  apiRouter.route('/cookie').get(usersCtrl.okcookie);
 
   return apiRouter;
 })();

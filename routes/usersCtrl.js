@@ -411,4 +411,9 @@ module.exports = {
       return res.render('inscription',{alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
     }
   },
+  okcookie: function(req, res) {
+    res.clearCookie('cookiestatus');
+    res.cookie('cookiestatus', "oui", {expires: new Date(Date.now() + 2 * 3600000) });
+    return res.status(301).redirect(req.get('referer'));
+  },
 }

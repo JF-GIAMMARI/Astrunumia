@@ -25,17 +25,22 @@ app.use(noCache());
 
 //Route Principale
 app.get('/', function (req,res){
+    var cookiestatus = req.cookies.cookiestatus;
+    res.clearCookie('cookiestatus');
+    res.cookie('cookiestatus', "non", {expires: new Date(Date.now() + 1 * 3600000) });
+    res.render('main',{
+        cookie : cookiestatus});
 
-    res.render('main');
 });
 
 app.get('/accueil', function (req,res){
     var alertcookie = req.cookies.alert;
     var HeaderIco = req.cookies.HeaderIco;
     var HeaderUsername = req.cookies.HeaderUsername;
+    var cookiestatus = req.cookies.cookiestatus;
     
     res.render('accueil',{
-        alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername});
+        alert : alertcookie,headerico : HeaderIco,headerusername:HeaderUsername, cookie : cookiestatus});
 });
 
 app.get('/equipage', function (req,res){

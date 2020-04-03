@@ -17,13 +17,16 @@
 	<title>Astrunumia</title>
 </head>
 <body>
+  <% if (locals.cookie == 'non') { %><a href="/cookie">Accepter les cookies</a><% } %>
   <div class="container">
     <div class="row" >
         <div class="col-xs-12 debug ">
           <img  src="img/main/logo.png" class="logo">
           <h1 class="textelogo">ASTRUNUMIÀ</h1>
           <h6 class="texte">Prenez plaisir à comprendre ce qui vous entoures</h6>
-          <a  href="/accueil" class="bouton">Découvrir</a>
+          <% if (locals.cookie == 'oui') { %><a  href="/accueil" class="bouton">Découvrir</a><% }else{
+            %><a  href="/" class="bouton">Découvrir</a><br><p>Vous devez accepter les cookies</p><%
+          } %>
         </div>
     </div>
 </div>
