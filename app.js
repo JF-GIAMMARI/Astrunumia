@@ -26,7 +26,6 @@ app.use(noCache());
 //Route Principale
 app.get('/', function (req,res){
     var cookiestatus = req.cookies.cookiestatus;
-    console.log(cookiestatus);
     res.render('main',{
         cookie : cookiestatus});
 

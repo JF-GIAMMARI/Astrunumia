@@ -7,3 +7,51 @@ body{
 a{
     text-decoration: none;
 }
+
+
+.btnfull{
+    padding : 1em 3em 1em 3em;
+    background: #5800FF;
+    border: 2px solid #5800FF;
+    font-weight: bold;
+    border-radius : 0.3em 0.3em 0.3em 0.3em ;
+    color : white
+}
+
+.btnfull:hover{
+    background: rgb(68, 1, 192);
+    color: white;
+    text-decoration: none;
+}
+    
+
+.btnline{
+    padding : 1em 3em 1em 3em;
+    background: #5800FF33;
+    border: 2px solid #5800FF;
+    font-weight: bold;
+    border-radius : 0.3em 0.3em 0.3em 0.3em ;
+    color : white;
+}
+.btnline:hover{
+
+    border: 3px solid rgb(113, 4, 255);
+    color: white;
+    text-decoration: none;
+}
+
+.btnsimple{
+    padding : 1em 3em 1em 3em;
+    background: white;
+    border: 2px solid white;
+    font-weight: bold;
+    border-radius : 0.3em 0.3em 0.3em 0.3em ;
+    color :  #5800FF;
+}
+.btnsimple:hover{
+
+    border: 3px solid rgb(113, 4, 255);
+    color:  #5800FF;
+    text-decoration: none;
+}
+

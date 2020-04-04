@@ -3,7 +3,6 @@ body{
     background: #1B1B1B;
     display: flex;
     flex-direction: column;
-    padding-top : 15%;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -14,41 +13,61 @@ body{
 
 
 .logo{
-    padding-bottom: 12%;
-    width: 10em;
-    height: auto;
 
+    margin-top :12em;
+    padding-right: 1em;
+    width: 12em;
+    height: auto;
 }
+
 .textelogo{
+
     font-family: 'GFS Didot', serif;
-    letter-spacing: 0.5em;
+    font-size: 4em;
+    letter-spacing: 0.3em;
+    margin-top :1em;
     color: #FFFFFF;
     text-transform: uppercase;
     
 }
 
 .texte{
+
     font-family: 'Poppins', serif;
+    font-size: 1.1em;
+    margin-top :1em;
     color: #FFFFFF;
 }
 
 .bouton{
-background: #5800FF33;
-border: 2px solid #5800FF;
-color: white;
-
+margin-top : 3.5em;
 }
 
-.bouton:hover{
-background: #5800FF33;
-border: 2px solid #5800FF;
-color: white;
-text-decoration: none;
-}
 
 
 @media (min-width: 320px) and (max-width: 480px) {
   
     
+.logo{
+    margin-top :5em;
+    padding-right: 0em;
+    width: 12em;
+    height: auto;
+}
+
+.textelogo{
+    font-size: 2em;
+    letter-spacing: 0.3em;
+    margin-top :1em;
+}
+
+.texte{
+    font-size: 0.82em;
+    margin-top :1.2em;
+}
+
+.bouton{
+margin-top : 2em;
+}
     
   }
