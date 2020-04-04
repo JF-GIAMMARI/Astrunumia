@@ -1,5 +1,6 @@
 .debug{border: solid red 1px;}
-.debugv{border: solid green1px;}
+.debugv{border: solid green 1px;}
+.debugb{border: solid blue 1px;}
 body{
     font-family: 'Poppins', serif;
 }
@@ -8,6 +9,31 @@ a{
     text-decoration: none;
 }
 
+
+.conteneur{
+    display: flex;
+    flex-direction: row;
+}
+
+.contenueHeader{
+    min-width: 310px;
+    width: 20vw;
+}
+
+.stickHeader{
+    width: 100%;
+    position: fixed;
+    float: left;
+    
+   
+}
+
+
+.contenue{
+    flex-direction: column;
+    width: 100%;
+    height: 140vh;
+}
 
 .btnfull{
     padding : 1em 3em 1em 3em;
@@ -55,3 +81,21 @@ a{
     text-decoration: none;
 }
 
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .btnfull{
+        padding : 0.7em 2.7em 0.7em 2.7em;
+    }
+
+    .btnline{
+        padding : 0.7em 2.7em 0.7em 2.7em;
+
+    }
+
+    .btnsimple{
+        padding : 0.7em 2.7em 0.7em 2.7em;
+    }
+
+      }

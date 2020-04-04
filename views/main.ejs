@@ -9,8 +9,8 @@
 
   <% if (locals.cookie == undefined) { %>
     <div class="cookies">
-      Pour poursuivre votre navigation sur ce site, vous devez accepté l’utilisation
-       des Cookie.<br><br><a class="cookiesbtn btnsimple" href="/cookie">J'accepte</a>
+      Pour poursuivre votre navigation sur ce site, vous devez accepter l’utilisation
+       des Cookies.<br><br><a class="cookiesbtn btnsimple" href="/cookie">J'accepte</a>
   
     </div>
     <% }%>
@@ -60,13 +60,11 @@
           function click(){
             gsap.to(".bouton",{duration: 0.6,scale:0, opacity:0 });
             gsap.to(".texte",{duration: 0.6,scale:0, opacity:0,delay : 0.4 });
-            gsap.to(".textelogo",{duration: 0.6,scale:0, opacity:0,delay : 0.6 });
-            gsap.to(".logo",{duration: 0.6,scale:0, y:200, opacity:0, onComplete: redirect,delay : 0.9 });
-
+            gsap.to(".textelogo",{duration: 0.6,scale:0, opacity:0,delay : 0.6,onComplete: redirect });
+            gsap.to(".logo",{duration: 0.5,scale:0, y:200, opacity:0, onComplete: redirect,delay : 0.9 });
           }
           function redirect(){
-            
-            //window.location.href = "/accueil";
+            window.location.href = "/accueil";
           }
         }
       </script>
