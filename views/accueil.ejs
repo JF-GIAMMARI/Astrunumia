@@ -1,11 +1,20 @@
-<%- include('header'); -%>
+<%- include('prehead'); -%> 
+<link rel="stylesheet" type="text/css" href="/css/accueil.css">
+
+<title>Accueil</title>
+<%- include('posthead'); -%> 
+<body> <! --======================================================= Début de la page -->
+    
+    <%- include('header'); -%>
+
+    <a href="/passager/authentification">Connexion</a><br>
+    <a href="/passager/enregistrement">Inscription</a><br>
+    <a href="/passager/vote">Vote</a><br>
+    <a href="/accueil">Accueil</a><br>
+    <a href="/destinations/1">Destination 1</a><br>
+
+</body><! --======================================================= Fin -->
+</html
 
 
-<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
-
-<a href="/passager/authentification">Connexion</a><br>
-<a href="/passager/enregistrement">Inscription</a><br>
-<a href="/passager/vote">Vote</a><br>
-<a href="/accueil">Accueil</a><br>
-<a href="/destinations/1">Destination 1</a><br>
 

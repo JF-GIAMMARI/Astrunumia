@@ -1,35 +1,30 @@
-.debug{
-    border: solid red;
-}
-
 
 body{
     background: #1B1B1B;
-    opacity: 1;
-}
-
-
-.container{
-    
     display: flex;
     flex-direction: column;
+    padding-top : 15%;
     justify-content: center;
     align-items: center;
     align-content: center;
     align-self: center;
-
-    padding-top : 5%;
 }
+
+
+
 
 .logo{
-    padding-bottom: 15%;
+    padding-bottom: 12%;
+    width: 10em;
+    height: auto;
+
 }
 .textelogo{
-
     font-family: 'GFS Didot', serif;
-    letter-spacing: 22px;
+    letter-spacing: 0.5em;
     color: #FFFFFF;
     text-transform: uppercase;
+    
 }
 
 .texte{
@@ -48,5 +43,12 @@ color: white;
 background: #5800FF33;
 border: 2px solid #5800FF;
 color: white;
+text-decoration: none;
 }
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
     
+    
+  }

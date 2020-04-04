@@ -1,11 +1,15 @@
+<%- include('prehead'); -%> 
+<link rel="stylesheet" type="text/css" href="/css/destinations/d1.css">
+<title>Les Trous Noirs</title>
+<%- include('posthead'); -%> 
+<body> <! --======================================================= Début de la page -->
+
 <%- include('header'); -%>
-<body>
 
 Aime -->    <% if (locals.aime) { %><%=aime%><% }else{%>0<%} %><br>
 Aimepas -->    <% if (locals.aimepas) { %><%=aimepas%><% }else{%>0<%} %><br>
 Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
 <br>
-<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
 
 <form action="/destinations/avis" method="post">   
     <input type="hidden" id="valeur" name="valeur" value="1">
@@ -24,7 +28,6 @@ Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
 </form>
 
 <form action="/destinations/commentaire" method="post">   
-    
     <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
     <textarea id="texte" name="texte" rows="5" cols="33" required maxlength="500" minlength="4"></textarea>
     <div class="button">
@@ -33,17 +36,14 @@ Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
 </form>
 
 <div>
-
     <% if (locals.commentaire){
-        for(let i = locals.commentaire.length-1 ; i != -1 ; i--){ %>
-            <div><b><%=utilisateurcom[i]%></b></div>
-            <div><%=commentaire[i]%></div><br>  
-            <%}}%>
-
-    
-
-    
+    for(let i = locals.commentaire.length-1 ; i != -1 ; i--){ %>
+    <div><b><%=utilisateurcom[i]%></b></div>
+    <div><%=commentaire[i]%></div><br>  
+    <%}}%>
 </div>
 </body>
+    
+</body><! --======================================================= Fin -->
+</html
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

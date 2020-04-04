@@ -1,0 +1,27 @@
+</head>
+
+<% if (locals.alert) { %>
+    <div class="alerte">
+        
+        <%=alert%>
+        <span class="fermeturebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div><% } %>
+
+    <style>
+        .alerte {
+          opacity: 1;
+          transition: opacity 0.6s; 
+        }
+        </style>
+        
+        <script>
+        var close = document.getElementsByClassName("fermeturebtn");
+        var i;
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+          }
+        }
+        </script>

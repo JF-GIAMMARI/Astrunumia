@@ -1,8 +1,11 @@
+<%- include('prehead'); -%> 
+<link rel="stylesheet" type="text/css" href="/css/vote.css">
+<title>Votes</title>
+<%- include('posthead'); -%> 
+<body> <! --======================================================= Début de la page -->
+
 <%- include('header'); -%>
-<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
 <% if(locals.voteisactif == true){%>
-
-
 <form action="/passager/vote" method="post">   
     <input type="hidden" id="vote1" name="vote1" value="1">
     <input type="hidden" id="vote2" name="vote2" value="0">
@@ -37,3 +40,6 @@ Aucun vote actuellement
 <a href="/passager/enregistrement">Inscription</a><br>
 <a href="/passager/vote">Vote</a><br>
 <a href="/accueil">Accueil</a><br>
+    
+</body><! --======================================================= Fin -->
+</html

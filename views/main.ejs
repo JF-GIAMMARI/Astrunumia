@@ -1,36 +1,57 @@
-<!DOCTYPE html>
+<%- include('prehead'); -%> 
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/cookie.css">
+<title>Astrunumia</title>
+<%- include('posthead'); -%> 
 
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="description" content="Ceci est une description pour le robot Google">
-	<meta name="keywords" content="Ceci est un keyword pour le robot Google">
-	<meta name="author" content="Jean-François Giammari ">
-  <link rel="stylesheet" type="text/css" href="/css/reset.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<body> <! --======================================================= Début de la page -->
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=GFS+Didot&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
 
-	<title>Astrunumia</title>
-</head>
-<body>
-  <% if (locals.cookie == 'non') { %><a href="/cookie">Accepter les cookies</a><% } %>
-  <div class="container">
-    <div class="row" >
-        <div class="col-xs-12 debug ">
-          <img  src="img/main/logo.png" class="logo">
-          <h1 class="textelogo">ASTRUNUMIÀ</h1>
-          <h6 class="texte">Prenez plaisir à comprendre ce qui vous entoures</h6>
-          <% if (locals.cookie == 'oui') { %><a  href="/accueil" class="bouton">Découvrir</a><% }else{
-            %><a  href="/" class="bouton">Découvrir</a><br><p>Vous devez accepter les cookies</p><%
-          } %>
-        </div>
+  <% if (locals.cookie == undefined) { %>
+    <div class="cookies">
+      Pour poursuivre votre navigation sur ce site, vous devez accepté l’utilisation
+       des Cookie.<a class="cookiesbtn" href="/cookie">J'accepte</a>
+  
     </div>
-</div>
+    <% }%>
+    <style>
+      .alert {
+        opacity: 1;
+        transition: opacity 0.6s; 
+      }
+      </style>
+      
+      <script>
+      var close = document.getElementsByClassName("fermeturebtn");
+      var i;
+      for (i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+          var div = this.parentElement;
+          div.style.opacity = "0";
+          setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+      }
+      </script>
+
+                <img  src="img/main/logo.png" class="logo ">
+                <h1 class="textelogo">ASTRUNUMIÀ</h1>
+                <h6 class="texte">Prenez plaisir à comprendre ce qui vous entoures</h6>
+                <% if (locals.cookie != undefined) { %>
+                <a  href="/accueil" class="bouton ">Découvrir</a>
+                <%} else{%>
+                <a  href="/" class="bouton disable">Découvrir</a>
+                <%}%>
+
+      
+      
+      </body><! --======================================================= Fin -->
+      </html
+    
 
 
-</body>
-</html>
+
+
+
+
+
+>

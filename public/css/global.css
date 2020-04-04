@@ -1,0 +1,9 @@
+.debug{border: solid red 1px;}
+.debugv{border: solid green1px;}
+body{
+    font-family: 'Poppins', serif;
+}
+
+a{
+    text-decoration: none;
+}

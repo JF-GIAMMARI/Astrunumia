@@ -1,0 +1,37 @@
+
+.alerte {
+    padding: 0.5vw;
+    background-color: #f43336; 
+    color: white;
+    font-family: 'Poppins', serif;
+    font-size: 1em;
+    
+    
+  }
+  
+
+  .fermeturebtn {
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+    float: left;
+    font-family: 'GFS Didot', serif;
+    font-size: 2em;
+    line-height: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+
+  .fermeturebtn:hover {
+    color: black;
+  }
+
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    .fermeturebtn {
+      float: right;
+    }
+
+    
+  }

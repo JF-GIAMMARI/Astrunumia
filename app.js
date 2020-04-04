@@ -26,8 +26,7 @@ app.use(noCache());
 //Route Principale
 app.get('/', function (req,res){
     var cookiestatus = req.cookies.cookiestatus;
-    res.clearCookie('cookiestatus');
-    res.cookie('cookiestatus', "non", {expires: new Date(Date.now() + 1 * 3600000) });
+    console.log(cookiestatus);
     res.render('main',{
         cookie : cookiestatus});
 
