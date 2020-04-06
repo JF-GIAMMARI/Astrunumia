@@ -5,6 +5,8 @@ var asyncLib  = require('async');
 
 
 module.exports = {
+
+  
   getVote: function(req, res) {
     var alertcookie = req.cookies.alert;
     var HeaderIco = req.cookies.HeaderIco;
@@ -14,6 +16,7 @@ module.exports = {
     var getvote1 = 0;
     var getvote2 = 0;
     var getvote3 = 0;
+    var vote = 0;
     asyncLib.waterfall([
       function(callback){
         models.VoteCount.findAll({
@@ -53,8 +56,20 @@ module.exports = {
       },
     
       ], function (err, result) {
-        console.log(VoteActif);
-        return res.render('vote',{alert : alertcookie,voteisactif : VoteActif,headerico : HeaderIco,headerusername:HeaderUsername, vote1 : getvote1, vote2 : getvote2, vote3 : getvote3});
+        vote = [getvote1, getvote2,getvote3];
+        var votesomme = vote[0]+vote[1]+vote[2];
+            vote[0] = (100*getvote1)/votesomme;
+            vote[1] = (100*getvote2)/votesomme;
+            vote[2] = (100*getvote3)/votesomme;
+        res.clearCookie('vote1nbr');
+        res.cookie('vote1nbr', vote[0], {expires: new Date(Date.now() + 1 * 3600000) });
+        res.clearCookie('vote2nbr');
+        res.cookie('vote2nbr', vote[1], {expires: new Date(Date.now() + 1 * 3600000) });
+        res.clearCookie('vote3nbr');
+        res.cookie('vote3nbr', vote[2], {expires: new Date(Date.now() + 1 * 3600000) });
+        return res.render('vote',{alert : alertcookie,voteisactif : VoteActif,headerico : HeaderIco,headerusername:HeaderUsername, 
+          vote1 : vote[0], vote2 : vote[1], vote3 : vote[2],
+          vote1num : getvote1, vote2num : getvote2, vote3num : getvote3});
       });
     
   },
@@ -216,3 +231,5 @@ asyncLib.waterfall([
   },
 
 }
+
+

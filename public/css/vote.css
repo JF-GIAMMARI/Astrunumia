@@ -1,0 +1,179 @@
+.mainDiv{
+    color : white;
+    display: flex;
+    flex-direction: column;
+    
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.row1{
+    justify-content: space-between; 
+    margin : 4%;
+}
+
+
+.row1 .lefttexteDiv h1{
+    font-size: 3.5vw;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+.row1 .lefttexteDiv h2{
+    font-size: 1.5vw;
+    font-weight: lighter;
+    padding-top: 2%;
+}
+.row1 .lefttexteDiv div{
+    width: 5vw ;
+    height: 0.3vw;
+    background-color: #5800FF;
+    margin-top: 9%;
+}
+
+.righttexteDiv{
+    width: 52%;
+    display: flex;
+    flex-direction: row;
+}
+.row1 .righttexteDiv p{
+    font-size: 1vw;
+    letter-spacing: 0.10em;
+    line-height: 1.2em;
+    padding-top: 0%;
+
+}
+
+.row1 .righttexteDiv div{
+    width: 0.8vw ;
+    height: 3vw;
+    background-color: #5800FF;
+    margin-right: 4.5%;
+}
+
+.barreinferieur{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+}
+
+.voteinactif{
+    font-size: 2vw;
+    color: white;
+    text-align: center;
+    padding-top: 2vw;
+}
+
+/*********************************/
+
+.row2{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form{
+    width: 33.3%;
+}
+
+.cartevote{
+    width: 100%;
+}
+
+.btnvote{
+    width: 28vw;
+    height: 25vw;
+    border : none;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color:  #1B1B1B;
+}
+
+#cvote1{
+    background-image: url('/img/vote/Vote1.png');
+
+}
+#cvote2{
+    background-image: url('/img/vote/Vote2.png');
+
+}
+#cvote3{
+    background-image: url('/img/vote/Vote3.png');
+
+}
+/*********************************/
+@media (max-width: 550px) {
+
+    .mainDiv{
+        color : white;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .barreinferieur{
+        display: none;
+    }
+    
+    .row1{
+        justify-content: space-between; 
+        margin : 4%;
+        margin: auto;
+        flex-direction: column;
+    }
+    
+    .righttexteDiv{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        
+    }
+    .row1 .lefttexteDiv h1{
+        font-size: 15vw;
+    
+    }
+    .row1 .lefttexteDiv h2{
+        font-size: 4.6vw;
+
+    }
+    .row1 .lefttexteDiv div{
+        display: none;
+    }
+    
+    .row1 .righttexteDiv p{
+        font-size: 2.5vw;
+        font-weight: lighter;
+        padding-top: 5%;
+        text-align: justify;
+        width: 80%;
+        margin: auto;
+        padding-bottom: 5%;
+
+    }
+    
+    .row1 .righttexteDiv div{
+        display: none;
+    }
+   
+
+    /*********************************/
+
+
+
+
+
+
+
+    /*********************************/
+}

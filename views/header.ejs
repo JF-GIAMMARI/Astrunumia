@@ -3,7 +3,7 @@
 <div class="globalHeader">
 <header>
 <div class="HPass" id="profilebtn">
-<div class="Htexte">
+<div class="Htexte ">
     
 <h1>Mon Passe</h1>
 <div class="Htexte2">
@@ -15,7 +15,7 @@
 
 
 <% if (locals.headerico) { %><%-headerico%><% }else{%>
-    <img class='nonIcoDonateur ' src='/img/profileico/0.png' alt='Icone Défault' > 
+    <img class='nonIcoDonateur  ' src='/img/profileico/0.png' alt='Icone Défault' > 
     <%} %></div>
 </div>
 
@@ -104,11 +104,13 @@
       
 
       function hoverin(btn){
-        gsap.to(btn, {duration: 1, scale:0.95});
+        gsap.to(btn, {duration: 1, scale:0.96});
+        gsap.to(btn, {duration: 0.2, border: '0.2em solid white'});
 
       }
       function hoverout(btn){
         gsap.to(btn, {duration: 1, scale:1});
+        gsap.to(btn, {duration: 0, border: 'none'});
       }
     
       function click1(){

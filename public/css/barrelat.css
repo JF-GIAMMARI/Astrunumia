@@ -1,0 +1,66 @@
+.barrelatcontainer{
+    background-color: white;
+    width: 100%;
+    height:15vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+.col{
+    margin: 3% 4% 3% 4%;
+    width: 40%;
+    
+
+   
+}
+.col3{
+
+    border-right: none;
+   
+}
+
+
+.col2{
+    margin: 3% 0% 3% 0%;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    border-right: #00000080 solid 0.17em;
+    border-left: #00000080 solid 0.17em;
+    padding-right: 2.5vw;
+    padding-left: 2.5vw;
+    
+}
+.col2 a{
+    padding-right: 1vw;
+    padding-left: 1vw;
+    margin-left: 20vw;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 0.9vw;
+}
+
+.col h1{
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    color: #28282B;
+    padding-top: 1%;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+
+}
+.col h2{
+    font-size: 0.9vw;
+    color: #00000075;
+    padding-top: 1%;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+.col p{
+    font-size: 1vw;
+    font-family: 'GFS Didot', serif;
+    text-align: justify;
+    padding-top: 4%;
+}

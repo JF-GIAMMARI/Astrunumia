@@ -1,0 +1,41 @@
+.votesbl p{
+    font-size: 1vw;
+    font-family: 'GFS Didot', serif;
+    text-align: right;
+    width: 40%;
+    padding-right: 1vw;
+}
+
+.conteneurvote{
+    display: flex;
+    flex-direction: row;
+}
+
+.votesbl{
+    display: flex;
+    flex-direction: column;
+    padding-top: 3%;
+}
+
+.votesbl progress{
+    margin-top: 1.1vw;
+    background-color: #FFFFFF00;
+    border: none;
+    width: 10vw;
+    
+    
+}
+
+progress {
+    color: #5800FF95;
+  }
+  
+  progress::-webkit-progress-value {
+    background: #5800FF95;
+  }
+  
+  progress::-moz-progress-bar {
+    background: #5800FF95;
+  }
+
+

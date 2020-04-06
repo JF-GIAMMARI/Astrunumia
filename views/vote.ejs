@@ -3,42 +3,116 @@
 <title>Vote</title>
 <%- include('include-posthead'); -%> 
 <! --=====================================================================-->
+<div class="mainDiv">
+    <div class="row row1">
+        <div class="lefttexteDiv">
+            <h1>Vote !</h1>
+            <h2>Rejoignez l’aventure !</h2>
+            <div></div>
+        </div>
+        <div class="righttexteDiv">
+            <div></div>
+            <p>Tout les mois, vous avez la possibilité de choisir notre prochaine destination. 
+                Votez pour l’une des trois propositions. Si ce n’est pas déjà fait, devenez 
+                commandant pour obtenir un vote double !</p>
+                
+        </div>
+    </div>  
 
-<% if(locals.voteisactif == true){%>
-<form action="/passager/vote" method="post">   
-    <input type="hidden" id="vote1" name="vote1" value="1">
-    <input type="hidden" id="vote2" name="vote2" value="0">
-    <input type="hidden" id="vote3" name="vote3" value="0">
-    <div class="button">
-        <button type="submit">Vote1</button>
-    </div>
-</form>
-<form action="/passager/vote" method="post">   
-    <input type="hidden" id="vote1" name="vote1" value="0">
-    <input type="hidden" id="vote2" name="vote2" value="1">
-    <input type="hidden" id="vote3" name="vote3" value="0">
-    <div class="button">
-        <button type="submit">Vote2</button>
-    </div>
-</form>
-<form action="/passager/vote" method="post">   
-    <input type="hidden" id="vote1" name="vote1" value="0">
-    <input type="hidden" id="vote2" name="vote2" value="0">
-    <input type="hidden" id="vote3" name="vote3" value="1">
-    <div class="button">
-        <button type="submit">Vote3</button>
-    </div>
-</form>
-Vote D1 -> <% if (locals.vote1) { %><%=vote1%><% } %><br>
-Vote D2 -> <% if (locals.vote2) { %><%=vote2%><% } %><br>
-Vote D3 -> <% if (locals.vote3) { %><%=vote3%><% } %><br>
-<%}else{%>
-Aucun vote actuellement
-<%}%>
-<a href="/passager/authentification">Connexion</a><br>
-<a href="/passager/enregistrement">Inscription</a><br>
-<a href="/passager/vote">Vote</a><br>
-<a href="/accueil">Accueil</a><br>
+    <div class="row row2">
+        <% if(locals.voteisactif == true){%>
+            <form action="/passager/vote" method="post">   
+                
+                <input type="hidden" id="vote1" name="vote1" value="1">
+                <input type="hidden" id="vote2" name="vote2" value="0">
+                <input type="hidden" id="vote3" name="vote3" value="0">
+                <div class="cartevote debugb">
+                    <button class="btnvote debug" id="cvote1" type="submit"></button>
+                </div>
+                
+
+            </form>
+            <form action="/passager/vote" method="post">   
+               
+                <input type="hidden" id="vote1" name="vote1" value="0">
+                <input type="hidden" id="vote2" name="vote2" value="1">
+                <input type="hidden" id="vote3" name="vote3" value="0">
+
+                <div class="cartevote debugb">
+                    <button class="btnvote debug" id="cvote2"  type="submit"></button>
+                </div>
+            </form>
+            <form  action="/passager/vote" method="post">   
+                
+                <input type="hidden" id="vote1" name="vote1" value="0">
+                <input type="hidden" id="vote2" name="vote2" value="0">
+                <input type="hidden" id="vote3" name="vote3" value="1">
+                <div class="cartevote debugb ">
+                <button class="btnvote debug " id="cvote3"  type="submit"></button>
+                </div>
+            </form>
+            <%}else{%>
+            <h1 class="voteinactif"> Aucun vote actuellement</h1>
+            <%}%>
+    </div>  
+</div>
+<div class="barreinferieur">
+    <%- include('include-barrelat'); -%> 
+</div>
+
+<script>
+/*
+      var btnnico = document.getElementById('btnnico');
+      btnnico.addEventListener("mouseenter",function(){hoverinequi(btnnico)});
+      btnnico.addEventListener("mouseleave",function(){hoveroutequi(btnnico)});
+      btnnico.style.cursor = 'pointer';
+    
+      var btnjf = document.getElementById('btnjf');
+      btnjf.addEventListener("mouseenter",function(){hoverinequi(btnjf)});
+      btnjf.addEventListener("mouseleave",function(){hoveroutequi(btnjf)});
+      btnjf.style.cursor = 'pointer';
+
+      var btnju = document.getElementById('btnju');
+      btnju.addEventListener("mouseenter",function(){hoverinequi(btnju)});
+      btnju.addEventListener("mouseleave",function(){hoveroutequi(btnju)});
+      btnju.style.cursor = 'pointer';
+
+      function hoverinequi(btnequipage){
+        Haptics.vibrate(10);
+        var id= btnequipage.id;
+        var front = document.getElementById(id).children[0];
+        var back = document.getElementById(id).children[1];
+        var name = document.getElementById(id).children[2];
+        gsap.fromTo(btnequipage,{backgroundColor:'#28282B'}, {duration: 1, opacity: 1,backgroundColor:'#FFFFFF'});
+        front.style.display = 'none';
+        back.style.display = 'flex';
+        name.style.color = '#5800FF';
+        gsap.fromTo(back,{scale:0.9,opacity:0}, {duration: 1,scale: 1,opacity:1});
+      }
+      function hoveroutequi(btnequipage){
+        var id= btnequipage.id;
+        var front = document.getElementById(id).children[0];
+        var back = document.getElementById(id).children[1];
+        var name = document.getElementById(id).children[2];
+        gsap.fromTo(btnequipage,{backgroundColor:'#FFFFFF'}, {duration: 1, opacity: 1,backgroundColor:'#28282B'});
+        front.style.display = 'flex';
+        back.style.display = 'none';
+        name.style.color = '#FFFFFF';
+
+        gsap.fromTo(front,{opacity:0, rotation : 180}, {duration: 1,opacity:1,rotation : 0});
+
+        }
+*/
+
+
+        window.onload = function() {
+          gsap.fromTo(".row1",{opacity: 0,y:-200}, {duration: 1, opacity: 1, y:0 });
+          gsap.fromTo(".row2",{opacity: 0}, {duration: 2, opacity: 1, delay:0.5});
+
+        }
+    
+  </script>
+            
  
 <! --=====================================================================-->
 <%- include('include-endpage'); -%> 
