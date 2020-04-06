@@ -1,12 +1,10 @@
-<%- include('prehead'); -%> 
+<%- include('include-prehead'); -%> 
 <link rel="stylesheet" type="text/css" href="/css/destinations/d1.css">
-<title>Les Trous Noirs</title>
-<%- include('posthead'); -%> 
-<body> <! --======================================================= Début de la page -->
+<title>Les trous noirs</title>
+<%- include('include-posthead'); -%> 
+<! --=====================================================================-->
 
-<%- include('header'); -%>
-
-Aime -->    <% if (locals.aime) { %><%=aime%><% }else{%>0<%} %><br>
+      Aime -->    <% if (locals.aime) { %><%=aime%><% }else{%>0<%} %><br>
 Aimepas -->    <% if (locals.aimepas) { %><%=aimepas%><% }else{%>0<%} %><br>
 Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
 <br>
@@ -41,9 +39,11 @@ Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
     <div><b><%=utilisateurcom[i]%></b></div>
     <div><%=commentaire[i]%></div><br>  
     <%}}%>
-</div>
-</body>
-    
-</body><! --======================================================= Fin -->
-</html
+</div>      
+ 
+<! --=====================================================================-->
+<%- include('include-endpage'); -%> 
+
+
+
 

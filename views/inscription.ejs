@@ -1,10 +1,8 @@
-<%- include('prehead'); -%> 
+<%- include('include-prehead'); -%> 
 <link rel="stylesheet" type="text/css" href="/css/inscription.css">
 <title>Inscription</title>
-<%- include('posthead'); -%> 
-<body> <! --======================================================= Début de la page -->
-
-<%- include('header'); -%>
+<%- include('include-posthead'); -%> 
+<! --=====================================================================-->
 <% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
 <form action="/passager/enregistrement" method="post">
     <div class="button">
@@ -23,11 +21,8 @@
         <button type="submit">Envoyer le message</button>
     </div>
 </form>
-<a href="/passager/authentification">Connexion</a><br>
-<a href="/passager/enregistrement">Inscription</a><br>
-<a href="/passager/vote">Vote</a><br>
-<a href="/accueil">Accueil</a><br>
-    
-</body><! --======================================================= Fin -->
-</html
+<! --=====================================================================-->
+<%- include('include-endpage'); -%> 
+
+
 

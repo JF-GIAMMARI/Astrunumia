@@ -1,10 +1,8 @@
-<%- include('prehead'); -%> 
+<%- include('include-prehead'); -%> 
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 <title>Profile</title>
-<%- include('posthead'); -%> 
-<body> <! --======================================================= Début de la page -->
-    
-<%- include('header'); -%>
+<%- include('include-posthead'); -%> 
+<! --=====================================================================-->
 <form action="/passager/profile/update" method="post">
     <div>
         <input type="hidden" id="iconeNumber" name="iconeNumber" value="0">
@@ -88,9 +86,13 @@
 <a href="/passager/enregistrement">Inscription</a><br>
 <a href="/passager/vote">Vote</a><br>
 <a href="/accueil">Accueil</a><br>
+ 
+ 
+<! --=====================================================================-->
+<%- include('include-endpage'); -%> 
+
+
     
-</body><! --======================================================= Fin -->
-</html
 
 
 

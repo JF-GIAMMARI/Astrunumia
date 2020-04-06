@@ -1,11 +1,8 @@
-<%- include('prehead'); -%> 
+<%- include('include-prehead'); -%> 
 <link rel="stylesheet" type="text/css" href="/css/connexion.css">
-
 <title>Authentification</title>
-<%- include('posthead'); -%> 
-<body> <! --======================================================= Début de la page -->
-
-<%- include('header'); -%>
+<%- include('include-posthead'); -%> 
+<! --=====================================================================-->
 <form action="/passager/authentification" method="post">
     <div class="button">
         <div>
@@ -24,6 +21,7 @@
 <a href="/passager/enregistrement">Inscription</a><br>
 <a href="/passager/vote">Vote</a><br>
 <a href="/accueil">Accueil</a><br>
+ 
+<! --=====================================================================-->
+<%- include('include-endpage'); -%> 
 
-</body><! --======================================================= Fin -->
-</html

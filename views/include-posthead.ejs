@@ -1,5 +1,4 @@
 </head>
-
 <% if (locals.alert) { %>
     <div class="alerte">
         
@@ -13,9 +12,6 @@
 
     <%
   } %>
-
-
-        
         <script>
         var close = document.getElementsByClassName("fermeturebtn");
         var i;
@@ -27,3 +23,10 @@
           }
         }
         </script>
+
+<body>
+  <div class="conteneur">
+      <div class="contenueHeader">
+          <%- include('header'); -%>
+      </div>
+      <div class="contenue">

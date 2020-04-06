@@ -41,7 +41,7 @@ body{
     margin-top : 3em;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 550px) {
 .logo{
     margin-top :5em;
     padding-right: 0em;

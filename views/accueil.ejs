@@ -1,33 +1,15 @@
-<%- include('prehead'); -%> 
+<%- include('include-prehead'); -%> 
 <link rel="stylesheet" type="text/css" href="/css/accueil.css">
-
 <title>Accueil</title>
-<%- include('posthead'); -%> 
-<body> <! --======================================================= Début de la page -->
-    
-    
+<%- include('include-posthead'); -%> 
+<! --=====================================================================-->
 
-
-    <div class="conteneur">
-        <div class="contenueHeader debugb">
-            <div class="stickHeader debug">
-                <%- include('header'); -%>
-                
-           </div>
-        </div>
-        <div class="contenue debugv">
             <a href="/passager/authentification">Connexion</a><br>
             <a href="/passager/enregistrement">Inscription</a><br>
             <a href="/passager/vote">Vote</a><br>
             <a href="/accueil">Accueil</a><br>
             <a href="/destinations/1">Destination 1</a><br>
-        </div>
-    </div>
-
-
-
-</body><! --======================================================= Fin -->
-</html
-
-
+ 
+<! --=====================================================================-->
+<%- include('include-endpage'); -%> 
 
