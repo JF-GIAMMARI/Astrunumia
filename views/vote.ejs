@@ -7,7 +7,7 @@
     <div class="row row1">
         <div class="lefttexteDiv">
             <h1>Vote !</h1>
-            <h2>Rejoignez l’aventure !</h2>
+            <h2>Choissisez la prochaine destination !</h2>
             <div></div>
         </div>
         <div class="righttexteDiv">
@@ -21,35 +21,32 @@
 
     <div class="row row2">
         <% if(locals.voteisactif == true){%>
-            <form action="/passager/vote" method="post">   
+            <form class="cartevote " action="/passager/vote" method="post">   
                 
                 <input type="hidden" id="vote1" name="vote1" value="1">
                 <input type="hidden" id="vote2" name="vote2" value="0">
                 <input type="hidden" id="vote3" name="vote3" value="0">
-                <div class="cartevote debugb">
-                    <button class="btnvote debug" id="cvote1" type="submit"></button>
-                </div>
+                <button class="btnvote" id="cvote1" type="submit"><h1 class="textevote">VOTER</h1><br><h1 class="textevotenum"><% if (locals.vote1){ %><%=vote1num%><% }else{%>0<%} %> VOTES</h1></button>
                 
 
             </form>
-            <form action="/passager/vote" method="post">   
+            <form class="cartevote " action="/passager/vote" method="post">   
                
                 <input type="hidden" id="vote1" name="vote1" value="0">
                 <input type="hidden" id="vote2" name="vote2" value="1">
                 <input type="hidden" id="vote3" name="vote3" value="0">
 
-                <div class="cartevote debugb">
-                    <button class="btnvote debug" id="cvote2"  type="submit"></button>
-                </div>
+                    <button class="btnvote" id="cvote2"  type="submit"><h1 class="textevote">VOTER</h1><br><h1 class="textevotenum"><% if (locals.vote2){ %><%=vote2num%><% }else{%>0<%} %> VOTES</h1></button>
+       
             </form>
-            <form  action="/passager/vote" method="post">   
+            <form  class="cartevote" action="/passager/vote" method="post">   
                 
                 <input type="hidden" id="vote1" name="vote1" value="0">
                 <input type="hidden" id="vote2" name="vote2" value="0">
                 <input type="hidden" id="vote3" name="vote3" value="1">
-                <div class="cartevote debugb ">
-                <button class="btnvote debug " id="cvote3"  type="submit"></button>
-                </div>
+
+                <button class="btnvote" id="cvote3"  type="submit"><h1 class="textevote">VOTER</h1><br><h1 class="textevotenum"><% if (locals.vote3){ %><%=vote3num%><% }else{%>0<%} %> VOTES</h1></button>
+
             </form>
             <%}else{%>
             <h1 class="voteinactif"> Aucun vote actuellement</h1>
@@ -61,49 +58,42 @@
 </div>
 
 <script>
-/*
-      var btnnico = document.getElementById('btnnico');
-      btnnico.addEventListener("mouseenter",function(){hoverinequi(btnnico)});
-      btnnico.addEventListener("mouseleave",function(){hoveroutequi(btnnico)});
-      btnnico.style.cursor = 'pointer';
+
+      var cvote1= document.getElementById('cvote1');
+      cvote1.addEventListener("mouseenter",function(){hoverinequi(cvote1)});
+      cvote1.addEventListener("mouseleave",function(){hoveroutequi(cvote1)});
+      cvote1.style.cursor = 'pointer';
     
-      var btnjf = document.getElementById('btnjf');
-      btnjf.addEventListener("mouseenter",function(){hoverinequi(btnjf)});
-      btnjf.addEventListener("mouseleave",function(){hoveroutequi(btnjf)});
-      btnjf.style.cursor = 'pointer';
+      var cvote2 = document.getElementById('cvote2');
+      cvote2.addEventListener("mouseenter",function(){hoverinequi(cvote2)});
+      cvote2.addEventListener("mouseleave",function(){hoveroutequi(cvote2)});
+      cvote2.style.cursor = 'pointer';
 
-      var btnju = document.getElementById('btnju');
-      btnju.addEventListener("mouseenter",function(){hoverinequi(btnju)});
-      btnju.addEventListener("mouseleave",function(){hoveroutequi(btnju)});
-      btnju.style.cursor = 'pointer';
+      var cvote3 = document.getElementById('cvote3');
+      cvote3.addEventListener("mouseenter",function(){hoverinequi(cvote3)});
+      cvote3.addEventListener("mouseleave",function(){hoveroutequi(cvote3)});
+      cvote3.style.cursor = 'pointer';
 
-      function hoverinequi(btnequipage){
+      function hoverinequi(btnvote){
         Haptics.vibrate(10);
-        var id= btnequipage.id;
-        var front = document.getElementById(id).children[0];
-        var back = document.getElementById(id).children[1];
-        var name = document.getElementById(id).children[2];
-        gsap.fromTo(btnequipage,{backgroundColor:'#28282B'}, {duration: 1, opacity: 1,backgroundColor:'#FFFFFF'});
-        front.style.display = 'none';
-        back.style.display = 'flex';
-        name.style.color = '#5800FF';
-        gsap.fromTo(back,{scale:0.9,opacity:0}, {duration: 1,scale: 1,opacity:1});
+        var id= btnvote.id;
+        var text1 = document.getElementById(id).children[0];
+        var text2 = document.getElementById(id).children[2];
+        gsap.fromTo(text1,{opacity : 0}, {duration: 1,opacity:1});
+        gsap.fromTo(text2,{opacity : 0}, {duration: 1,opacity:1,delay:0.1});
+        gsap.fromTo(btnvote,{scale:1}, {duration: 1,scale:1.07,  backgroundPosition:'center',boxShadow:'0px 150px 160px rgba(0, 0, 0, 0.16);', ease: Circ.easeOut});
       }
-      function hoveroutequi(btnequipage){
-        var id= btnequipage.id;
-        var front = document.getElementById(id).children[0];
-        var back = document.getElementById(id).children[1];
-        var name = document.getElementById(id).children[2];
-        gsap.fromTo(btnequipage,{backgroundColor:'#FFFFFF'}, {duration: 1, opacity: 1,backgroundColor:'#28282B'});
-        front.style.display = 'flex';
-        back.style.display = 'none';
-        name.style.color = '#FFFFFF';
 
-        gsap.fromTo(front,{opacity:0, rotation : 180}, {duration: 1,opacity:1,rotation : 0});
+      function hoveroutequi(btnvote){
+        Haptics.vibrate(10);
+        var id= btnvote.id;
+        var text1 = document.getElementById(id).children[0];
+        var text2 = document.getElementById(id).children[2];
+        gsap.fromTo(text1,{opacity : 1}, {duration: 1,opacity:0});
+        gsap.fromTo(text2,{opacity : 1}, {duration: 1,opacity:0});
+        gsap.fromTo(btnvote,{scale:1.07}, {duration: 1,scale:1,  backgroundPosition:'none',boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.16);', ease: Circ.easeOut});
 
         }
-*/
-
 
         window.onload = function() {
           gsap.fromTo(".row1",{opacity: 0,y:-200}, {duration: 1, opacity: 1, y:0 });

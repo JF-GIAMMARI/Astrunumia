@@ -152,6 +152,7 @@ a{
     width: 27%;
     height: auto;
     margin: 0% 2% 0% 2%;
+    float: left;
 }
 
 .iconeDestination{

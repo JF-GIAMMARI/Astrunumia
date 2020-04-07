@@ -27,15 +27,15 @@
 }
 
 progress {
-    color: #5800FF95;
+    color: #5800FF99;
   }
   
   progress::-webkit-progress-value {
-    background: #5800FF95;
+    background: #5800FF99;
   }
   
   progress::-moz-progress-bar {
-    background: #5800FF95;
+    background: #5800FF99;
   }
 
 
