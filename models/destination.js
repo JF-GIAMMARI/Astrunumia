@@ -1,3 +1,9 @@
+/*
+=================================================================
+Modéle généré par sequelize après la commande de création suivante :
+sequelize model:create --attributes "destinationid:integer vues:integer aime:integer aimepas:integer nom:string" --name Destination 
+=================================================================
+*/
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Destination = sequelize.define('Destination', {

@@ -1,5 +1,5 @@
 'use strict';
-//Migration du models sequelize USER
+//Migration du modele de base de donnée sequelize USER
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {

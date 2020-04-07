@@ -1,32 +1,29 @@
 </head>
 <% if (locals.alert) { %>
-    <div class="alerte">
-        
-        <%=alert%>
-        <script>
-          gsap.fromTo(".alerte",{opacity: 0}, {duration: 1, opacity: 1});
-   
-       </script>
-        <span class="fermeturebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    </div>
+<div class="alerte">
+  <%=alert%>
+  <span class="fermeturebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div><%}%>
 
-    <%
-  } %>
-        <script>
-        var close = document.getElementsByClassName("fermeturebtn");
-        var i;
-        for (i = 0; i < close.length; i++) {
-          close[i].onclick = function(){
-            var div = this.parentElement;
-            gsap.fromTo(".alerte",{opacity: 1}, {duration: 1, opacity: 0});
-            setTimeout(function(){ div.style.display = "none"; }, 600);
-          }
-        }
-        </script>
+<script>
+  // Animation de l'encart d'alerte d'erreur
+  gsap.fromTo(".alerte", { opacity: 0 }, { duration: 1, opacity: 1 });
+
+  //Animation de fermeture de l'encart d'alerte
+  var close = document.getElementsByClassName("fermeturebtn");
+  var i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      gsap.fromTo(".alerte", { opacity: 1 }, { duration: 1, opacity: 0 });
+      setTimeout(function () { div.style.display = "none"; }, 600);
+    }
+  }
+</script>
 
 <body>
   <div class="conteneur">
-      <div class="contenueHeader">
-          <%- include('header'); -%>
-      </div>
-      <div class="contenue">
+    <div class="contenueHeader">
+      <%- include('header'); -%>
+    </div>
+    <div class="contenue">

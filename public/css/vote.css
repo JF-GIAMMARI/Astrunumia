@@ -1,225 +1,197 @@
-.mainDiv{
-    color : white;
+.mainDiv {
+    color: white;
     display: flex;
     flex-direction: column;
-    
 }
-.row{
+
+.row {
     display: flex;
     flex-direction: row;
 }
 
-.row1{
-    justify-content: space-between; 
-    margin : 4%;
+.row1 {
+    justify-content: space-between;
+    margin: 4%;
     margin-bottom: 3%;
 }
 
-
-.row1 .lefttexteDiv h1{
+.row1 .lefttexteDiv h1 {
     font-size: 3.5vw;
-    font-weight: bold;
+    font-weight: 800;
     text-transform: uppercase;
-
 }
-.row1 .lefttexteDiv h2{
+
+.row1 .lefttexteDiv h2 {
     font-size: 1.5vw;
-    font-weight: lighter;
+    font-weight: 400;
     padding-top: 2%;
 }
-.row1 .lefttexteDiv div{
-    width: 5vw ;
+
+.row1 .lefttexteDiv div {
+    width: 5vw;
     height: 0.3vw;
     background-color: #5800FF;
     margin-top: 5%;
 }
 
-.righttexteDiv{
+.righttexteDiv {
     width: 52%;
     display: flex;
     flex-direction: row;
 }
-.row1 .righttexteDiv p{
+
+.row1 .righttexteDiv p {
     font-size: 1vw;
     letter-spacing: 0.10em;
-    line-height: 1.2em;
-    padding-top: 0%;
-
+    line-height: 1.4em;
+    font-weight: 400;
 }
 
-.row1 .righttexteDiv div{
-    width: 0.8vw ;
+.row1 .righttexteDiv div {
+    width: 0.8vw;
     height: 3vw;
     background-color: #5800FF;
     margin-right: 4.5%;
 }
 
-.barreinferieur{
+.barreinferieur {
     display: flex;
     position: fixed;
     bottom: 0;
 }
 
-.voteinactif{
+.voteinactif {
     font-size: 2vw;
     color: white;
     text-align: center;
     padding-top: 2vw;
 }
 
-/*********************************/
-
-.row2{
+.row2 {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-
-
 }
 
-
-.textevote{
-    color : white;
+.textevote {
+    color: white;
     font-size: 2vw;
-    font-weight: bold;
+    font-weight: 800;
     letter-spacing: 0.2em;
     opacity: 0;
 }
-.textevotenum{
-    color : #5800FF;
-    font-size: 1.7vw;
-    font-weight: bold;
-    letter-spacing: 0.1em;
 
+.textevotenum {
+    color: white;
+    font-size: 1.7vw;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     opacity: 0;
 }
 
-.btnvote{
-    width: 21vw;
-    height:  19vw;
-    border : none;
+.btnvote {
+    width: 19vw;
+    height: 17vw;
+    border: none;
     background-size: 100%;
     background-repeat: repeat;
-    background-color:  #1B1B1B;
+    background-color: #1B1B1B;
     border-radius: 0.2em 0.2em 0.2em 0.2em;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.16);
     background-position: center;
-
 }
 
-#cvote1{
+#cvote1 {
     background-image: url('/img/vote/Vote1.png');
-
 }
-#cvote1:hover{
+
+#cvote1:hover {
     background-image: url('/img/vote/Vote1T.png');
-
 }
-#cvote2{
+
+#cvote2 {
     background-image: url('/img/vote/Vote2.png');
-
 }
-#cvote2:hover{
+
+#cvote2:hover {
     background-image: url('/img/vote/Vote2T.png');
-
 }
-#cvote3{
+
+#cvote3 {
     background-image: url('/img/vote/Vote3.png');
-
 }
-#cvote3:hover{
+
+#cvote3:hover {
     background-image: url('/img/vote/Vote3T.png');
-
 }
-/*********************************/
-@media (max-width: 550px) {
 
-    .mainDiv{
-        color : white;
+@media (max-width: 550px) {
+    .mainDiv {
+        color: white;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .row{
+    .row {
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin: auto;
     }
-
-    .barreinferieur{
+    .barreinferieur {
         display: none;
     }
-    
-    .row1{
-        justify-content: space-between; 
-        margin : 4%;
+    .row1 {
+        justify-content: space-between;
+        margin: 4%;
         margin: auto;
         flex-direction: column;
     }
-    
-    .righttexteDiv{
+    .righttexteDiv {
         display: flex;
         flex-direction: column;
         text-align: center;
         width: 100%;
-        
     }
-    .row1 .lefttexteDiv h1{
+    .row1 .lefttexteDiv h1 {
         font-size: 16vw;
-    
     }
-    .row1 .lefttexteDiv h2{
+    .row1 .lefttexteDiv h2 {
         font-size: 4.6vw;
-
+        font-weight: 300;
+        padding-top: 1.5%;
     }
-    .row1 .lefttexteDiv div{
+    .row1 .lefttexteDiv div {
         display: none;
     }
-    
-    .row1 .righttexteDiv p{
+    .row1 .righttexteDiv p {
         font-size: 2.5vw;
-        font-weight: lighter;
-        padding-top: 4%;
+        font-weight: 400;
+        padding-top: 5%;
         text-align: justify;
         width: 80%;
         margin: auto;
-        padding-bottom: 6%;
-
+        padding-bottom: 5%;
     }
-    
-    .row1 .righttexteDiv div{
+    .row1 .righttexteDiv div {
         display: none;
     }
-
-
-   
-
-    /*********************************/
-
-
-    .row2{
-        flex-direction: column;   
+    .row2 {
+        flex-direction: column;
     }
-
-    .btnvote{
+    .btnvote {
         width: 70vw;
-        height:  65vw;
+        height: 65vw;
         margin: 5%;
-    
     }
-    .form{
+    .form {
         padding-bottom: 15%;
     }
-
-    .textevote{
+    .textevote {
         display: none;
     }
-    .textevotenum{
+    .textevotenum {
         display: none;
     }
-
-
-    /*********************************/
 }

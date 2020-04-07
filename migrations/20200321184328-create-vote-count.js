@@ -1,4 +1,5 @@
 'use strict';
+//Migration du modele de base de donnée sequelize VOTECOUNT
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('VoteCounts', {

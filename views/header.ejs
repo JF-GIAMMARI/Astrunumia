@@ -1,178 +1,181 @@
-
-
 <div class="globalHeader">
-<header>
-<div class="HPass" id="profilebtn">
-<div class="Htexte ">
-    
-<h1>Mon Passe</h1>
-<div class="Htexte2">
-<h2>Nom </h3>
-<h3><% if (locals.headerusername) { %><%=headerusername%><% }else{%>Visiteur<%} %></h3>
-</div>
-</div>
-<div class="HProfile">
+  <header>
+    <div class="HPass" id="profilebtn">
+      <div class="Htexte ">
+
+        <h1>Mon Passe</h1>
+        <div class="Htexte2">
+          <h2>Nom </h3>
+            <h3><% if (locals.headerusername) { %><%=headerusername%><% }else{%>Visiteur<%} %></h3>
+        </div>
+      </div>
+      <div class="HProfile">
 
 
-<% if (locals.headerico) { %><%-headerico%><% }else{%>
-    <img class='nonIcoDonateur  ' src='/img/profileico/0.png' alt='Icone Défault' > 
-    <%} %></div>
-</div>
+        <% if (locals.headerico) { %><%-headerico%><% }else{%>
+        <img class='nonIcoDonateur  ' src='/img/profileico/0.png' alt='Icone Défault'>
+        <%} %></div>
+    </div>
 
-<div class="HCard" id="accueilbtn">
-    <div>
-    <a href="#" ><h1>Accueil</h1></a>
-    <h3>Choisissez une destination</h3></div>
-    <img src='/img/header/accueil.png'> 
-</div>
+    <div class="HCard" id="accueilbtn">
+      <div>
+        <a href="#">
+          <h1>Accueil</h1>
+        </a>
+        <h3>Choisissez une destination</h3>
+      </div>
+      <img src='/img/header/accueil.png'>
+    </div>
 
-<div class="HCard" id="votebtn" >
-    <div>
-    <a href="#" ><h1>Votes</h1></a>
-    <h3>Votez pour une destination</h3></div>
-    <img src='/img/header/vote.png'> 
-    
-</div>
+    <div class="HCard" id="votebtn">
+      <div>
+        <a href="#">
+          <h1>Votes</h1>
+        </a>
+        <h3>Votez pour une destination</h3>
+      </div>
+      <img src='/img/header/vote.png'>
 
-<div class="HCard" id="equipagebtn">
-    <div>
-    <a  ><h1  >Équipage</h1></a>
-    <h3>Découvrez note équipe</h3></div>
-    <img src='/img/header/equipage.png'> 
-</div>
+    </div>
 
-<div class="HDestinations">
-    <h3> Destinations</h3>
-    <div class="iconeDestination">
-    <a  href="/destinations/1"><img id="btnd1" src='/img/header/d1.png'> </a>
+    <div class="HCard" id="equipagebtn">
+      <div>
+        <a>
+          <h1>Équipage</h1>
+        </a>
+        <h3>Découvrez note équipe</h3>
+      </div>
+      <img src='/img/header/equipage.png'>
+    </div>
 
-        
-</div>
-</div>
-</header>
-<footer>
-<div class="reseauxSociaux">
-    <a href="https://www.instagram.com/astrunumia/?hl=fr"><img src='/img/header/insta.png'> </a>
-    <a href="https://www.facebook.com/Astrunumia-104306377677990"><img src='/img/header/facebook.png'> </a>
-    <a href="https://twitter.com/astrunumia"><img src='/img/header/twitter.png'></a>
-           
-</div>
-</footer>
-
-<script>
-      var btn1 = document.getElementById("accueilbtn");
-      btn1.addEventListener("click",click1);
-      var btn2 = document.getElementById("votebtn");
-      btn2.addEventListener("click",click2);
-      var btn3 = document.getElementById("equipagebtn");
-      btn3.addEventListener("click",click3);
-      var btn4 = document.getElementById("profilebtn");
-      btn4.addEventListener("click",click4);
-      var btnd1 = document.getElementById("btnd1");
-      var btnd2 = document.getElementById("btnd2");
-      var btnd3 = document.getElementById("btnd3");
+    <div class="HDestinations">
+      <h3> Destinations</h3>
+      <div class="iconeDestination">
+        <a href="/destinations/1"><img id="btnd1" src='/img/header/d1.png'> </a>
 
 
-      btn1.style.cursor = 'pointer';
-      btn2.style.cursor = 'pointer';
-      btn3.style.cursor = 'pointer';
-      btn4.style.cursor = 'pointer';
-      btnd1.style.cursor = 'pointer';
-      btnd2.style.cursor = 'pointer';
-      btnd3.style.cursor = 'pointer';
+      </div>
+    </div>
+  </header>
+  <footer>
+    <div class="reseauxSociaux">
+      <a  href="https://www.instagram.com/astrunumia/?hl=fr" target="_blank"><img  id="insta"src='/img/header/instaH.png'> </a>
+      <a  href="https://www.facebook.com/Astrunumia-104306377677990" target="_blank"><img id="facebook" src='/img/header/facebookH.png'></a>
+      <a href="https://twitter.com/astrunumia" target="_blank"><img id="twitter" src='/img/header/twitterH.png'></a>
 
-      btn1.addEventListener("mouseenter",function(){hoverin(btn1)});
-      btn1.addEventListener("mouseleave",function(){hoverout(btn1)});
+    </div>
+  </footer>
 
-      btn2.addEventListener("mouseenter",function(){hoverin(btn2)});
-      btn2.addEventListener("mouseleave",function(){hoverout(btn2)});
+  <script>
+    // Récupération des éléments
+    var btn1 = document.getElementById("accueilbtn");
+    btn1.addEventListener("click", click1);
+    var btn2 = document.getElementById("votebtn");
+    btn2.addEventListener("click", click2);
+    var btn3 = document.getElementById("equipagebtn");
+    btn3.addEventListener("click", click3);
+    var btn4 = document.getElementById("profilebtn");
+    btn4.addEventListener("click", click4);
+    var btnd1 = document.getElementById("btnd1");
 
-      btn3.addEventListener("mouseenter",function(){hoverin(btn3)});
-      btn3.addEventListener("mouseleave",function(){hoverout(btn3)});
+    // Ajout du curseur au survol
+    btn1.style.cursor = 'pointer';
+    btn2.style.cursor = 'pointer';
+    btn3.style.cursor = 'pointer';
+    btn4.style.cursor = 'pointer';
+    btnd1.style.cursor = 'pointer';
 
-      btn4.addEventListener("mouseenter",function(){hoverin(btn4)});
-      btn4.addEventListener("mouseleave",function(){hoverout(btn4)});
 
-      btnd1.addEventListener("mouseenter",function(){hoverin(btnd1)});
-      btnd1.addEventListener("mouseleave",function(){hoverout(btnd1)});
-      btnd2.addEventListener("mouseenter",function(){hoverin(btnd2)});
-      btnd2.addEventListener("mouseleave",function(){hoverout(btnd2)});
-      btnd3.addEventListener("mouseenter",function(){hoverin(btnd3)});
-      btnd3.addEventListener("mouseleave",function(){hoverout(btnd3)});
+    // Ajout des événements aux éléments 
+    btn1.addEventListener("mouseenter", function () { hoverin(btn1) });
+    btn1.addEventListener("mouseleave", function () { hoverout(btn1) });
 
-      
+    btn2.addEventListener("mouseenter", function () { hoverin(btn2) });
+    btn2.addEventListener("mouseleave", function () { hoverout(btn2) });
 
-      function hoverin(btn){
-        gsap.to(btn, {duration: 1, scale:0.96});
-        gsap.to(btn, {duration: 0.2, border: '0.2em solid white'});
+    btn3.addEventListener("mouseenter", function () { hoverin(btn3) });
+    btn3.addEventListener("mouseleave", function () { hoverout(btn3) });
 
-      }
-      function hoverout(btn){
-        gsap.to(btn, {duration: 1, scale:1});
-        gsap.to(btn, {duration: 0, border: 'none'});
-      }
-    
-      function click1(){
-        window.location.href = "/accueil";
-      }
-      function click2(){
-        window.location.href = "/passager/vote";
-      }
-      function click3(){
-        window.location.href = "/equipage";
-      }
-      function click4(){
-        window.location.href = "/passager/authentification";
-      }
-    
+    btn4.addEventListener("mouseenter", function () { hoverin(btn4) });
+    btn4.addEventListener("mouseleave", function () { hoverout(btn4) });
+
+    btnd1.addEventListener("mouseenter", function () { hoverinD(btnd1) });
+    btnd1.addEventListener("mouseleave", function () { hoveroutD(btnd1) });
+
+
+   // Fonctions d'animations
+    function hoverin(btn) {
+      gsap.to(btn, { duration: 0.5, border: '0.2em solid white' });
+
+    }
+    function hoverout(btn) {
+      gsap.to(btn, { duration: 1, border: 'none' });
+    }
+
+    function hoverinD(btn) {
+      gsap.to(btn, { duration: 0.5, scale: 1.1 });
+
+    }
+    function hoveroutD(btn) {
+      gsap.to(btn, { duration: 1, scale: 1 });
+    }
+
+    function click1() {
+      window.location.href = "/accueil";
+    }
+    function click2() {
+      window.location.href = "/passager/vote";
+    }
+    function click3() {
+      window.location.href = "/equipage";
+    }
+    function click4() {
+      window.location.href = "/passager/authentification";
+    }
+
   </script>
 </div>
 
 <div class="mobileHeader">
 
-<div class="topnav">
-<a href="/accueil" class="active logotitle">ASTRUNUMIA</a>
+  <div class="topnav">
+    <a href="/accueil" class="active logotitle">ASTRUNUMIA</a>
 
-<a href="javascript:void(0);" class="icon" onclick="switchmenu()">
-  <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
-  <path class="line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
-  <path class="line middle" d="m 30,50 h 40" />
-  <path class="line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
-</svg>
-</a>
+    <a href="javascript:void(0);" class="icon" onclick="switchmenu()">
+      <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
+        <path class="line top"
+          d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+        <path class="line middle" d="m 30,50 h 40" />
+        <path class="line bottom"
+          d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+      </svg>
+    </a>
+  </div>
+  <div id="liens">
+    <a id="a1h" href="/accueil">Accueil </a>
+    <a id="a2h" href="/passager/vote">Vote</a>
+    <a id="a3h" href="/equipage">Equipage</a>
+    <a id="a4h" href="/passager/authentification">Authentification</a>
+  </div>
+
+  <script>
+    // Animation du menu Mobile
+    function switchmenu() {
+      Haptics.vibrate(10);
+      var x = document.getElementById("liens");
+      if (x.style.display === "flex") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "flex";
+        gsap.to("#a1h", { opacity: 0 });
+        gsap.to("#a2h", { opacity: 0 });
+        gsap.to("#a3h", { opacity: 0 });
+        gsap.to("#a4h", { opacity: 0 });
+        gsap.fromTo("#a1h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0 });
+        gsap.fromTo("#a2h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0.2 });
+        gsap.fromTo("#a3h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0.4 });
+        gsap.fromTo("#a4h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0.6 });
+      }
+    }
+  </script>
 </div>
-<div id="liens">
-  <a id="a1h" href="/accueil">Accueil </a>
-  <a id="a2h" href="/passager/vote">Vote</a>
-  <a id="a3h" href="/equipage">Equipage</a>
-  <a id="a4h" href="/passager/authentification">Authentification</a>
-</div>
-
-<script>
-
-
-  
-function switchmenu() {
-  Haptics.vibrate(10);
-  var x = document.getElementById("liens");
-  if (x.style.display === "flex") {
-    x.style.display = "none";
-  } else {
-  x.style.display = "flex";
-  gsap.to("#a1h",{opacity: 0});
-  gsap.to("#a2h",{opacity: 0});
-  gsap.to("#a3h",{opacity: 0});
-  gsap.to("#a4h",{opacity: 0});
-  gsap.fromTo("#a1h",{opacity: 0, x:-200}, {duration: 0.6, opacity: 1,x:0, delay:0});
-  gsap.fromTo("#a2h",{opacity: 0, x:-200}, {duration: 0.6, opacity: 1,x:0, delay:0.2});
-  gsap.fromTo("#a3h",{opacity: 0, x:-200}, {duration: 0.6, opacity: 1,x:0, delay:0.4});
-  gsap.fromTo("#a4h",{opacity: 0, x:-200}, {duration: 0.6, opacity: 1,x:0, delay:0.6});
-  }
-}
-</script>
-</div>
-
-
-
-
-

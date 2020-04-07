@@ -1,4 +1,5 @@
 'use strict';
+//Migration du modele de base de donnée sequelize COMMENTAIRES
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Commentaires', {

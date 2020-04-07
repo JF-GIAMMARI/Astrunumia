@@ -1,48 +1,49 @@
-<%- include('include-prehead'); -%> 
+<%- include('include-prehead'); -%>
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 <title>Profile</title>
-<%- include('include-posthead'); -%> 
+<%- include('include-posthead'); -%>
 <! --=====================================================================-->
-<form action="/passager/profile/update" method="post">
-    <div>
-        <input type="hidden" id="iconeNumber" name="iconeNumber" value="0">
-        <img class='nonSelect' src='/img/profileico/1.png' alt='Icone 1'  id="1" value="1" onclick="change(this.id)" >
-        <img class='nonSelect' src='/img/profileico/2.png' alt='Icone 2'  id="2" value="2" onclick="change(this.id)" >
-        <img class='nonSelect' src='/img/profileico/3.png' alt='Icone 3' id="3" value="3" onclick="change(this.id)">
-        <img class='nonSelect' src='/img/profileico/4.png' alt='Icone 4' id="4" value="4" onclick="change(this.id)">
-        <img class='nonSelect' src='/img/profileico/5.png' alt='Icone 5' id="5" value="5" onclick="change(this.id)">
-        <script>
-            function change(value) {
-         document.getElementById(1).className = "nonSelect"; 
-         document.getElementById(2).className = "nonSelect"; 
-         document.getElementById(3).className = "nonSelect"; 
-         document.getElementById(4).className = "nonSelect"; 
-         document.getElementById(5).className = "nonSelect"; 
-         element = document.getElementById(value);
-         element.className = "ouiSelect"; 
-         nombre = document.getElementById("iconeNumber");
-         nombre.value = value;
-         }
-        </script>
-    </div>
+    <form action="/passager/profile/update" method="post">
+        <div>
+            <input type="hidden" id="iconeNumber" name="iconeNumber" value="0">
+            <img class='nonSelect' src='/img/profileico/1.png' alt='Icone 1' id="1" value="1" onclick="change(this.id)">
+            <img class='nonSelect' src='/img/profileico/2.png' alt='Icone 2' id="2" value="2" onclick="change(this.id)">
+            <img class='nonSelect' src='/img/profileico/3.png' alt='Icone 3' id="3" value="3" onclick="change(this.id)">
+            <img class='nonSelect' src='/img/profileico/4.png' alt='Icone 4' id="4" value="4" onclick="change(this.id)">
+            <img class='nonSelect' src='/img/profileico/5.png' alt='Icone 5' id="5" value="5" onclick="change(this.id)">
+            <script>
+                function change(value) {
+                    document.getElementById(1).className = "nonSelect";
+                    document.getElementById(2).className = "nonSelect";
+                    document.getElementById(3).className = "nonSelect";
+                    document.getElementById(4).className = "nonSelect";
+                    document.getElementById(5).className = "nonSelect";
+                    element = document.getElementById(value);
+                    element.className = "ouiSelect";
+                    nombre = document.getElementById("iconeNumber");
+                    nombre.value = value;
+                }
+            </script>
+        </div>
 
-    <div>
-        
-        <label for="username">Username :</label>
-        <input type="texte" id="username" name="username" placeholder="<% if (locals.username) { %><%=username%><% } %>">
-    </div>
-    <div>
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" placeholder ="<% if (locals.email) { %><%=email%><% } %>">
-    </div>
-    <div>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" placeholder="**********">
-    </div>
-    <div></div>
+        <div>
 
-   
-    <%if (locals.isSub == true) { %>
+            <label for="username">Username :</label>
+            <input type="texte" id="username" name="username"
+                placeholder="<% if (locals.username) { %><%=username%><% } %>">
+        </div>
+        <div>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="<% if (locals.email) { %><%=email%><% } %>">
+        </div>
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" placeholder="**********">
+        </div>
+        <div></div>
+
+
+        <%if (locals.isSub == true) { %>
         <input type="checkbox" id="isSub" name="isSub" checked>
         <% } 
         else{
@@ -77,22 +78,16 @@
 
 
 
-<form action="/passager/deconnexion" method="post">
-    <div class="button">
-        <button type="submit">Déconnexion</button>
-    </div>
-</form>
-<a href="/passager/authentification">Connexion</a><br>
-<a href="/passager/enregistrement">Inscription</a><br>
-<a href="/passager/vote">Vote</a><br>
-<a href="/accueil">Accueil</a><br>
- 
- 
+        <form action="/passager/deconnexion" method="post">
+            <div class="button">
+                <button type="submit">Déconnexion</button>
+            </div>
+        </form>
+        <a href="/passager/authentification">Connexion</a><br>
+        <a href="/passager/enregistrement">Inscription</a><br>
+        <a href="/passager/vote">Vote</a><br>
+        <a href="/accueil">Accueil</a><br>
+
+
 <! --=====================================================================-->
-<%- include('include-endpage'); -%> 
-
-
-    
-
-
-
+<%- include('include-endpage'); -%>

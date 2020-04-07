@@ -1,91 +1,89 @@
-.mainDiv{
-    color : white;
+.mainDiv {
+    color: white;
     display: flex;
     flex-direction: column;
-    
 }
-.row{
+
+.row {
     display: flex;
     flex-direction: row;
     opacity: 0;
 }
 
-.row1{
-    justify-content: space-between; 
-    margin : 4%;
+.row1 {
+    justify-content: space-between;
+    margin: 4%;
+    margin-bottom: 2%;
 }
 
-.righttexteDiv{
+.righttexteDiv {
     width: 52%;
     display: flex;
     flex-direction: row;
 }
-.row1 .lefttexteDiv h1{
-    font-size: 3.5vw;
-    font-weight: bold;
-    text-transform: uppercase;
 
+.row1 .lefttexteDiv h1 {
+    font-size: 3.5vw;
+    font-weight: 800;
+    text-transform: uppercase;
 }
-.row1 .lefttexteDiv h2{
+
+.row1 .lefttexteDiv h2 {
     font-size: 1.5vw;
-    font-weight: lighter;
+    font-weight: 400;
     padding-top: 0.3%;
 }
-.row1 .lefttexteDiv div{
-    width: 5vw ;
+
+.row1 .lefttexteDiv div {
+    width: 5vw;
     height: 0.3vw;
     background-color: #5800FF;
     margin-top: 5%;
 }
 
-.row1 .righttexteDiv p{
+.row1 .righttexteDiv p {
     font-size: 1vw;
     letter-spacing: 0.10em;
-    line-height: 1.2em;
-    padding-top: 0.2%;
-
+    line-height: 1.4em;
+    font-weight: 400;
 }
 
-.row1 .righttexteDiv div{
-    width: 1.2vw ;
+.row1 .righttexteDiv div {
+    width: 1.2vw;
     height: 3vw;
     background-color: #5800FF;
     margin-right: 5%;
 }
 
-
-.row2{
+.row2 {
     justify-content: space-evenly;
 }
 
-.carteequipage{
+.carteequipage {
     display: flex;
     flex-direction: column;
     background-color: #28282B;
     justify-content: center;
-    border-radius: 0.2em  0.2em 0.2em 0.2em;
+    border-radius: 0.2em 0.2em 0.2em 0.2em;
     width: 35vh;
     height: 35vh;
     margin-top: 2%;
-
 }
 
-.backcarte{
-    display: none; 
+.backcarte {
+    display: none;
     flex-direction: column;
     padding: 0vw 2vw 0vw 2vw;
     height: 75%;
-    color : black;
-
+    color: black;
 }
 
-.frontcarte{
+.frontcarte {
     display: flex;
     height: 75%;
-
 }
 
-.nomequipage{
+.nomequipage {
     margin-left: 1.2vw;
     font-size: 0.95vw;
     font-weight: 500;
@@ -93,185 +91,163 @@
     letter-spacing: 0.1em;
 }
 
-.frontcarte{
+.frontcarte {
     align-self: center;
 }
 
-.frontcarte img{
+.frontcarte img {
     width: 11vw;
     height: 11vw;
     padding-top: 1vw;
-    
 }
 
-.backcarte p{
+.backcarte p {
     font-size: 0.9vw;
-    font-weight: lighter;
+    font-weight: 400;
     padding-top: 4%;
-    
 }
-.backcarte h3{
+
+.backcarte h3 {
     font-size: 1vw;
     font-weight: 600;
     padding-top: 5%;
     padding-bottom: 5%;
-    
 }
 
-.backcarte .emailequipage{
-    color  :#5800FF;
+.backcarte .emailequipage {
+    color: #5800FF;
     font-size: 0.8vw;
     letter-spacing: 0.1em;
     padding-top: 2%;
     line-height: 1.1em;
 }
-.backcarte .emailequipage a{
-    color  :#5800FF;
+
+.backcarte .emailequipage a {
+    color: #5800FF;
 }
-.barreinferieur{
+
+.barreinferieur {
     display: flex;
     position: fixed;
     bottom: 0;
 }
 
 @media (max-width: 550px) {
-
-    .mainDiv{
-        color : white;
+    .mainDiv {
+        color: white;
         display: flex;
         flex-direction: column;
         text-align: center;
     }
-    .row{
+    .row {
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin: auto;
     }
-
-    .barreinferieur{
+    .barreinferieur {
         display: none;
     }
-    
-    .row1{
-        justify-content: space-between; 
-        margin : 4%;
+    .row1 {
+        justify-content: space-between;
+        margin: 4%;
         margin: auto;
         flex-direction: column;
     }
-    
-    .righttexteDiv{
+    .righttexteDiv {
         display: flex;
         flex-direction: column;
         text-align: center;
         width: 100%;
-        
     }
-    .row1 .lefttexteDiv h1{
+    .row1 .lefttexteDiv h1 {
         font-size: 15vw;
-    
     }
-    .row1 .lefttexteDiv h2{
+    .row1 .lefttexteDiv h2 {
         font-size: 4.6vw;
-
+        font-weight: 300;
+        padding-top: 1.5%;
     }
-    .row1 .lefttexteDiv div{
+    .row1 .lefttexteDiv div {
         display: none;
     }
-    
-    .row1 .righttexteDiv p{
+    .row1 .righttexteDiv p {
         font-size: 2.5vw;
-        font-weight: lighter;
+        font-weight: 400;
         padding-top: 5%;
         text-align: justify;
         width: 80%;
         margin: auto;
         padding-bottom: 5%;
-
     }
-    
-    .row1 .righttexteDiv div{
+    .row1 .righttexteDiv div {
         display: none;
     }
-    
-    
-    .row2{
+    .row2 {
         justify-content: space-evenly;
     }
-    
-    .carteequipage{
+    .carteequipage {
         display: flex;
         flex-direction: column;
         background-color: #28282B;
         justify-content: center;
         align-items: center;
-        border-radius: 0.2em  0.2em 0.2em 0.2em;
+        border-radius: 0.2em 0.2em 0.2em 0.2em;
         width: 37vh;
         height: 37vh;
         margin-top: 5%;
-    
+        margin-bottom: 15%;
     }
-    
-    .backcarte{
-        display: none ;
+    .backcarte {
+        display: none;
         flex-direction: column;
-        color : black;
-    
+        color: black;
     }
-    
-    .frontcarte{
+    .frontcarte {
         display: flex;
         flex-direction: column;
-    
     }
-    
-    .nomequipage{
+    .nomequipage {
         display: flex;
         font-size: 5vw;
         padding-top: 4%;
+        font-weight: 300;
     }
-    
-    .frontcarte{
+    .frontcarte {
         align-self: center;
     }
-    
-    .frontcarte img{
+    .frontcarte img {
         width: 45vw;
         height: 45vw;
         padding-top: 3vw;
     }
-    
-    .backcarte p{
+    .backcarte p {
         font-size: 3.5vw;
-        font-weight: lighter;
+        font-weight: 400;
         width: 90%;
         margin: auto;
         text-align: justify;
         padding: 0%;
-              
     }
-    .backcarte h3{
-        font-size: 4.5vw;
+    .backcarte h3 {
+        font-size: 4vw;
         font-weight: 600;
         padding: 0%;
         text-align: center;
-        margin : none;  
-        
+        margin: none;
     }
-    .backcarte .contacter{
+    .backcarte .contacter {
         display: none;
     }
-    .backcarte .emailequipage{
-        color  :#5800FF;
+    .backcarte .emailequipage {
+        color: #5800FF;
         padding-top: 0%;
-        font-size: 3.5vw;
+        font-size: 3vw;
         letter-spacing: 0.1em;
         line-height: 1.1em;
         text-align: center;
     }
-    .backcarte .emailequipage a{
-        color  :#5800FF;
+    .backcarte .emailequipage a {
+        color: #5800FF;
     }
-    
-    
 }

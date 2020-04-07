@@ -1,103 +1,83 @@
-<%- include('include-prehead'); -%> 
+<%- include('include-prehead'); -%>
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 <link rel="stylesheet" type="text/css" href="/css/cookie.css">
 <title>Astrunumia</title>
 </head>
 <% if (locals.alert) { %>
-    <div class="alerte">
-        
-        <%=alert%>
-        <script>
-          gsap.fromTo(".alerte",{opacity: 0}, {duration: 1, opacity: 1});
-   
-       </script>
-        <span class="fermeturebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    </div>
+<div class="alerte">
+  <%=alert%>
+  <span class="fermeturebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div><%}%>
 
-    <%
-  } %>
-        <script>
-        var close = document.getElementsByClassName("fermeturebtn");
-        var i;
-        for (i = 0; i < close.length; i++) {
-          close[i].onclick = function(){
-            var div = this.parentElement;
-            gsap.fromTo(".alerte",{opacity: 1}, {duration: 1, opacity: 0});
-            setTimeout(function(){ div.style.display = "none"; }, 600);
-          }
-        }
-        </script>
-<body> <! --======================================================= Début de la page -->
-
-
-  <% if (locals.cookie == undefined) { %>
-    <div class="cookies">
-      Pour poursuivre votre navigation sur ce site, vous devez accepter l’utilisation
-       des Cookies.<br><br><a class="cookiesbtn btnsimple" href="/cookie">J'accepte</a>
+<script>
+  // Animation de l'encart d'alerte
+  gsap.fromTo(".alerte", { opacity: 0 }, { duration: 1, opacity: 1 });
+  var close = document.getElementsByClassName("fermeturebtn");
+  var i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      gsap.fromTo(".alerte", { opacity: 1 }, { duration: 1, opacity: 0 });
+      setTimeout(function () { div.style.display = "none"; }, 600);
+    }
+  }
+</script>
   
-    </div>
-    <% }%>
-    <style>
-      .alert {
-        opacity: 1;
-        transition: opacity 0.6s; 
-      }
-      </style>
-      
-      <script>
-      var close = document.getElementsByClassName("fermeturebtn");
-      var i;
-      for (i = 0; i < close.length; i++) {
-        close[i].onclick = function(){
-          var div = this.parentElement;
-          div.style.opacity = "0";
-          setTimeout(function(){ div.style.display = "none"; }, 600);
-        }
-      }
-      </script>
 
-                
-                <% if (locals.cookie != undefined) { %>
-                <img  style="opacity: 0;" src="img/main/logo.png" class="logo ">
-                <h1  style="opacity: 0;"  class="textelogo">ASTRUNUMIA</h1>
-                <h6  style="opacity: 0;"  class="texte">Prenez plaisir à comprendre ce qui vous entoures</h6>
-                <a  style="opacity: 0;"   href="#" id = "bouton" class="bouton btnline ">Découvrir</a>
-                <%}%> 
+<body>
+  <! --=======================================================Début de la page -->
+    <% if (locals.cookie == undefined) { %>
+
+<div class="cookies">
+  Pour poursuivre votre navigation sur ce site, vous devez accepter l’utilisation
+  des Cookies.<br><br><a class="cookiesbtn btnsimple" href="/cookie">J'accepte</a>
+</div>
+<% }%>
+
+<script>
+  var close = document.getElementsByClassName("fermeturebtn");
+  var i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      div.style.opacity = "0";
+      setTimeout(function () { div.style.display = "none"; }, 600);
+    }
+  }
+</script>
+<% if (locals.cookie != undefined) { %>
+<img style="opacity: 0;" src="img/main/logo.png" class="logo ">
+<h1 style="opacity: 0;" class="textelogo">ASTRUNUMIA</h1>
+<h6 style="opacity: 0;" class="texte">Prenez plaisir à comprendre ce qui vous entoures</h6>
+<a style="opacity: 0;" href="#" id="bouton" class="bouton btnline ">Découvrir</a>
+<%}%> 
 
       
       
       </body><! --======================================================= Fin -->
       </html>
       <script>
-        window.onload = function() {
-          gsap.fromTo(".logo",{opacity: 0, scale: 0}, {scale: 1, duration: 1, opacity: 1, delay : 0.2 });
-          gsap.fromTo(".textelogo",{opacity: 0, scale: 0}, {scale: 1,duration: 1, opacity: 1, delay : 0.3});
-          gsap.fromTo(".texte",{opacity: 0, scale: 0}, {scale: 1,duration: 1, opacity: 1, delay : 0.4 });
-          gsap.fromTo(".bouton",{opacity: 0,y:100}, {duration: 1, opacity: 1, y:0, delay : 1.5 ,ease: " circ. out"});
-
+        // Animations des éléments de la page 
+        window.onload = function () {
+          gsap.fromTo(".logo", { opacity: 0, scale: 0 }, { scale: 1, duration: 1, opacity: 1, delay: 0.2 });
+          gsap.fromTo(".textelogo", { opacity: 0, scale: 0 }, { scale: 1, duration: 1, opacity: 1, delay: 0.3 });
+          gsap.fromTo(".texte", { opacity: 0, scale: 0 }, { scale: 1, duration: 1, opacity: 1, delay: 0.4 });
+          gsap.fromTo(".bouton", { opacity: 0, y: 100 }, { duration: 1, opacity: 1, y: 0, delay: 1.5, ease: " circ. out" });
 
           var btn = document.getElementById("bouton");
-          btn.addEventListener("click",click);
+          btn.addEventListener("click", click);
 
-
-          function click(){
-            Haptics.vibrate(10);
-            gsap.to(".bouton",{duration: 0.6,scale:0, opacity:0 });
-            gsap.to(".texte",{duration: 0.6,scale:0, opacity:0,delay : 0.4 });
-            gsap.to(".textelogo",{duration: 0.6,scale:0, opacity:0,delay : 0.6,onComplete: redirect });
-            gsap.to(".logo",{duration: 0.5,scale:0, y:200, opacity:0, onComplete: redirect,delay : 0.9 });
+          function click() {
+            Haptics.vibrate(10); // Retour Haptics
+            gsap.to(".bouton", { duration: 0.6, scale: 0, opacity: 0 });
+            gsap.to(".texte", { duration: 0.6, scale: 0, opacity: 0, delay: 0.4 });
+            gsap.to(".textelogo", { duration: 0.6, scale: 0, opacity: 0, delay: 0.6, onComplete: redirect });
+            gsap.to(".logo", { duration: 0.5, scale: 0, y: 200, opacity: 0, onComplete: redirect, delay: 0.9 });
           }
-          function redirect(){
+          function redirect() {
             window.location.href = "/accueil";
           }
         }
       </script>
 
     
-
-
-
-
-
-
-

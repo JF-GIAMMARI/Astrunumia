@@ -1,28 +1,25 @@
-<%- include('include-prehead'); -%> 
+<%- include('include-prehead'); -%>
 <link rel="stylesheet" type="text/css" href="/css/inscription.css">
 <title>Inscription</title>
-<%- include('include-posthead'); -%> 
+<%- include('include-posthead'); -%>
 <! --=====================================================================-->
-<% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
-<form action="/passager/enregistrement" method="post">
-    <div class="button">
-        <div>
-            <label for="username">Username :</label>
-            <input type="texte" id="username" name="username" required>
+    <% if (locals.alert) { %><div class="alert"></div><b><%=alert%></b></div><br><% } %>
+    <form action="/passager/enregistrement" method="post">
+        <div class="button">
+            <div>
+                <label for="username">Username :</label>
+                <input type="texte" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Envoyer le message</button>
         </div>
-        <div>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Envoyer le message</button>
-    </div>
-</form>
+    </form>
 <! --=====================================================================-->
-<%- include('include-endpage'); -%> 
-
-
-
+<%- include('include-endpage'); -%>

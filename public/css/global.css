@@ -7,8 +7,14 @@
     src: url("/css/fonts/OCR.ttf") format("truetype");
    }
 
+   @font-face {
+    font-family: 'Didot';
+    src: url("/css/fonts/Didot.ttf") format("truetype");
+   }
+
 body{
     font-family: 'Poppins', serif;
+    font-weight: 300;
     background: #1B1B1B;
 }
 
@@ -39,7 +45,7 @@ a{
     padding : 1em 3em 1em 3em;
     background: #5800FF;
     border: 2px solid #5800FF;
-    font-weight: bold;
+    font-weight: 500;
     border-radius : 0.3em 0.3em 0.3em 0.3em ;
     color : white
 }
@@ -55,7 +61,7 @@ a{
     padding : 1em 3em 1em 3em;
     background: #5800FF33;
     border: 2px solid #5800FF;
-    font-weight: bold;
+    font-weight: 500;
     border-radius : 0.3em 0.3em 0.3em 0.3em ;
     color : white;
 }
@@ -70,7 +76,7 @@ a{
     padding : 1em 3em 1em 3em;
     background: white;
     border: 2px solid white;
-    font-weight: bold;
+    font-weight: 500;
     border-radius : 0.3em 0.3em 0.3em 0.3em ;
     color :  #5800FF;
 }
@@ -112,6 +118,7 @@ a{
     .contenue{
         flex-direction: column;
         margin-left: 0vw;
+        margin-top: 4vw;
     }
 
       }

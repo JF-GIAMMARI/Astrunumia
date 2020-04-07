@@ -1,36 +1,30 @@
-
 .alerte {
-    padding: 0.6em;
-    background-color: #f43336; 
-    color: white;
-    font-family: 'Poppins', serif;
-    font-size: 1em;
+  padding: 0.6em;
+  background-color: #f43336;
+  color: white;
+  font-family: 'Poppins', serif;
+  font-size: 1em;
+  font-weight: 500;
+}
 
-  }
-  
+.fermeturebtn {
+  margin-right: 10px;
+  color: white;
+  font-weight: bold;
+  float: left;
+  font-family: 'GFS Didot', serif;
+  font-size: 2em;
+  line-height: 0.5em;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+.fermeturebtn:hover {
+  color: black;
+}
+
+@media (max-width: 550px) {
   .fermeturebtn {
-    margin-right: 10px;
-    color: white;
-    font-weight: bold;
-    float: left;
-    font-family: 'GFS Didot', serif;
-    font-size: 2em;
-    line-height: 0.5em;
-    cursor: pointer;
-    transition: 0.3s;
+    float: right;
   }
-  
-
-  .fermeturebtn:hover {
-    color: black;
-  }
-
-
-  @media (max-width: 550px) {
-    .fermeturebtn {
-      float: right;
-    }
-
-    
-  }
+}
