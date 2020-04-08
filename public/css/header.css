@@ -34,17 +34,16 @@ header {
     width: 60%;
     height: auto;
     margin-top: 15%;
-    margin-left: 10%;
+    margin-left: 13%;
 }
 
 .ouiIcoDonateur {
-    border: solid#FFE241 0.15vw;
+    border: solid#FFE241 0.20vw;
     border-radius: 50% 50% 50% 50%;
 }
 
 .nonIcoDonateur {
-    border: solid#5800FF 0.15vw;
-    border-radius: 50% 50% 50% 50%;
+    border: none;
 }
 
 a {
@@ -133,15 +132,27 @@ a {
 }
 
 .HDestinations img {
-    width: 34%;
+    width: 5vw;
     height: auto;
-    margin: 0% 2% 0% 2%;
-    float: left;
+}
+
+.HDestinations a{
+    display: flex;
+    
+
+}
+
+#dnews{
+    width: 20%;
+    margin-left: 8%;
+
 }
 
 .iconeDestination {
     margin-top: 5%;
-    text-align: center;
+    display: flex;
+flex-direction: row;
+justify-content: space-around;
 }
 
 footer {

@@ -19,14 +19,14 @@
             </div>
             <div class="conteneurvote">
 
-                <p>Les cosmogonies</p>
+                <p>Les galaxies</p>
                 <progress class="progressbar2" id="vote2pb" max="100"
                     value=<% if (locals.vote2) { %><%=vote2%><% } %>></progress>
 
             </div>
             <div class="conteneurvote">
 
-                <p for="vote3pb">La matière noire</p>
+                <p for="vote3pb">Les exoplanètes</p>
                 <progress class="progressbar3" id="vote3pb" max="100"
                     value=<% if (locals.vote3) { %><%=vote3%><% } %>></progress>
 
@@ -52,4 +52,5 @@
     gsap.fromTo(".progressbar1", { opacity: 0, scaleX: 0, x: -70 }, { duration: 1, opacity: 1, scaleX: 1, x: 0, delay: 0.9 });
     gsap.fromTo(".progressbar2", { opacity: 0, scaleX: 0, x: -70 }, { duration: 1, opacity: 1, scaleX: 1, x: 0, delay: 1 });
     gsap.fromTo(".progressbar3", { opacity: 0, scaleX: 0, x: -70 }, { duration: 1, opacity: 1, scaleX: 1, x: 0, delay: 1.1 });
+    gsap.fromTo(".cookiesbtn", { opacity: 0}, { duration: 1, opacity: 1, delay: 1.5 });
 </script>

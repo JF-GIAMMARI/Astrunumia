@@ -1,15 +1,208 @@
-<%- include('include-prehead'); -%> 
+<%- include('include-prehead'); -%>
 <link rel="stylesheet" type="text/css" href="/css/accueil.css">
 <title>Accueil</title>
-<%- include('include-posthead'); -%> 
+<%- include('include-posthead'); -%>
 <! --=====================================================================-->
+    <div class="mainDiv">
 
-            <a href="/passager/authentification">Connexion</a><br>
-            <a href="/passager/enregistrement">Inscription</a><br>
-            <a href="/passager/vote">Vote</a><br>
-            <a href="/accueil">Accueil</a><br>
-            <a href="/destinations/1">Destination 1</a><br>
- 
-<! --=====================================================================-->
-<%- include('include-endpage'); -%> 
+        <div id="row1" class="mainimage">
+            <div id="row1top" class="topDiv">
+                <h1 id="textetop"></h1>
+                <h2 id="soustextetop">Notre nouvelle destination</h2>
+                <div id="divtop"></div>
+            </div>
+            <img id="scroll1" class="bottomScroll" src="/img/accueil/bas.png">
+        </div>
+        <div id="row2" class="barreinferieur"><%- include('include-barrelat'); -%></div>
 
+        <article class="article">
+            <img id="imgd1" class="imgd" src="/img/accueil/d1.png">
+            <img id="imgd1" class="imgdM" src="/img/accueil/d1M.png">
+
+            <aside class="mainAside">
+                <img class="bandeauimg" src="/img/accueil/icoasavoir1.png">
+                <div class="bandeau">
+                    <h1 id="tg1" class="titre">Acteur majeur</h1>
+                    <h3>Stephen Hawking</h3>
+                </div>
+                <h2>Une phrase</h2>
+                <p class="texte">« Des choses peuvent
+                    sortir
+                    d’un trou noir, dans notre Univers et peut-être dans d’autres. Donc, si vous sentez que vous
+                    êtes
+                    dans un trou noir, ne perdez pas espoir : il y a un moyen d’en sortir ! »</p>
+                <p class="nom">Stephen Hawking</p>
+
+            </aside>
+        </article>
+        <article class="article">
+            <img id="imgd2" class="imgd" src="/img/accueil/d2.png">
+            <img id="imgd2" class="imgdM" src="/img/accueil/d2M.png">
+            <aside class="mainAside">
+                <img class="bandeauimg" src="/img/accueil/icoasavoir2.png">
+                <div class="bandeau">
+
+                    <h1 id="tg2" class="titre"> Ouvrage</h1>
+                    <h3>L’idée de création</h3>
+                </div>
+                <h2>Une phrase</h2>
+                <p class="texte">« Au commencement était le Verbe, et le Verbe était en Dieu, et le Verbe était Dieu. »
+                </p>
+                <p class="nom">Guy SAMAMA</p>
+
+            </aside>
+        </article>
+        <article class="article">
+            <img id="imgd3" class="imgd" src="/img/accueil/d3.png">
+            <img id="imgd3" class="imgdM" src="/img/accueil/d3M.png">
+            <aside class="mainAside">
+                <img class="bandeauimg" src="/img/accueil/icoasavoir3.png">
+                <div class="bandeau">
+
+                    <h1 class="titre">Acteur majeur</h1>
+                    <h3>Vera Rubin</h3>
+                </div>
+                <h2>Une phrase</h2>
+                <p class="texte">« à toutes les grandes échelles : galaxies, amas de galaxies, jusqu’à l’univers dans
+                    son intégralité puisque la matière noire est indispensable pour expliquer les observations dans le
+                    cadre du modèle du big-bang »</p>
+                <p class="nom">Raphaël Granier</p>
+
+            </aside>
+        </article>
+        <img id="scroll2" class="EndbottomScroll" src="/img/accueil/bas.png">
+    </div>
+
+
+    <script>
+        window.onload = function () {
+
+            // Définitions des éléments
+
+            var row1 = document.getElementById("row1");
+            var row1top = document.getElementById("row1top");
+
+            var row2 = document.getElementById("row2");
+
+            var scroll1 = document.getElementById("scroll1");
+            var scroll2 = document.getElementById("scroll2");
+
+            var articles = document.getElementsByClassName("article");
+            var asides = document.getElementsByClassName("mainAside");
+            var bandeauimg = document.getElementsByClassName("bandeauimg");
+
+            for (i = 0; i < articles.length; i++) {
+                articles[i].style.cursor = 'pointer';
+            }
+
+            scroll1.style.cursor = 'pointer';
+            scroll2.style.cursor = 'pointer';
+
+            // Animation de l'affichage
+            gsap.registerPlugin(ScrollToPlugin);
+            gsap.fromTo(row1, { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
+            gsap.fromTo(row2, { opacity: 0 }, { duration: 1, opacity: 1, delay: 0.3 });
+            gsap.fromTo(row1top, { opacity: 0 }, { duration: 1, opacity: 1, delay: 0.4 });
+            gsap.fromTo(scroll1, { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.8, ease: "bounce.out", onComplete: bounce1 });
+
+            gsap.to('#textetop', 2, { text: "LES TROUS NOIRS", ease: "rough({ template: none.out, strength: 1, points: 20, taper: 'none', randomize: true, clamp: false})".easeIn, delay: 0.5 });
+            gsap.fromTo('#soustextetop', { opacity: 0 }, { duration: 1, opacity: 1, delay: 0.6 });
+            gsap.fromTo('#divtop', { opacity: 0 }, { duration: 1, opacity: 1, delay: 0.7 });
+
+
+
+            // Animation des Ancres
+            scroll1.addEventListener("click", function () {
+                gsap.to(window, { duration: 1, scrollTo: { y: "article", offsetY: 10 } });
+            });
+            scroll2.addEventListener("click", function () {
+                gsap.to(window, { duration: 2, scrollTo: { y: "#row1", ease: "circ.out", offsetY: 50 } });
+            });
+            scroll1.addEventListener("mouseenter", function () {
+                gsap.to(scroll1, { duration: 0.5, scale: 1.1 });
+            });
+            scroll1.addEventListener("mouseleave", function () {
+                gsap.to(scroll1, { duration: 0.5, scale: 1 });
+            });
+            scroll2.addEventListener("mouseenter", function () {
+                gsap.to(scroll1, { duration: 0.5, scale: 1.1 });
+            });
+            scroll2.addEventListener("mouseleave", function () {
+                gsap.to(scroll1, { duration: 0.5, scale: 1 });
+            });
+
+            function bounce1() {
+                gsap.to(scroll1, { duration: 1, y: -50, delay: 6 });
+                gsap.to(scroll1, { duration: 1, y: 0, delay: 6.5, ease: "bounce.out", onComplete: bounce1 });
+            }
+
+
+            // Affichage au scroll
+            var controller = new ScrollMagic.Controller();
+            var tl1 = new TimelineMax({ onComplete: articleaff1 });
+            var tl2 = new TimelineMax({ onComplete: articleaff2 });
+            var tl3 = new TimelineMax({ onComplete: articleaff3 });
+
+            function articleaff1() {
+                gsap.fromTo(articles[0], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: 1, scale: 1, x: 0, delay: 0 });
+                gsap.fromTo(asides[0], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
+                gsap.fromTo(bandeauimg[0], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
+            }
+
+            function articleaff2() {
+                gsap.fromTo(articles[1], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: 1, scale: 1, x: 0, delay: 0 });
+                gsap.fromTo(asides[1], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
+                gsap.fromTo(bandeauimg[1], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
+            }
+
+            function articleaff3() {
+                gsap.fromTo(articles[2], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: 1, scale: 1, x: 0, delay: 0 });
+                gsap.fromTo(asides[2], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
+                gsap.fromTo(bandeauimg[2], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
+            }
+            var scene = new ScrollMagic.Scene({ triggerElement: "#row2", triggerHook: 0 }).setTween(tl1).addTo(controller);
+            var scene = new ScrollMagic.Scene({ triggerElement: "#tg1", triggerHook: 0 }).setTween(tl2).addTo(controller);
+            var scene = new ScrollMagic.Scene({ triggerElement: "#tg2", triggerHook: 0 }).setTween(tl3).addTo(controller);
+
+            //Event article on hover
+
+            articles[0].addEventListener("mouseenter", function () { articlehoverin(articles[0]) });
+            articles[0].addEventListener("mouseleave", function () { articlehoverout(articles[0]) });
+            articles[0].addEventListener("click", function () { articleclick(articles[0], 1) });
+
+            articles[1].addEventListener("mouseenter", function () { articlehoverin(articles[1]) });
+            articles[1].addEventListener("mouseleave", function () { articlehoverout(articles[1]) });
+            //articles[1].addEventListener("click", function () {articleclick(articles[1],2)});
+
+            articles[2].addEventListener("mouseenter", function () { articlehoverin(articles[2]) });
+            articles[2].addEventListener("mouseleave", function () { articlehoverout(articles[2]) });
+            //articles[2].addEventListener("click", function () {articleclick(articles[2],3)});
+        }
+        var animok = true;
+        function articlehoverin(cible) {
+            if (animok) {
+                gsap.fromTo(cible, { scale: 1 }, { duration: 0.5, scale: 0.99 });
+            }
+
+        }
+        function articlehoverout(cible, lien) {
+            if (animok) {
+                gsap.fromTo(cible, { scale: 0.99 }, { duration: 0.5, scale: 1 });
+
+            }
+        }
+        function articleclick(cible, lien) {
+            animok = false;
+            gsap.to(cible, { duration: 1, scale: 0.2, opacity: 0, delay: 0, onComplete: redirect, onCompleteParams: [lien] });
+
+
+        }
+        function redirect(lien) {
+            var route = "/destinations/" + lien + "";
+            window.location.href = route;
+        }
+
+
+    </script>
+    <! --=====================================================================-->
+        <%- include('include-endpage'); -%>

@@ -111,14 +111,14 @@ a{
     .contenueHeader{
         width: 100%;
         position: relative;
-        height: none;
+        
     }
     
     
     .contenue{
         flex-direction: column;
         margin-left: 0vw;
-        margin-top: 4vw;
+        margin-top: 0vw;
     }
 
       }
