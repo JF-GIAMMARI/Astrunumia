@@ -13,7 +13,7 @@
 
 .row1 {
     justify-content: space-between;
-    margin-top: 4%;
+    margin: 4%;
     margin-bottom: 2%;
 }
 
@@ -38,7 +38,7 @@
 .row1 .lefttexteDiv div {
     width: 5vw;
     height: 0.3vw;
-    background-color: #5800FF;
+    background-color: #6514FF;
     margin-top: 5%;
 }
 
@@ -52,7 +52,7 @@
 .row1 .righttexteDiv div {
     width: 1.2vw;
     height: 3vw;
-    background-color: #5800FF;
+    background-color: #6514FF;
     margin-right: 5%;
 }
 
@@ -116,7 +116,7 @@
 }
 
 .backcarte .emailequipage {
-    color: #5800FF;
+    color: #6514FF;
     font-size: 0.8vw;
     letter-spacing: 0.1em;
     padding-top: 2%;
@@ -124,7 +124,7 @@
 }
 
 .backcarte .emailequipage a {
-    color: #5800FF;
+    color: #6514FF;
 }
 
 .barreinferieur {
@@ -242,7 +242,7 @@
         display: none;
     }
     .backcarte .emailequipage {
-        color: #5800FF;
+        color: #6514FF;
         padding-top: 0%;
         font-size: 3vw;
         letter-spacing: 0.1em;
@@ -250,6 +250,6 @@
         text-align: center;
     }
     .backcarte .emailequipage a {
-        color: #5800FF;
+        color: #6514FF;
     }
 }

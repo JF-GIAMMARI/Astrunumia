@@ -1,93 +1,94 @@
 <%- include('include-prehead'); -%>
+<link rel="stylesheet" type="text/css" href="/css/globalauth.css">
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
 <title>Profile</title>
 <%- include('include-posthead'); -%>
 <! --=====================================================================-->
-    <form action="/passager/profile/update" method="post">
-        <div>
-            <input type="hidden" id="iconeNumber" name="iconeNumber" value="0">
-            <img class='nonSelect' src='/img/profileico/1.png' alt='Icone 1' id="1" value="1" onclick="change(this.id)">
-            <img class='nonSelect' src='/img/profileico/2.png' alt='Icone 2' id="2" value="2" onclick="change(this.id)">
-            <img class='nonSelect' src='/img/profileico/3.png' alt='Icone 3' id="3" value="3" onclick="change(this.id)">
-            <img class='nonSelect' src='/img/profileico/4.png' alt='Icone 4' id="4" value="4" onclick="change(this.id)">
-            <img class='nonSelect' src='/img/profileico/5.png' alt='Icone 5' id="5" value="5" onclick="change(this.id)">
-            <script>
-                function change(value) {
-                    document.getElementById(1).className = "nonSelect";
-                    document.getElementById(2).className = "nonSelect";
-                    document.getElementById(3).className = "nonSelect";
-                    document.getElementById(4).className = "nonSelect";
-                    document.getElementById(5).className = "nonSelect";
-                    element = document.getElementById(value);
-                    element.className = "ouiSelect";
-                    nombre = document.getElementById("iconeNumber");
-                    nombre.value = value;
+    <div class="mainDiv">
+        <div id="colonne1" class="part part1 ">
+            <div class="topDiv">
+                <h1 id="colonneh1"></h1>
+                <h2 id="colonneh2">Modifiez votre grade et votre profil</h2>
+                <div id="colonnediv"></div>
+                <p id="colonnep">Vous soutenez le projet en devenant commandant du vaisseau gratuitement.</p>
+            </div>
+            <div class="bottomDiv">
+                
+                <div id="colonnecard1" class=" card">
+                    <img class="astronauteCard" src="/img/connexion/ico1.png">
+                    <div class="texteCard1">
+                        <h1>Astronaute</h1>
+                        <p>Devenez un véritable membre de l’équipage.<br>- Accès aux votes.<br> - Inscription newsletter
+                        </p>
+                    </div>
+                </div>
+                <div id="colonnecard2" class="card">
+                    <img class="commandantCard" src="/img/connexion/ico2.png">
+                    <div class="texteCard2">
+                        <h1>Commandant</h1>
+                        <p>Devenez un membre important de l’équipage.<br> - Les fonctionalitées d'Astronaute<br> - Accès aux commentaires<br> - Votre vote compte double
+                        </p>
+                    </div>
+               
+                </div>
+                <div id="colonne1btn" class="btncommandantprofile">
+                    <%if(locals.isDonateur == false){%>
+                    <form  action="/passager/gradeup" method="post">
+                    <button class="btndonateur" type="submit">Devenir Commandant</button>
+                    </form><%}else{%>
+                    <form action="/passager/gradeup" method="post">
+                    <button class="btndonateur" type="submit">Redevenir Passager</button>
+                    </form><%}%>
+
+                    <form action="/passager/deconnexion" method="post">
+                        <button class="btnsub" type="submit">Déconnexion</button>
+                    </form></div>
+                
+                   
+                
+
+
+            </div>
+        </div>
+
+        <div id="colonne2" class="part part2">
+            <%- include('includeP-Profile'); -%>
+                </div>
+            </div>
+            <div class="barreinferieur">
+                <%- include('include-barrelat'); -%>
+            </div>
+
+        <div class="btnmobile">
+                <%if(locals.isDonateur == false){%>
+                <form  action="/passager/gradeup" method="post">
+                <button class="btnfull" type="submit">Devenir Commandant</button>
+                </form><%}else{%>
+                <form action="/passager/gradeup" method="post">
+                <button class="btnfull" type="submit">Redevenir Passager</button>
+                </form><%}%>
+
+                <form action="/passager/deconnexion" method="post">
+                    <button class="btndeco" type="submit">Déconnexion</button>
+                </form></div>
+
+        <script>
+                window.onload = function () {
+
+                    // Définitions des éléments
+
+                    gsap.fromTo("#colonne1", { opacity: 0, y: -200 }, { duration: 1, opacity: 1, y: 0 });
+                    gsap.to("#colonneh1", { duration: 1, opacity: 1, delay: 0.3 });
+                    gsap.to("#colonneh2", { duration: 1, opacity: 1, delay: 0.5 });
+                    gsap.to("#colonnediv", { duration: 1, opacity: 1, delay: 0.7 });
+                    gsap.to("#colonnep", { duration: 1, opacity: 1, delay: 1 });
+                    gsap.to("#colonnecard1", { duration: 1, opacity: 1, delay: 1.2 });
+                    gsap.to("#colonnecard2", { duration: 1, opacity: 1, delay: 1.4 });
+                    gsap.to("#colonne2", { duration: 1, opacity: 1, delay: 0.5 });
+                    gsap.to("#colonne1btn", { duration: 1, opacity: 1, delay: 1.6});
+                    gsap.to('#colonneh1', 2, { text: "votre pass", ease: "rough({ template: none.out, strength: 1, points: 20, taper: 'none', randomize: true, clamp: false})".easeIn, delay: 0.5 });
                 }
             </script>
-        </div>
 
-        <div>
-
-            <label for="username">Username :</label>
-            <input type="texte" id="username" name="username"
-                placeholder="<% if (locals.username) { %><%=username%><% } %>">
-        </div>
-        <div>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" placeholder="<% if (locals.email) { %><%=email%><% } %>">
-        </div>
-        <div>
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" placeholder="**********">
-        </div>
-        <div></div>
-
-
-        <%if (locals.isSub == true) { %>
-        <input type="checkbox" id="isSub" name="isSub" checked>
-        <% } 
-        else{
-        %>
-        <input type="checkbox" id="isSub" name="isSub">
-        <%}%>
-    
-
-    <label for="isSub"> Newsletter</label><br>
-
-</div>
-    <div class="button">
-        <button type="submit">Enregistrer les modification</button>
-        
-    </div>
-</form>
-<%if(locals.isDonateur == false){%>
-        <form action="/passager/gradeup" method="post">
-            <div class="button">
-                <button type="submit">Devenir Commandant</button>
-            </div>
-        </form><%
-    }else{%>
-        <form action="/passager/gradeup" method="post">
-            <div class="button">
-                <button type="submit">Redevenir Passager</button>
-            </div>
-        </form><%
-    }
-%>
-
-
-
-
-        <form action="/passager/deconnexion" method="post">
-            <div class="button">
-                <button type="submit">Déconnexion</button>
-            </div>
-        </form>
-        <a href="/passager/authentification">Connexion</a><br>
-        <a href="/passager/enregistrement">Inscription</a><br>
-        <a href="/passager/vote">Vote</a><br>
-        <a href="/accueil">Accueil</a><br>
-
-
-<! --=====================================================================-->
-<%- include('include-endpage'); -%>
+            <! --=====================================================================-->
+                <%- include('include-endpage'); -%>

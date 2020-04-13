@@ -1,0 +1,330 @@
+.footerDestination {
+    background-color: #1B1B1B;
+    border-radius: 0.7vw 0.7vw 0vw 0vw;
+    width: 90%;
+    margin: auto;
+    margin-top: 4vw;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+/*********************TOPBARRE*********************/
+
+.footerDestination .topbarre {
+    background-color: rgba(40, 40, 43, 1);
+    border-radius: 0.7vw 0.7vw 0vw 0vw;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 9vw;
+}
+
+.footerDestination .topbarre h1 {
+    font-size: 1vw;
+    font-weight: 600;
+    letter-spacing: 0.02vw;
+    border-right: solid 0.2vw #FFFFFF20;
+    padding: 3% 10% 3% 2%;
+}
+
+.footerDestination .topbarre form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*****************PARTAGE**********/
+
+.footerDestination .topbarre .btnpartage  {
+        display: flex;
+        flex-direction: row;
+        width: 15%;
+        justify-content: space-around;
+        font-size: 2vw;
+}
+.footerDestination .topbarre .btnpartage .fa:hover  {
+    opacity: 0.5;
+}
+
+/*****************LIKE**********/
+
+.footerDestination .topbarre .btnlike {
+    padding: 0.6% 2% 0.6% 1%;
+    background-color: #00000050;
+    border-radius: 0.2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footerDestination .topbarre .btnlike button {
+    background-image: url("/img/destinations/likeC.png");
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 2vw;
+    height: 2vw;
+}
+
+.footerDestination .topbarre .btnlike button:hover {
+    background-image: url("/img/destinations/like.png");
+}
+
+.footerDestination .topbarre .btnlike h4 {
+    font-size: 1vw;
+    margin-left: 1vw;
+}
+
+/*****************DISLIKE**********/
+
+.footerDestination .topbarre .btndislike {
+    padding: 0.6% 2% 0.6% 1%;
+    background-color: #00000050;
+    border-radius: 0.2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footerDestination .topbarre .btndislike button {
+    background-image: url("/img/destinations/dislikeC.png");
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 2vw;
+    height: 2vw;
+}
+
+.footerDestination .topbarre .btndislike button:hover {
+    background-image: url("/img/destinations/dislike.png");
+}
+
+.footerDestination .topbarre .btndislike h4 {
+    font-size: 1vw;
+    margin-left: 1vw;
+}
+
+/*************************BARRE ENVOIE******************************/
+
+.footerDestination .publicationCommentaire {
+    background-color: rgba(40, 40, 43, 0.8);
+    align-self: center;
+    border-radius: 1vw;
+    width: 80%;
+    margin-top: 4%;
+    padding: 0.5% 1.5% 0.5% 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footerDestination .publicationCommentaire img {
+    width: 1.2vw;
+    align-self: center;
+    justify-self: center;
+}
+
+.footerDestination .publicationCommentaire textarea {
+    font-size: 1.2vw;
+    color: #FFFFFF50;
+    background-color: transparent;
+    padding-left: 1vw;
+    border: transparent;
+    width: 47vw;
+    max-width: 47vw;
+    min-width: 47vw;
+    align-self: center;
+    justify-self: center;
+    margin-top: 0.5vw;
+    font-family: 'Poppins', serif;
+    overflow: hidden;
+    outline: none;
+    ;
+}
+
+.footerDestination .publicationCommentaire button {
+    display: flex;
+    font-size: 0.9vw;
+    font-weight: 600;
+    padding: 0.2vw 1.9vw 0.2vw 1.9vw;
+    margin: 0.2vw 0vw 0.1vw 0vw;
+    border-radius: 0.5vw;
+    justify-self: center;
+    align-self: center;
+    background: #6514FF;
+    border: 0.25vw solid #6514FF;
+    font-weight: 500;
+    color: white
+}
+
+.footerDestination .publicationCommentaire button:hover {
+    background: rgb(107, 34, 253);
+    color: white;
+    text-decoration: none;
+}
+
+/*************************COMMENTAIRE******************************/
+
+.footerDestination .commentaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5vw;
+    margin-bottom: 4vw;
+}
+
+.footerDestination .commentaire .conteneurCommentaire {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.16);
+    background-color: rgba(40, 40, 43, 10);
+    border-left: solid 0.4vw #6514FF;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 95%;
+    padding: 1.5% 0% 1.5% 0%;
+    margin-bottom: 3%;
+}
+
+.footerDestination .commentaire .conteneurCommentaire h1 {
+    font-size: 0.7vw;
+    font-weight: 600;
+    letter-spacing: 0.2vw;
+    margin: 0% 2% 0% 2%;
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+    width: 15%;
+}
+
+.footerDestination .commentaire .conteneurCommentaire p {
+    width: 55vw;
+    margin-right: 5%;
+    font-size: 0.9vw;
+    font-weight: 300;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 550px) {
+    .footerDestination {
+        border-radius: 0VW;
+        width: 100%;
+    }
+    /*********************TOPBARRE*********************/
+    .footerDestination .topbarre {
+        border-radius: 0VW;
+        height: 20vw;
+    }
+    .footerDestination .topbarre h1 {
+        display: none;
+    }
+    .footerDestination .topbarre form {
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: center;
+    }
+    /*****************PARTAGE**********/
+    .footerDestination .topbarre .btnpartage  {
+
+        width: 25%;
+        justify-content: space-around;
+        font-size: 6vw;
+}
+  
+    /*****************LIKE**********/
+    .footerDestination .topbarre .btnlike {
+        border-radius: 1vw;
+        background-color: transparent;
+    }
+    .footerDestination .topbarre .btnlike button {
+        width: 10vw;
+        height: 10vw;
+    }
+    .footerDestination .topbarre .btnlike h4 {
+        font-size: 7vw;
+        margin-left: 1vw;
+    }
+    /*****************DISLIKE**********/
+    .footerDestination .topbarre .btndislike {
+        background-color: transparent;
+        border-radius: 1vw;
+    }
+    .footerDestination .topbarre .btndislike button {
+        width: 10vw;
+        height: 10vw;
+    }
+    .footerDestination .topbarre .btndislike h4 {
+        font-size: 7vw;
+        margin-left: 1vw;
+    }
+    /*************************BARRE ENVOIE******************************/
+    .footerDestination .publicationCommentaire {
+        width: 100%;
+        margin-top: 7%;
+        padding: 5% 1.5% 5% 2%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .footerDestination .publicationCommentaire textarea {
+        font-size: 4vw;
+        color: #FFFFFF50;
+        background-color: transparent;
+        margin-left: 5vw;
+        border: transparent;
+        width: 70vw;
+        max-width: 70vw;
+        min-width: 70vw;
+        height: 15vw;
+        align-self: center;
+        justify-self: center;
+        margin-top: 0.5vw;
+        font-family: 'Poppins', serif;
+        ;
+    }
+    .footerDestination .publicationCommentaire button {
+        font-size: 5vw;
+        padding: 0.2vw 1.9vw 0.2vw 1.9vw;
+        margin: 0.1vw 3vw 0.1vw 0vw;
+    }
+    /*************************COMMENTAIRE******************************/
+    .footerDestination .commentaire {
+        margin-top: 7vw;
+    }
+    .footerDestination .commentaire .conteneurCommentaire {
+        border-left: solid 1vw #6514FF;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 95%;
+        
+        padding: 4% 0% 4% 0%;
+        margin-bottom: 3%;
+    }
+    .footerDestination .commentaire .conteneurCommentaire h1 {
+        font-size: 3vw;
+        margin: 0% 2% 0% 2%;
+        align-self: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        width: 100%;
+        padding-bottom: 2%;
+    }
+    .footerDestination .commentaire .conteneurCommentaire p {
+        width: 90%;
+        margin-right: 5%;
+        font-size: 3vw;
+        font-weight: 300;
+        margin: 0% 4% 0% 2%;
+        opacity: 0.5;
+    }
+}
+
+

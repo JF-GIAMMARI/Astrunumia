@@ -26,6 +26,10 @@ module.exports = { // Instanciation du module
     var alertcookie = req.cookies.alert;
     var userId = jwtUtils.getUserId(headerAuth);
 
+    var votecookie1 = req.cookies.vote1nbr;
+    var votecookie2 = req.cookies.vote2nbr;
+    var votecookie3 = req.cookies.vote3nbr;
+
     if (userId < 0) // Vérification de sécurité
       return res.status(400).redirect(301, '/accueil');
 
@@ -36,7 +40,7 @@ module.exports = { // Instanciation du module
     }).then(function (user) {
       if (user) {
         // Rendu de la page avec les variables EJS nécéssaire
-        return res.render('profile', { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername, username: user.username, email: user.email, isSub: user.isSub, isDonateur: user.isDonateur });
+        return res.render('profile', { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername, username: user.username, email: user.email, isSub: user.isSub, isDonateur: user.isDonateur,vote1: votecookie1, vote2: votecookie2, vote3: votecookie3 });
       } else {
         return res.status(400).redirect(301, '/passager/authentification');
       }
@@ -168,7 +172,7 @@ module.exports = { // Instanciation du module
           });
 
         } else {
-          return res.status(400).cookie('alert', 'Vous ne faite pas parti du vaisseau, enregistrer vous si vous le shouaitez', { expires: new Date(Date.now() + 1000) })
+          return res.status(400).cookie('alert', 'Vous ne faite pas parti du vaisseau, enregistrez vous si vous le shouaitez', { expires: new Date(Date.now() + 1000) })
             .redirect(301, '/passager/enregistrement');
         }
       },
@@ -308,9 +312,11 @@ module.exports = { // Instanciation du module
       if (userFound) {
         var img = "";
         if (userFound.isDonateur == false) {
+          console.log("DOddne");
           img = "<img class='nonIcoDonateur' src='/img/profileico/" + iconNumber + ".png' alt='Icone' > ";
         }
         if (userFound.isDonateur == true) {
+          console.log("DOne");
           img = "<img class='ouiIcoDonateur' src='/img/profileico/" + iconNumber + ".png' alt='Icone' > ";
         }
         console.log(img);
@@ -333,13 +339,14 @@ module.exports = { // Instanciation du module
     var headerAuth = req.cookies.authorization;
     var userId = jwtUtils.getUserId(headerAuth);
     var valeur = true;
+    var img="";
     if (userId < 0) // Vérification de sécurité
       return res.status(400).redirect(301, '/accueil');
 
     asyncLib.waterfall([  // Suite de fonction asynchrone (Waterfall)
       function (done) { // Vérification du grade de l'utilisateur
         models.User.findOne({
-          attributes: ['id', 'isDonateur'],
+          attributes: ['id', 'isDonateur', 'iconNumber'],
           where: { id: userId }
         }).then(function (userFound) {
           done(null, userFound);
@@ -353,8 +360,11 @@ module.exports = { // Instanciation du module
         if (userFound) {
           if (userFound.isDonateur == true) {
             valeur = false;
+            img = "<img class='nonIcoDonateur' src='/img/profileico/" + userFound.iconNumber + ".png' alt='Icone' > ";
+            
           } else {
             valeur = true;
+            img = "<img class='ouiIcoDonateur' src='/img/profileico/" + userFound.iconNumber + ".png' alt='Icone' > ";
           }
           userFound.update({
             isDonateur: valeur
@@ -371,6 +381,8 @@ module.exports = { // Instanciation du module
         }
       },
     ], function (err, result) { // Refresh de la page
+      res.clearCookie('HeaderIco');
+      res.cookie('HeaderIco', img, { expires: new Date(Date.now() + 1 * 3600000) });
       return res.status(400).redirect(301, '/passager/profile');
     });
   },
@@ -388,12 +400,15 @@ module.exports = { // Instanciation du module
     var userId = jwtUtils.getUserId(headerAuth);
     var HeaderIco = req.cookies.HeaderIco;
     var HeaderUsername = req.cookies.HeaderUsername;
+    var votecookie1 = req.cookies.vote1nbr;
+    var votecookie2 = req.cookies.vote2nbr;
+    var votecookie3 = req.cookies.vote3nbr;
 
     var alertcookie = req.cookies.alert;
     if (userId > 0) { // Vérification de sécurité
       return res.status(301).redirect(301, '/passager/profile');
     } else {
-      return res.render('connexion', { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername });
+      return res.render('connexion', { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername,vote1: votecookie1, vote2: votecookie2, vote3: votecookie3 });
     }
   },
 
@@ -403,10 +418,14 @@ module.exports = { // Instanciation du module
     var HeaderIco = req.cookies.HeaderIco;
     var HeaderUsername = req.cookies.HeaderUsername;
     var alertcookie = req.cookies.alert;
+    var votecookie1 = req.cookies.vote1nbr;
+    var votecookie2 = req.cookies.vote2nbr;
+    var votecookie3 = req.cookies.vote3nbr;
+
     if (userId > 0) { // Vérification de sécurité
       return res.status(301).redirect(301, '/passager/profile');
     } else {
-      return res.render('inscription', { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername });
+      return res.render('inscription', { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername,vote1: votecookie1, vote2: votecookie2, vote3: votecookie3 });
     }
   },
 

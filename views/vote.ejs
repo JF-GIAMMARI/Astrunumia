@@ -6,13 +6,13 @@
     <div class="mainDiv">
         <div class="row row1">
             <div class="lefttexteDiv">
-                <h1>Vote !</h1>
-                <h2>Choissisez la prochaine destination !</h2>
+                <h1 id="texteT1"></h1>
+                <h2>Choisissez la prochaine destination !</h2>
                 <div></div>
             </div>
             <div class="righttexteDiv">
                 <div></div>
-                <p>Tout les mois, vous avez la possibilité de choisir notre prochaine destination.
+                <p>Tous les mois, vous avez la possibilité de choisir notre prochaine destination.
                     Votez pour l’une des trois propositions. Si ce n’est pas déjà fait, devenez
                     commandant pour obtenir un vote double !</p>
 
@@ -107,6 +107,8 @@
             window.onload = function () {
                 gsap.fromTo(".row1", { opacity: 0, y: -200 }, { duration: 1, opacity: 1, y: 0 });
                 gsap.fromTo(".row2", { opacity: 0 }, { duration: 2, opacity: 1, delay: 0.5 });
+                gsap.to('#texteT1', 1, { text: "votes !", ease: "rough({ template: none.out, strength: 1, points: 20, taper: 'none', randomize: true, clamp: false})".easeIn, delay: 0.2 });
+            
 
             }
 

@@ -1,46 +1,28 @@
 <%- include('include-prehead'); -%> 
 <link rel="stylesheet" type="text/css" href="/css/destinations/d1.css">
+<link rel="stylesheet" type="text/css" href="/css/destinations/footer.css">
 <title>Les trous noirs</title>
 <%- include('include-posthead'); -%> 
 <! --=====================================================================-->
+<div class="mainDiv">
+  
 
-      Aime -->    <% if (locals.aime) { %><%=aime%><% }else{%>0<%} %><br>
-Aimepas -->    <% if (locals.aimepas) { %><%=aimepas%><% }else{%>0<%} %><br>
-Vues -->    <% if (locals.vues){ %><%=vues%><% }else{%>0<%} %><br>
-<br>
 
-<form action="/destinations/avis" method="post">   
-    <input type="hidden" id="valeur" name="valeur" value="1">
-    <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
-    <div class="button">
-        <button type="submit">J'aime</button>
-    </div>
-</form>
 
-<form action="/destinations/avis" method="post">   
-    <input type="hidden" id="valeur" name="valeur" value="2">
-    <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
-    <div class="button">
-        <button type="submit">J'aime pas</button>
-    </div>
-</form>
+    <script >
 
-<form action="/destinations/commentaire" method="post">   
-    <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
-    <textarea id="texte" name="texte" rows="5" cols="33" required maxlength="500" minlength="4"></textarea>
-    <div class="button">
-        <button type="submit">Poster le commentaire</button>
-    </div>
-</form>
 
-<div>
-    <% if (locals.commentaire){
-    for(let i = locals.commentaire.length-1 ; i != -1 ; i--){ %>
-    <div><b><%=utilisateurcom[i]%></b></div>
-    <div><%=commentaire[i]%></div><br>  
-    <%}}%>
-</div>      
- 
+
+    </script>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> 
+
+
+    <%- include('footerDestinations'); -%> 
+</div>
+
+
 <! --=====================================================================-->
 <%- include('include-endpage'); -%> 
 

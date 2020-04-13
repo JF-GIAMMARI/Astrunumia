@@ -110,7 +110,7 @@ module.exports = { // Instanciation du module
             callback(null, vuesGet);
           })
             .catch(function (err) {
-              return res.status(400).cookie('alert', 'Erreur Serveur 1: Impossible d\'accéder à la base de donnée', { expires: new Date(Date.now() + 1000) })
+              return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', { expires: new Date(Date.now() + 1000) })
                 .redirect(req.get('referer'));
             });
         },
@@ -150,7 +150,7 @@ module.exports = { // Instanciation du module
     var recupval = 0;
 
     if (userId < 0) { // Vérification de sécurité
-      return res.status(400).cookie('alert', 'Vous devez être connecter pour faire cela', { expires: new Date(Date.now() + 1000) })
+      return res.status(400).cookie('alert', 'Vous devez être connecté pour faire cela', { expires: new Date(Date.now() + 1000) })
         .redirect(req.get('referer'));
     }
     // Tests de validité de la saisie
@@ -259,7 +259,7 @@ module.exports = { // Instanciation du module
     var userid = jwtUtils.getUserId(headerAuth);
 
     if (userid < 0) { // Vérification de sécurité
-      return res.status(400).cookie('alert', 'Vous devez être connecter pour faire cela', { expires: new Date(Date.now() + 1000) })
+      return res.status(400).cookie('alert', 'Vous devez être connecté pour faire cela', { expires: new Date(Date.now() + 1000) })
         .redirect(req.get('referer'));
     }
     iddestination = iddestination | 0;

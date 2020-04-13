@@ -95,7 +95,7 @@ module.exports = { // Instanciation du module
 
 
     if (userID < 0) { // Vérification de la connection
-      return res.status(400).cookie('alert', 'Vous devez être connecter pour voter', { expires: new Date(Date.now() + 1000) })
+      return res.status(400).cookie('alert', 'Vous devez être connecté pour voter', { expires: new Date(Date.now() + 1000) })
         .redirect(301, '/passager/vote');
     }
 
@@ -142,7 +142,7 @@ module.exports = { // Instanciation du module
       },
       function (userCheck, callback) {
         if (userCheck != null) {
-          return res.status(400).cookie('alert', 'Vous avez deja voter pour cette session de vote', { expires: new Date(Date.now() + 1000) })
+          return res.status(400).cookie('alert', 'Vous avez deja voté pour cette session de vote', { expires: new Date(Date.now() + 1000) })
             .redirect(301, '/passager/vote');
         }
         else {

@@ -37,22 +37,18 @@
 .topDiv div {
     width: 5vw;
     height: 0.3vw;
-    background-color: #5800FF;
+    background-color: #6514FF;
     margin-top: 2.5%;
 }
 
 .bottomScroll {
     align-self: center;
-    border-radius: 50% 50% 50% 50%;
-    border: solid 0.2vw #5800FF;
     margin-bottom: 1.5vw;
     width: 4.5vw;
 }
 
 .EndbottomScroll {
     align-self: center;
-    border-radius: 50% 50% 50% 50%;
-    border: solid 0.2vw #5800FF;
     margin-bottom: 5%;
     margin-top: 4%;
     width: 4vw;
@@ -64,6 +60,7 @@ article {
     display: flex;
     flex-direction: row;
     margin-top: 7%;
+   
 }
 
 .imgdM {
@@ -76,9 +73,7 @@ article {
     height: auto;
 }
 
-.imgd:hover {
-    border: solid #5800FF 0.25em;
-}
+
 
 article aside {
     width: 18%;
@@ -159,9 +154,25 @@ aside .nom {
     opacity: 0;
 }
 
+.footerac{
+    display: none;
+}
+
+.mobileRow1{
+    display: none;
+}
 
 
 @media (max-width: 550px) {
+
+    .mobileRow1{
+        width: 90%;
+        display: flex;
+        align-self: center;
+        text-align: center;
+        font-size: 5vw;
+        margin-top: 6vw;
+    }
     .mainimage {
         display: none;
     }
@@ -191,17 +202,54 @@ aside .nom {
         flex-direction: column;
     }
     .EndbottomScroll {
-        align-self: center;
-        border-radius: 50% 50% 50% 50%;
-        border: solid 0.2vw #5800FF;
-        margin-bottom: 10%;
-        margin-top: 10%;
-        width: 15vw;
-        rotate: 180%;
-        transform: rotate(180deg);
+        display: none;
     }
     .mainAside {
         display: none;
     }
 
+    
+.iconeDestination {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footerac {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 7%;
+    margin : auto;
+    background-color: #1B1B1B;
+    margin-bottom: 2vw;
+    margin-top: 10vw;
+}
+
+.reseauxSociaux {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.reseauxSociaux a {
+    margin: 2%;
+}
+
+.reseauxSociaux img {
+    width: 10%;
+    height: auto;
+    opacity: 0.1;
+}
+.credit{
+   
+    color: #FFFFFF30;
+    margin : auto;
+    font-size: 5vw;
+    padding-bottom: 5vw;
+    
+}
+
+ 
 }

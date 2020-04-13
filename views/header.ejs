@@ -3,7 +3,7 @@
     <div class="HPass" id="profilebtn">
       <div class="Htexte ">
 
-        <h1>Mon Passe</h1>
+        <h1>Mon Pass</h1>
         <div class="Htexte2">
           <h2>Nom </h3>
             <h3><% if (locals.headerusername) { %><%=headerusername%><% }else{%>Visiteur<%} %></h3>
@@ -24,7 +24,7 @@
         </a>
         <h3>Choisissez une destination</h3>
       </div>
-      <img src='/img/header/accueil.png'>
+
     </div>
 
     <div class="HCard" id="votebtn">
@@ -34,7 +34,7 @@
         </a>
         <h3>Votez pour une destination</h3>
       </div>
-      <img src='/img/header/vote.png'>
+
 
     </div>
 
@@ -43,9 +43,9 @@
         <a>
           <h1>Équipage</h1>
         </a>
-        <h3>Découvrez note équipe</h3>
+        <h3>Découvrez notre équipage</h3>
       </div>
-      <img src='/img/header/equipage.png'>
+     
     </div>
 
     <div class="HDestinations">
@@ -59,13 +59,13 @@
       </div>
     </div>
   </header>
-  <footer>
+  <footer >
     <div class="reseauxSociaux">
       <a  href="https://www.instagram.com/astrunumia/?hl=fr" target="_blank"><img  id="insta"src='/img/header/instaH.png'> </a>
       <a  href="https://www.facebook.com/Astrunumia-104306377677990" target="_blank"><img id="facebook" src='/img/header/facebookH.png'></a>
       <a href="https://twitter.com/astrunumia" target="_blank"><img id="twitter" src='/img/header/twitterH.png'></a>
-
     </div>
+    <a class="credit" href="/credits">Mentions Légales </a>
   </footer>
 
   <script>
@@ -113,11 +113,11 @@
 
    // Fonctions d'animations
     function hoverin(btn) {
-      gsap.to(btn, { duration: 0.5, border: '0.2em solid white' });
+      gsap.to(btn, { duration: 0.5, scale: 0.95 });
 
     }
     function hoverout(btn) {
-      gsap.to(btn, { duration: 1, border: 'none' });
+      gsap.to(btn, { duration: 1, scale: 1 });
     }
 
     function hoverinD(btn) {
@@ -163,7 +163,7 @@
     <a id="a1h" href="/accueil">Accueil </a>
     <a id="a2h" href="/passager/vote">Vote</a>
     <a id="a3h" href="/equipage">Equipage</a>
-    <a id="a4h" href="/passager/authentification">Authentification</a>
+    <a id="a4h" href="/passager/authentification">Mon Passe</a>
   </div>
 
   <script>

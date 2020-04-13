@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    height: 94%;
+    height: 92%;
     background-color: #1B1B1B;
     color: white;
     display: flex;
@@ -24,6 +24,11 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border : solid 0.2em rgba(40, 40, 43, 1);
+}
+
+.HPass:hover{
+    border : solid 0.2em white;
 }
 
 .HProfile {
@@ -43,7 +48,8 @@ header {
 }
 
 .nonIcoDonateur {
-    border: none;
+    border: solid#FFE24100 0.20vw;
+    border-radius: 50% 50% 50% 50%;
 }
 
 a {
@@ -57,7 +63,7 @@ a {
     width: 50%;
     font-family: OCR;
     justify-content: flex-start;
-    margin: 12% 0% 12% 12%;
+    margin: 12% 0% 8% 12%;
 }
 
 .Htexte2 {
@@ -69,24 +75,27 @@ a {
 
 .HPass .Htexte h1 {
     font-size: 1.1vw;
+    letter-spacing: 0.1em;
 }
 
 .HPass .Htexte h2 {
-    font-size: 0.7vw;
+    font-size: 0.9vw;
     color: #FFFFFF;
     opacity: 0.5;
+    letter-spacing: 0.05em;
 }
 
 .HPass .Htexte h3 {
     font-size: 1.2vw;
     padding-top: 6%;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
 }
 
 .HCard {
     background-color: rgba(40, 40, 43, 1);
     border-radius: 0.2em 0.2em 0.2em 0.2em;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.16);
+    border : solid 0.2em rgba(40, 40, 43, 1);
     height: 11%;
     margin: 0% 3% 3% 3%;
     display: flex;
@@ -94,28 +103,28 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+.HCard:hover {
+
+    border : solid 0.2em white;
+}
 
 .HCard div {
     flex-direction: column;
     margin-left: 6%;
 }
 
-.HCard img {
-    width: 17%;
-    padding: 6% 6% 6% 1%;
-}
 
 .HCard h1 {
     font-weight: 600;
     letter-spacing: 0.06em;
-    font-size: 1vw;
+    font-size: 1.1vw;
 }
 
 .HCard h3 {
-    font-size: 0.80vw;
+    font-size: 0.90vw;
     color: #FFFFFF;
     opacity: 0.5;
-    padding-top: 2.5%;
+    padding-top: 3%;
 }
 
 .HDestinations {
@@ -151,19 +160,21 @@ a {
 .iconeDestination {
     margin-top: 5%;
     display: flex;
-flex-direction: row;
-justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 footer {
     width: 100%;
-    height: 6%;
+    height: 7%;
     background-color: #1B1B1B;
+    margin-bottom: 2vw;
 }
 
 .reseauxSociaux {
     width: 100%;
     text-align: center;
+    margin-bottom: 4%;
 }
 
 .reseauxSociaux a {
@@ -171,9 +182,15 @@ footer {
 }
 
 .reseauxSociaux img {
-    width: 8%;
+    width: 10%;
     height: auto;
     opacity: 0.1;
+}
+.credit{
+    color: #FFFFFF30;
+    margin-left: 5.1vw;
+    font-size: 0.8vw;
+   
 }
 
 .mobileHeader {
@@ -211,7 +228,7 @@ footer {
         letter-spacing: 0.3em;
         color: #FFFFFF;
         text-transform: uppercase;
-        font-weight: bold;
+        margin-left: 3.5vw;
     }
     .topnav {
         overflow: hidden;

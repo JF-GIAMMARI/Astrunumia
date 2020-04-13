@@ -62,3 +62,11 @@
     line-height: 1.2vw;
     color: rgb(117, 117, 117);
 }
+
+
+.btnsimple{
+    border : none;
+}
+.btnsimple:hover{
+    border : none;
+}

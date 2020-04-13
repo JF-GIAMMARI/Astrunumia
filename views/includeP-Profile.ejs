@@ -1,0 +1,81 @@
+<div class="formulaire">
+    <form class="mainForm" action="/passager/profile/update" method="post">
+        <div class="input">
+            <h1>Modifier votre Pass</h1>
+            <h3>Choissiez votre icône </h3>
+            <div class="passimg">
+                <input type="hidden" id="iconeNumber" name="iconeNumber" value="0">
+                <img class='nonSelect imgico' src='/img/profileico/1.png' alt='Icone 1' id="1" value="1"
+                    onclick="change(this.id)">
+                <img class='nonSelect imgico' src='/img/profileico/2.png' alt='Icone 2' id="2" value="2"
+                    onclick="change(this.id)">
+                <img class='nonSelect imgico' src='/img/profileico/3.png' alt='Icone 3' id="3" value="3"
+                    onclick="change(this.id)">
+                <img class='nonSelect imgico' src='/img/profileico/4.png' alt='Icone 4' id="4" value="4"
+                    onclick="change(this.id)">
+                <img class='nonSelect imgico' src='/img/profileico/5.png' alt='Icone 5' id="5" value="5"
+                    onclick="change(this.id)">
+                <script>
+
+    
+                    function change(value) {
+                        Haptics.vibrate(10); 
+                        document.getElementById(1).className = "nonSelect";
+                        document.getElementById(2).className = "nonSelect";
+                        document.getElementById(3).className = "nonSelect";
+                        document.getElementById(4).className = "nonSelect";
+                        document.getElementById(5).className = "nonSelect";
+                        element = document.getElementById(value);
+                        element.className = "ouiSelect";
+                        nombre = document.getElementById("iconeNumber");
+                        nombre.value = value;
+                    }
+
+
+                </script>
+            </div>
+
+
+            <input type="texte" id="username" name="username" value="<% if (locals.username) { %><%=username%><% } %>">
+            <div class="barrepass"></div>
+            <input type="email" id="email" name="email" value="<% if (locals.email) { %><%=email%><% } %>">
+            <div class="barrepass"></div>
+            <input type="password" id="password" name="password" placeholder="**********">
+            <div class="barrepass"></div>
+
+
+            <div class="PasseBtn">
+                <div class="checkboxdiv">
+                    <label class="checkbox">
+                        <%if (locals.isSub == true) { %>
+                        <input type="checkbox" id="isSub" name="isSub" checked>
+
+                        <% } else{%>
+                        <input type="checkbox" id="isSub" name="isSub">
+
+                        <%}%>
+                                    </label>
+                                    <label for="isSub">S'abonner à la Newsletter</label>
+                                
+                            </div>
+                        <button class="btnsub"   type="submit">Enregistrer</button>
+                    </div>
+                    </div>
+                    </form>
+            </div>
+
+            <script>
+
+                gsap.from(".imgico", {
+                    duration: 1.5,
+                    scale: 0.5,
+                    opacity: 0,
+                    delay: 0.7,
+                    stagger: 0.2,
+                    ease: "elastic",
+                    force3D: true
+                });
+
+         
+
+            </script>

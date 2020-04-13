@@ -1,0 +1,286 @@
+.formulaire {
+    margin-top: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.btnfull {
+    font-size: 0.9vw;
+}
+
+.btnsub {
+    cursor: pointer;
+    padding :  0.5vw 2.5vw 0.5vw 2.5vw;
+    background: #6514FF33;
+    letter-spacing: 0.06vw;
+    color: white;
+    border: 3px solid #6514FF33;
+    font-size: 0.9vw;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btnsub:hover {
+    border: 3px solid rgb(107, 34, 253);
+    color: white;
+    text-decoration: none;
+}
+
+.btnlien {
+    background-color: none;
+    color: white;
+    font-size: 1vw;
+    font-weight: 400;
+    margin: auto;
+    margin-right: 2vw;
+    cursor: pointer;
+}
+
+.btnlien:hover {
+    color: #6514FF;
+}
+
+.btnfull {
+    cursor: pointer;
+    font-weight: 900;
+    padding :  0.5vw 2.5vw 0.5vw 2.5vw;
+}
+
+.btndeco {
+    cursor: pointer;
+    border: none;
+    margin: auto;
+    margin-left: 0.7vw;
+    padding :  0.5vw 2.5vw 0.5vw 2.5vw;
+    background: #6514FF33;
+    border: 0.2vw solid #6514FF;
+    font-size: 1vw;
+    font-weight: 700;
+    color: white;
+}
+
+.btndeco:hover {
+    border: 0.2vw solid rgb(107, 34, 253);
+}
+
+.mainForm {
+    background-image: url("/img/authentificationG/pass1.png");
+    background-size: cover;
+    width: 37vw;
+    height: 31vw;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 9% 11% 7% 11%;
+}
+
+.input h1{
+    font-family: OCR;
+    font-size: 2vw;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 3%;
+}
+
+.input h3 {
+    font-family: OCR;
+    font-size: 1.2vw;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-bottom: 3%;
+    color: #FFFFFF80;
+    margin-top: 2%;
+}
+
+.input input {
+    cursor: pointer;
+    font-family: OCR;
+    font-size: 1.3vw;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #FFFFFF90;
+    background-color: #FFFFFF00;
+    border: none;
+    line-height: -10px;
+    margin-top: 5%;
+}
+
+.input input:focus {
+    color: white;
+}
+
+.input .barrepass {
+    border-top: solid #FFFFFF50 0.10vw;
+    margin-top: 0.25vw;
+}
+
+.PasseBtn {
+    margin-top: 7.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.passimg {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.passimg img {
+    width: 4.5vw;
+    cursor: pointer;
+  
+}
+
+.ouiSelect {
+    border: solid white 0.2em;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.nonSelect {
+    border: solid #FFFFFF00 0.2em;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.checkboxdiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.checkboxdiv label {
+    font-family: OCR;
+    font-size: 0.9vw;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    align-self: center;
+    margin-left: 1vw;
+    color: #FFFFFF80;
+}
+
+.checkbox input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox input[type=checkbox] {
+    height: 1.9vw;
+    width: 1.9vw;
+    background: #FFFFFF30;
+    border: solid 0.2vw #FFFFFF80;
+}
+
+input[type="checkbox"]:checked {
+    background-image: url('/img/profile/coche.png');
+    background-size: contain;
+}
+
+.btnmobile{
+    display: none;
+}
+
+@media (max-width: 550px) {
+    .mainForm {
+        width: 85vw;
+        height: 90vw;
+        margin: auto;
+    }
+    .input {
+        margin: 9% 11% 7% 11%;
+    }
+    .input h1 {
+        text-align: left;
+        font-size: 5vw;
+        margin-bottom: 3%;
+    }
+    .input h3 {
+        text-align: left;
+        font-size: 4vw;
+        margin-bottom: 3%;
+    }
+    .input input {
+        font-size: 4.2vw;
+        margin-top: 4%;
+    }
+    .input .barrepass {
+        border-top: solid #FFFFFF50 0.3vw;
+        margin-top: 0.30vw;
+    }
+    .PasseBtn {
+        margin-top: 10%;
+    }
+    .btnsub {
+        padding: 2vw 2vw 2vw 2vw;
+        font-size: 3.5vw;
+    }
+    .btnlien {
+        font-size: 3.5vw;
+        margin-right: 2vw;
+    }
+    .passimg {
+        margin-top: 1%;
+    }
+    .passimg img {
+        width: 11vw;
+        cursor: pointer;
+    }
+    .checkboxdiv label {
+        font-size: 3vw;
+        margin-left: 0.2vw;
+        color: #FFFFFF80;
+    }
+    .checkbox input[type=checkbox] {
+        height: 5vw;
+        width: 5vw;
+    }
+    .ouiSelect {
+        border: solid white 0.1em;
+        border-radius: 50% 50% 50% 50%;
+    }
+    .nonSelect {
+        border: solid #FFFFFF00 0.1em;
+        border-radius: 50% 50% 50% 50%;
+    }
+
+    .btnmobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-top: 5vw;
+    }
+
+        
+    .btnfull {
+        
+        font-size: 5vw;
+        padding: 3vw 4.5vw 3vw 4.5vw;
+        margin: auto;
+    }
+
+    .btndeco {
+        margin-top: 5vw;
+        margin-left: 0.7vw;
+        padding: 3vw 4.5vw 3vw 4.5vw;
+        font-size: 5vw;
+        margin-bottom: 10vw;
+
+    }
+
+
+   
+}

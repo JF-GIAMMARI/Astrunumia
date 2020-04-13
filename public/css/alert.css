@@ -1,9 +1,9 @@
 .alerte {
-  padding: 0.6em;
+  padding: 1vw;
   background-color: #f43336;
   color: white;
   font-family: 'Poppins', serif;
-  font-size: 1em;
+  font-size: 1vw;
   font-weight: 500;
 }
 
@@ -27,4 +27,10 @@
   .fermeturebtn {
     float: right;
   }
+
+  .alerte {
+    padding: 3vw;
+    font-size: 4vw;
+
+  } 
 }

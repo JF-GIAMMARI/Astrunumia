@@ -129,6 +129,13 @@ app.get('/equipage', function (req, res) { // Route de la page équipage
   res.render('equipage', {alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername,vote1: votecookie1, vote2: votecookie2, vote3: votecookie3});
 });
 
+app.get('/credits', function (req, res) { // Route de la page crédits
+// Récupérations de l'ensemble des cookies nécéssaire
+  var HeaderIco = req.cookies.HeaderIco;
+  var HeaderUsername = req.cookies.HeaderUsername;
+  // Rendu de la page Accueil avec les variables EJS
+  res.render('credits', {headerico: HeaderIco, headerusername: HeaderUsername});
+});
 
 app.use('/', apiRouter); // Appelle du routeur regroupant l'ensemble des routes de l'API
 

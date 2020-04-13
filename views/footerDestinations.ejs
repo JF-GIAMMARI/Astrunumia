@@ -1,0 +1,73 @@
+<div class="footerDestination" onload="init();">
+    <div class="topbarre">
+        <h1>Sois commandant pour pouvoir commenter</h1>
+
+    <div class="btnpartage">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://astrunumia.fr/destinations/1" target="_blank"class="fa fa-facebook"></a>
+        <a href="https://twitter.com/intent/tweet?text=Voyage%20vers%20les%20trous%20noirs%20%C3%A0%20bord%20du%20vaisseau%20Astrunumia%20!%0Ahttps%3A//astrunumia.fr/destinations/1"  target="_blank" class="fa fa-twitter"></a>
+
+    
+    </div>
+   
+
+
+    <form class="btnlike" action="/destinations/avis" method="post">   
+        <input type="hidden" id="valeur" name="valeur" value="1">
+        <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+
+        <button type="submit"></button>
+        <h4><% if (locals.aime) { %><%=aime%><% }else{%>0<%} %></h4>
+    </form>
+    
+    <form class="btndislike" action="/destinations/avis" method="post">   
+        <input type="hidden" id="valeur" name="valeur" value="2">
+        <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+
+        <button type="submit"></button>
+        <h4><% if (locals.aimepas) { %><%=aimepas%><% }else{%>0<%} %></h4>
+    </form>
+    </div>
+    
+    <form class="publicationCommentaire" action="/destinations/commentaire" method="post">   
+        <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+        <div class="pubcleft">
+       
+
+        <textarea rows="1"  id="texte" name="texte" required maxlngth="500" minleength="4" placeholder="Exprimez vous commandant"></textarea>
+        </div>
+        <div class="pubcleft">
+        <button type="submit">Publier</button>
+        </div>
+    </form>
+    
+    <div class="commentaire">
+        <% if (locals.commentaire){
+        for(let i = locals.commentaire.length-1 ; i != -1 ; i--){ %>
+            <div class="conteneurCommentaire">
+                <h1><%=utilisateurcom[i]%></h1>
+                <p><%=commentaire[i]%></p>
+            </div>
+        <%}}%>
+   
+    </div>      
+
+
+</div>
+
+<script>
+
+
+var tx = document.getElementsByTagName('textarea');
+for (var i = 0; i < tx.length; i++) {
+  tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
+  tx[i].addEventListener("input", OnInput, false);
+}
+
+function OnInput() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+}
+
+
+
+</script>

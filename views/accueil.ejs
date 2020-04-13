@@ -14,7 +14,7 @@
             <img id="scroll1" class="bottomScroll" src="/img/accueil/bas.png">
         </div>
         <div id="row2" class="barreinferieur"><%- include('include-barrelat'); -%></div>
-
+        <h1 class="mobileRow1">Bienvenue à bord du vaisseau ASTRUNUMIA. L’équipage vous souhaite un excellent voyage.</h1>
         <article class="article">
             <img id="imgd1" class="imgd" src="/img/accueil/d1.png">
             <img id="imgd1" class="imgdM" src="/img/accueil/d1M.png">
@@ -25,7 +25,7 @@
                     <h1 id="tg1" class="titre">Acteur majeur</h1>
                     <h3>Stephen Hawking</h3>
                 </div>
-                <h2>Une phrase</h2>
+                <h2>Une Citation</h2>
                 <p class="texte">« Des choses peuvent
                     sortir
                     d’un trou noir, dans notre Univers et peut-être dans d’autres. Donc, si vous sentez que vous
@@ -45,7 +45,7 @@
                     <h1 id="tg2" class="titre"> Ouvrage</h1>
                     <h3>L’idée de création</h3>
                 </div>
-                <h2>Une phrase</h2>
+                <h2>Une Citation</h2>
                 <p class="texte">« Au commencement était le Verbe, et le Verbe était en Dieu, et le Verbe était Dieu. »
                 </p>
                 <p class="nom">Guy SAMAMA</p>
@@ -62,8 +62,8 @@
                     <h1 class="titre">Acteur majeur</h1>
                     <h3>Vera Rubin</h3>
                 </div>
-                <h2>Une phrase</h2>
-                <p class="texte">« à toutes les grandes échelles : galaxies, amas de galaxies, jusqu’à l’univers dans
+                <h2>Une Citation</h2>
+                <p class="texte">« A toutes les grandes échelles : galaxies, amas de galaxies, jusqu’à l’univers dans
                     son intégralité puisque la matière noire est indispensable pour expliquer les observations dans le
                     cadre du modèle du big-bang »</p>
                 <p class="nom">Raphaël Granier</p>
@@ -71,6 +71,14 @@
             </aside>
         </article>
         <img id="scroll2" class="EndbottomScroll" src="/img/accueil/bas.png">
+        <span class="footerac" >
+            <div class="reseauxSociaux">
+              <a  href="https://www.instagram.com/astrunumia/?hl=fr" target="_blank"><img  id="insta"src='/img/header/instaH.png'> </a>
+              <a  href="https://www.facebook.com/Astrunumia-104306377677990" target="_blank"><img id="facebook" src='/img/header/facebookH.png'></a>
+              <a href="https://twitter.com/astrunumia" target="_blank"><img id="twitter" src='/img/header/twitterH.png'></a>
+            </div>
+            <a class="credit" href="/credits">Mentions Légales </a>
+        </span>
     </div>
 
 
@@ -113,10 +121,10 @@
 
             // Animation des Ancres
             scroll1.addEventListener("click", function () {
-                gsap.to(window, { duration: 1, scrollTo: { y: "article", offsetY: 10 } });
+                gsap.to(window, { duration: 1, scrollTo: { y: "article", offsetY: 100 } });
             });
             scroll2.addEventListener("click", function () {
-                gsap.to(window, { duration: 2, scrollTo: { y: "#row1", ease: "circ.out", offsetY: 50 } });
+                gsap.to(window, { duration: 2, scrollTo: { y: ".mainDiv", ease: "circ.out"} });
             });
             scroll1.addEventListener("mouseenter", function () {
                 gsap.to(scroll1, { duration: 0.5, scale: 1.1 });
@@ -125,10 +133,10 @@
                 gsap.to(scroll1, { duration: 0.5, scale: 1 });
             });
             scroll2.addEventListener("mouseenter", function () {
-                gsap.to(scroll1, { duration: 0.5, scale: 1.1 });
+                gsap.to(scroll2, { duration: 0.5, scale: 1.1 });
             });
             scroll2.addEventListener("mouseleave", function () {
-                gsap.to(scroll1, { duration: 0.5, scale: 1 });
+                gsap.to(scroll2, { duration: 0.5, scale: 1 });
             });
 
             function bounce1() {
@@ -144,19 +152,31 @@
             var tl3 = new TimelineMax({ onComplete: articleaff3 });
 
             function articleaff1() {
-                gsap.fromTo(articles[0], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: 1, scale: 1, x: 0, delay: 0 });
+                var value = 0.7
+                if(screen.width < 550){
+                    value = 1;
+                }
+                gsap.fromTo(articles[0], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
                 gsap.fromTo(asides[0], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
                 gsap.fromTo(bandeauimg[0], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
             }
 
             function articleaff2() {
-                gsap.fromTo(articles[1], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: 1, scale: 1, x: 0, delay: 0 });
+                var value = 0.7
+                if(screen.width < 550){
+                    value = 1;
+                }
+                gsap.fromTo(articles[1], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
                 gsap.fromTo(asides[1], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
                 gsap.fromTo(bandeauimg[1], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
             }
 
             function articleaff3() {
-                gsap.fromTo(articles[2], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: 1, scale: 1, x: 0, delay: 0 });
+                var value = 0.7
+                if(screen.width < 550){
+                    value = 1;
+                }
+                gsap.fromTo(articles[2], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
                 gsap.fromTo(asides[2], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
                 gsap.fromTo(bandeauimg[2], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
             }
@@ -164,7 +184,7 @@
             var scene = new ScrollMagic.Scene({ triggerElement: "#tg1", triggerHook: 0 }).setTween(tl2).addTo(controller);
             var scene = new ScrollMagic.Scene({ triggerElement: "#tg2", triggerHook: 0 }).setTween(tl3).addTo(controller);
 
-            //Event article on hover
+            //Animations des actions sur les articles
 
             articles[0].addEventListener("mouseenter", function () { articlehoverin(articles[0]) });
             articles[0].addEventListener("mouseleave", function () { articlehoverout(articles[0]) });
@@ -172,31 +192,39 @@
 
             articles[1].addEventListener("mouseenter", function () { articlehoverin(articles[1]) });
             articles[1].addEventListener("mouseleave", function () { articlehoverout(articles[1]) });
-            //articles[1].addEventListener("click", function () {articleclick(articles[1],2)});
+            articles[1].addEventListener("click", function () {articleclickinactif(articles[1])});
 
             articles[2].addEventListener("mouseenter", function () { articlehoverin(articles[2]) });
             articles[2].addEventListener("mouseleave", function () { articlehoverout(articles[2]) });
-            //articles[2].addEventListener("click", function () {articleclick(articles[2],3)});
+            articles[2].addEventListener("click", function () {articleclickinactif(articles[2])});
         }
+
         var animok = true;
         function articlehoverin(cible) {
             if (animok) {
-                gsap.fromTo(cible, { scale: 1 }, { duration: 0.5, scale: 0.99 });
+                gsap.to(cible,{ duration: 0.5, opacity : 1 });
             }
-
         }
+
         function articlehoverout(cible, lien) {
             if (animok) {
-                gsap.fromTo(cible, { scale: 0.99 }, { duration: 0.5, scale: 1 });
+                gsap.to(cible,{ duration: 0.5, opacity : 0.7 });
 
             }
         }
+
         function articleclick(cible, lien) {
+            Haptics.vibrate(10); 
             animok = false;
-            gsap.to(cible, { duration: 1, scale: 0.2, opacity: 0, delay: 0, onComplete: redirect, onCompleteParams: [lien] });
-
-
+            gsap.to(cible, { duration: 0.7, scale: 0.2, opacity: 0, delay: 0, onComplete: redirect, onCompleteParams: [lien] });
         }
+
+        function articleclickinactif(cible) {
+            Haptics.vibrate(50); 
+            gsap.to(cible, { duration: 0.7, scale: 0.9, delay: 0});
+            gsap.to(cible, { duration: 0.7, scale: 1, delay: 0.2});
+        }
+
         function redirect(lien) {
             var route = "/destinations/" + lien + "";
             window.location.href = route;
