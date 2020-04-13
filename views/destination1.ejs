@@ -4,24 +4,35 @@
 <title>Les trous noirs</title>
 <%- include('include-posthead'); -%> 
 <! --=====================================================================-->
+<img id="loader" src="/img/loader.svg">
 <div class="mainDiv">
-  
-
-
-
-    <script >
-
-
-
-    </script>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> 
+    <img id="loade" src="/img/loader.svg">
+    <img id="loade" src="/img/loader.svg">
+    <img id="loade" src="/img/loader.svg">
+    <img id="loade" src="/img/loader.svg">
+    <img id="loade" src="/img/loader.svg">
+    <img id="loade" src="/img/loader.svg">
+    <img id="loade" src="/img/loader.svg">
 
 
     <%- include('footerDestinations'); -%> 
 </div>
+<script >
+    window.onload = function () {
+        var loader = document.getElementById("loader");
+        gsap.to(loader, { duration: 0.1, scale:0.5,opacity:0,onComplete:startAffichage });
+    }
+    
+    function startAffichage(){
+        loader.style.display = "none";
+        var mainDiv = document.getElementsByClassName("mainDiv");
+        mainDiv[0].style.display= 'flex';
 
+        
+
+
+    }
+</script>
 
 <! --=====================================================================-->
 <%- include('include-endpage'); -%> 

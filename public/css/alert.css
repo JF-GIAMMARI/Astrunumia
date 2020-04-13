@@ -15,7 +15,7 @@
   font-family: 'GFS Didot', serif;
   font-size: 2em;
   line-height: 0.5em;
-  cursor: pointer;
+  cursor: url("/img/cursorP.png"), pointer;
   transition: 0.3s;
 }
 

@@ -1,5 +1,8 @@
 .mainDiv{
    background-color: black;
-
+   color: white;
+   flex-direction: column;
+   display: none;
+ 
 }
 

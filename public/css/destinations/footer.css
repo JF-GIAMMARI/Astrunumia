@@ -65,7 +65,7 @@
     background-size: cover;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     width: 2vw;
     height: 2vw;
 }
@@ -95,7 +95,7 @@
     background-size: cover;
     background-color: transparent;
     border: none;
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     width: 2vw;
     height: 2vw;
 }

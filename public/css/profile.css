@@ -11,7 +11,7 @@
 }
 
 .btnsub {
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     padding :  0.5vw 2.5vw 0.5vw 2.5vw;
     background: #6514FF33;
     letter-spacing: 0.06vw;
@@ -19,7 +19,7 @@
     border: 3px solid #6514FF33;
     font-size: 0.9vw;
     font-weight: 700;
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
 }
 
 .btnsub:hover {
@@ -35,7 +35,7 @@
     font-weight: 400;
     margin: auto;
     margin-right: 2vw;
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
 }
 
 .btnlien:hover {
@@ -43,13 +43,13 @@
 }
 
 .btnfull {
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     font-weight: 900;
     padding :  0.5vw 2.5vw 0.5vw 2.5vw;
 }
 
 .btndeco {
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     border: none;
     margin: auto;
     margin-left: 0.7vw;
@@ -98,7 +98,7 @@
 }
 
 .input input {
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     font-family: OCR;
     font-size: 1.3vw;
     font-weight: 500;
@@ -135,7 +135,7 @@
 
 .passimg img {
     width: 4.5vw;
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
   
 }
 
@@ -169,7 +169,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -235,7 +235,7 @@ input[type="checkbox"]:checked {
     }
     .passimg img {
         width: 11vw;
-        cursor: pointer;
+        cursor: url("/img/cursorP.png"), pointer;
     }
     .checkboxdiv label {
         font-size: 3vw;

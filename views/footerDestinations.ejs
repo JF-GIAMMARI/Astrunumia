@@ -5,8 +5,6 @@
     <div class="btnpartage">
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://astrunumia.fr/destinations/1" target="_blank"class="fa fa-facebook"></a>
         <a href="https://twitter.com/intent/tweet?text=Voyage%20vers%20les%20trous%20noirs%20%C3%A0%20bord%20du%20vaisseau%20Astrunumia%20!%0Ahttps%3A//astrunumia.fr/destinations/1"  target="_blank" class="fa fa-twitter"></a>
-
-    
     </div>
    
 
@@ -33,7 +31,7 @@
         <div class="pubcleft">
        
 
-        <textarea rows="1"  id="texte" name="texte" required maxlngth="500" minleength="4" placeholder="Exprimez vous commandant"></textarea>
+        <textarea rows="1"  id="texte" name="texte" required maxlength="500" minleength="4" placeholder="Exprimez vous commandant"></textarea>
         </div>
         <div class="pubcleft">
         <button type="submit">Publier</button>
@@ -62,7 +60,7 @@
 
 var tx = document.getElementsByTagName('textarea');
 for (var i = 0; i < tx.length; i++) {
-  tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
+  tx[i].setAttribute('style', 'height: auto;overflow-y:hidden;');
   tx[i].addEventListener("input", OnInput, false);
 }
 

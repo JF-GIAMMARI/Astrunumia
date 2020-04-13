@@ -1,4 +1,5 @@
 </head>
+
 <% if (locals.alert) { %>
 <div class="alerte">
   <%=alert%>
@@ -19,9 +20,11 @@
       setTimeout(function () { div.style.display = "none"; }, 600);
     }
   }
+
 </script>
 
 <body>
+  
   <div class="conteneur">
     <div class="contenueHeader">
       <%- include('header'); -%>

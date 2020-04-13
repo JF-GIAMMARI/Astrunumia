@@ -16,12 +16,21 @@ body{
     font-family: 'Poppins', serif;
     font-weight: 300;
     background: #1B1B1B;
+    cursor: url("/img/cursor.png"), auto;
+    
 }
 
 a{
     text-decoration: none;
+    cursor: url("/img/cursorP.png"), pointer;
 }
 
+#loader{
+    margin-left: 40%;
+    margin-top: 15vw;
+    width: 11vw;
+
+}
 
 .conteneur{
     display: flex;
@@ -42,6 +51,7 @@ a{
 }
 
 .btnfull{
+    cursor: url("/img/cursorP.png"), pointer;
     padding :  0.5vw 2.5vw 0.5vw 2.5vw;
     background: #6514FF;
     border: 0.25vw solid #6514FF;
@@ -57,6 +67,7 @@ a{
     
 
 .btnline{
+    cursor: url("/img/cursorP.png"), pointer;
     padding :  0.5vw 2.5vw 0.5vw 2.5vw;
     background: #6514FF33;
     border: 2px solid #6514FF;
@@ -72,6 +83,7 @@ a{
 }
 
 .btnsimple{
+    cursor: url("/img/cursorP.png"), pointer;
     padding :  0.5vw 2.5vw 0.5vw 2.5vw;
     background: none;
     border: 2px solid white;
@@ -85,9 +97,41 @@ a{
     text-decoration: none;
 }
 
+.cursor {
+    width: 2vw;
+    height: 2vw;
+    
+    border: 0.2rem solid #6514FF;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+    animation: cursorAnim .7s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes cursorAnim {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.7);
+    }
+}
+
+
+
+
+
 
 
 @media (max-width: 550px) {
+    #loader{
+        margin-left: 35%;
+        margin-top: 40vw;
+        width: 30vw;
+    }
   
     .btnfull{
         padding : 0.7em 2.7em 0.7em 2.7em;

@@ -33,7 +33,7 @@
 }
 
 .input input{
-    cursor: pointer;
+    cursor: url("/img/cursorP.png"), pointer;
     font-family: OCR;
     font-size: 1.3vw;
     font-weight: 500;
@@ -72,7 +72,7 @@
     border: 3px solid  #6514FF33;
     font-size: 0.9vw;
     font-weight: 700;
-    cursor : pointer;
+    cursor: url("/img/cursorP.png"), pointer;
 }
 .btnsub:hover{
 
@@ -88,6 +88,7 @@
     font-weight: 400;
     margin: auto;
     margin-right: 2vw;
+    cursor: url("/img/cursorP.png"), pointer;
 }
 .btnlien:hover{
 

@@ -2,8 +2,8 @@
     color: white;
     padding: 0%;
     margin: 0%;
-    display: flex;
     flex-direction: column;
+    display: flex;
 }
 
 .mainimage {
@@ -45,6 +45,7 @@
     align-self: center;
     margin-bottom: 1.5vw;
     width: 4.5vw;
+    cursor: url("/img/cursorP.png"), pointer;
 }
 
 .EndbottomScroll {
@@ -54,13 +55,14 @@
     width: 4vw;
     rotate: 180%;
     transform: rotate(180deg);
+    cursor: url("/img/cursorP.png"), pointer;
 }
 
 article {
     display: flex;
     flex-direction: row;
     margin-top: 7%;
-   
+    cursor: url("/img/cursorP.png"), pointer;
 }
 
 .imgdM {

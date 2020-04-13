@@ -3,6 +3,7 @@
 <title>Accueil</title>
 <%- include('include-posthead'); -%>
 <! --=====================================================================-->
+
     <div class="mainDiv">
 
         <div id="row1" class="mainimage">
@@ -83,6 +84,7 @@
 
 
     <script>
+        
         window.onload = function () {
 
             // Définitions des éléments
@@ -99,12 +101,10 @@
             var asides = document.getElementsByClassName("mainAside");
             var bandeauimg = document.getElementsByClassName("bandeauimg");
 
-            for (i = 0; i < articles.length; i++) {
-                articles[i].style.cursor = 'pointer';
-            }
+            articles[1].style.cursor = 'not-allowed';
+            articles[2].style.cursor = 'not-allowed';
 
-            scroll1.style.cursor = 'pointer';
-            scroll2.style.cursor = 'pointer';
+
 
             // Animation de l'affichage
             gsap.registerPlugin(ScrollToPlugin);
@@ -197,8 +197,7 @@
             articles[2].addEventListener("mouseenter", function () { articlehoverin(articles[2]) });
             articles[2].addEventListener("mouseleave", function () { articlehoverout(articles[2]) });
             articles[2].addEventListener("click", function () {articleclickinactif(articles[2])});
-        }
-
+        
         var animok = true;
         function articlehoverin(cible) {
             if (animok) {
@@ -229,6 +228,7 @@
             var route = "/destinations/" + lien + "";
             window.location.href = route;
         }
+    }
 
 
     </script>
