@@ -42,12 +42,15 @@
     
     <div class="commentaire">
         <% if (locals.commentaire){
-        for(let i = locals.commentaire.length-1 ; i != -1 ; i--){ %>
-            <div class="conteneurCommentaire">
-                <h1><%=utilisateurcom[i]%></h1>
-                <p><%=commentaire[i]%></p>
-            </div>
-        <%}}%>
+        for(let i = locals.commentaire.length-1 ; i != -1 ; i--){
+            if (locals.utilisateurcom[i] != "-1"){ %>
+                <div class="conteneurCommentaire">
+                    <h1><%=utilisateurcom[i]%></h1>
+                    <p><%=commentaire[i]%></p>
+                </div>
+                <%}
+            
+       }}%>
    
     </div>      
 

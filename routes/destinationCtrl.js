@@ -21,6 +21,7 @@ module.exports = { // Instanciation du module
     var commentairetab = [];
     var idtab = [];
     var nomutilisateurtab = [];
+    var idnumcom = [];
     var getaime = 0;
     var getaimepas = 0;
     var getvues = 0;
@@ -51,24 +52,27 @@ module.exports = { // Instanciation du module
             });
         },
 
-        function (callback) { // Récupération des commentaires 
+        function (callback) { // Récupération des commentaires
           models.Commentaire.findAll({
-            attributes: ['userid', 'texte'],
+            attributes: ['id','userid', 'texte'],
             where: {
               destinationid: id
             }
           })
-            .then(function (AvisCount) {// Listing des commentaires  et leurs ID de posteur dans deux tableaux
+            .then(function (ComCount) {// Listing des commentaires  et leurs ID de posteur dans deux tableaux
               while (i != -1) {
-                if (AvisCount[i] != undefined) {
-                  commentairetab.push(AvisCount[i]['texte']);
-                  idtab.push(AvisCount[i]['userid']);
+                if (ComCount[i] != undefined) {
+                  commentairetab.push(ComCount[i]['texte']);
+                  idtab.push(ComCount[i]['userid']);
+                  idnumcom.push(ComCount[i]['id']);
                   i++
+
                 } else {
 
                   i = -1;
                 }
               }
+
               callback(null);
             })
             .catch(function (err) {
@@ -78,17 +82,32 @@ module.exports = { // Instanciation du module
 
         },
 
-        function (callback) { // Récupération du nom d'utilisateur liers aux ID du tableau d'ID
+        function (callback) { // Récupération du nom d'utilisateur liers aux ID du tableau d'ID  
           if (idtab[0] == null) {
             callback(null);
-          } else {
-            for (let i = 0; i != idtab.length; i++) {
+          } else {  
+         
+            
+            for (let i = 0; i < idtab.length; i++) {
               models.User.findOne({
-                attributes: ['username'],
-                where: { id: idtab[0] }
+                attributes: ['id','username'],
+                where: { id: idtab[i] }
               }).then(function (GetUsername) {// Conversion ID par Nom d'utilisateur
-                nomutilisateurtab.push(GetUsername['username']);
-
+                if(GetUsername== null){
+                  nomutilisateurtab.push("-1"); // Si l'utilisateur est introuvable
+                  models.Commentaire.destroy({// On supprime le commentaire associer
+                    where: {
+                        id : idnumcom[i]
+                    }
+                  }).catch(function (err) {
+                      return res.status(400).cookie('alert', 'Erreur Serveur : Impossible d\'accéder à la base de donnée', { expires: new Date(Date.now() + 1000) })
+                        .redirect(req.get('referer'));
+                    });
+                }else{
+                  nomutilisateurtab.push(GetUsername['username']);
+                }
+                
+                
                 if (i == idtab.length - 1) {
                   callback(null);
                 }
@@ -97,9 +116,10 @@ module.exports = { // Instanciation du module
                   .redirect(req.get('referer'));
               });
             }
+
           }
 
-        },
+        }, 
         function (callback) { // Ajout d'une vues a la destination
           models.Destination.findOne({
             attributes: ['id', 'destinationid', 'vues'],
@@ -128,6 +148,7 @@ module.exports = { // Instanciation du module
         },
 
       ], function (err, result) { // Rendu de la page avec l'ensemble des variables EJS
+
         return res.render(file, { alert: alertcookie, headerico: HeaderIco, headerusername: HeaderUsername, commentaire: commentairetab, utilisateurcom: nomutilisateurtab, id: id, aime: getaime, aimepas: getaimepas, vues: vuesup });
       });
     }
