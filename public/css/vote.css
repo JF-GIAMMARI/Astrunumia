@@ -133,7 +133,7 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        margin-top: 5%;
+        margin-top: 10%;
     }
     .row {
         display: flex;
@@ -162,7 +162,7 @@
     .row1 .lefttexteDiv h2 {
         font-size: 4.6vw;
         font-weight: 300;
-        padding-top: 1.5%;
+        padding-top: 4%;
     }
     .row1 .lefttexteDiv div {
         display: none;
@@ -172,7 +172,7 @@
         font-weight: 400;
         padding-top: 5%;
         text-align: justify;
-        width: 80%;
+        width: 83%;
         margin: auto;
         padding-bottom: 5%;
     }
@@ -186,14 +186,24 @@
         width: 70vw;
         height: 65vw;
         margin: 5%;
+        opacity: 0.8;
     }
     .form {
         padding-bottom: 15%;
     }
+ 
     .textevote {
-        display: none;
+        font-size: 10vw;
+        color : white;
+        margin-top: 10%;
+        opacity: 1;
     }
+    
     .textevotenum {
-        display: none;
+        font-size: 7vw;
+        opacity: 1;
     }
+
+
+    
 }

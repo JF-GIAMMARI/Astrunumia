@@ -147,7 +147,8 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        margin-top: 4%;
+        margin-top: 10%;
+
     }
     .part {
         display: flex;
@@ -174,15 +175,15 @@
     .part1 .topDiv h2 {
         font-size: 4.6vw;
         font-weight: 300;
-        padding-top: 5%;
+        padding-top: 4%;
     }
     .part1 .topDiv div {
         display: none;
     }
     .part1 .topDiv p {
-        font-size: 2.6vw;
+        font-size: 2.5vw;
         font-weight: 400;
-        padding-top: 3%;
+        padding-top: 5%;
         text-align: justify;
         width: 80%;
         margin: auto;

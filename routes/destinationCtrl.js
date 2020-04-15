@@ -86,15 +86,14 @@ module.exports = { // Instanciation du module
           if (idtab[0] == null) {
             callback(null);
           } else {  
-         
-            
+            nomutilisateurtab = idtab;
             for (let i = 0; i < idtab.length; i++) {
               models.User.findOne({
                 attributes: ['id','username'],
                 where: { id: idtab[i] }
               }).then(function (GetUsername) {// Conversion ID par Nom d'utilisateur
                 if(GetUsername== null){
-                  nomutilisateurtab.push("-1"); // Si l'utilisateur est introuvable
+                  nomutilisateurtab[i] = "-1"; // Si l'utilisateur est introuvable
                   models.Commentaire.destroy({// On supprime le commentaire associer
                     where: {
                         id : idnumcom[i]
@@ -104,9 +103,8 @@ module.exports = { // Instanciation du module
                         .redirect(req.get('referer'));
                     });
                 }else{
-                  nomutilisateurtab.push(GetUsername['username']);
+                  nomutilisateurtab[i] = GetUsername['username'];
                 }
-                
                 
                 if (i == idtab.length - 1) {
                   callback(null);

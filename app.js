@@ -137,6 +137,8 @@ app.get('/credits', function (req, res) { // Route de la page crédits
   res.render('credits', {headerico: HeaderIco, headerusername: HeaderUsername});
 });
 
+
+
 app.use('/', apiRouter); // Appelle du routeur regroupant l'ensemble des routes de l'API
 
 app.use(function (req, res, next) {   // Route par défaut en cas d'erreur 404

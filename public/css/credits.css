@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
 
+
 }
 
 .row {
@@ -183,6 +184,7 @@
         flex-direction: column;
         margin: 4%;
         margin-bottom: 2%;
+        margin-top: 10%;
     }
     
     .righttexteDiv {
@@ -239,7 +241,7 @@
     }
     .row2 span img {
         align-self: center;
-        width: 90%;
+        width: 80%;
         
     
     }
@@ -248,7 +250,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        margin-top: 5vw;
+        margin-top: 10vw;
         
     
     

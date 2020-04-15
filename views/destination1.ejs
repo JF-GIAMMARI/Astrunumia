@@ -1,42 +1,129 @@
-<%- include('include-prehead'); -%> 
+<%- include('include-prehead'); -%>
 <link rel="stylesheet" type="text/css" href="/css/destinations/d1.css">
 <link rel="stylesheet" type="text/css" href="/css/destinations/footer.css">
 <title>Les trous noirs</title>
-<%- include('include-posthead'); -%> 
+<%- include('include-posthead'); -%>
 <! --=====================================================================-->
-<img id="loader" src="/img/loader.svg">
-<div class="mainDiv">
-    <img id="loade" src="/img/loader.svg">
-    <img id="loade" src="/img/loader.svg">
-    <img id="loade" src="/img/loader.svg">
-    <img id="loade" src="/img/loader.svg">
-    <img id="loade" src="/img/loader.svg">
-    <img id="loade" src="/img/loader.svg">
-    <img id="loade" src="/img/loader.svg">
+    <img id="loader" src="/img/loader.svg">
+    <div class="mainDiv">
+        <div class="destinationContenue">
+            <h1 id="dc1" class="dc"> </h1>
+            <p id="dc2" class="dc">Ils sont les corps célestes les plus mystérieux de notre univers
+                et font l’objet de fantasmes toujours plus étourdissants… Mais avant d’être
+                une porte ouverte à de nouveaux mondes, les trous noirs renferment un secret
+                qu’ils protègent en déchaînant les lois de la physique. L’équipage vous propose
+                de partir découvrir la naissance de l’un d’entre eux pour mieux comprendre leur
+                fonctionnement.</p>
+            <span id="trg1"></span>
+            <p id="dc2-1" class="dc">Accrochez vous bien, on décolle !</p>
+            <img id="dc3" class="dc" src="/img/destinations/1/1.png">
+            <span id="trg2"></span>
+            <p id="dc4" class="dc">Tout au long de sa vie, l’étoile fusionne l’hydrogène qui la compose
+                en atome d’hélium. Sous l’effet de la gravitation, la densité et la température de son
+                noyau ne cessent de croître tandis que l’atmosphère, elle, refroidie et devient de plus
+                en plus rouge. L’échange d’énergie entre le noyau et les couches externes provoque une
+                expansion de l’astre lui permettant d’atteindre jusqu’à 100 fois sa taille initiale…</p>
+            <span id="trg3"></span>
+            <img id="dc5" class="dc" src="/img/destinations/1/2.png">
+            <span id="trg4"></span>
+            <img id="dc6" class="dc" src="/img/destinations/1/3.png">
+            <span id="trg5"></span>
+            <img id="dc7" class="dc" src="/img/destinations/1/4.png">
+            <span id="trg6"></span>
+            <img id="dc8" class="dc" src="/img/destinations/1/5.png">
+            <span id="trg7"></span>
+            <img id="dc9" class="dc" src="/img/destinations/1/6.png">
+            <span id="trg8"></span>
+            <video id="dc10" class="dc" loop muted preload="auto"><source src="/img/destinations/1/7.mp4" type="video/mp4"></video>
+            <span id="trg9"></span>
+            <p id="dc11" class="dc">Mais jusqu’à présent nous avons pu découvrir la naissance d’un corps
+                banal qui peuple d’un nombre infini notre univers. Or, il existe des trous noirs jouant un
+                rôle bien plus important.</p>
+            <span id="trg10"></span>
+            <img id="dc12" class="dc" src="/img/destinations/1/8.png">
+            <span id="trg11"></span>
+            <p id="dc13" class="dc">À défaut de comprendre ce qu’il se cache en leur cœur, nous savons
+                qu’ils renferment en eux un pouvoir de création et de destruction ultime. Ils seraient
+                à l’origine des grands bouleversements cosmologiques et auraient participé à la création
+                de l’univers. Comprendre leur fonctionnement, permettrait de faire un pas immense sur
+                le mystère de nos origines, mais ce dont nous sommes certains, c’est qu’ils éteindront
+                l’univers comme ils l’ont étincelé…</p>
+        </div>
+        <%- include('include-footerDestinations'); -%>
+    </div>
+    <script>
+        window.onload = function () {
+            var loader = document.getElementById("loader");
+            gsap.to(loader, { duration: 0.1, scale: 0.5, opacity: 0, onComplete: startAffichage });
+            gsap.to(window, { duration: 0.1, scrollTo: { y: 0 + getCookie('cookiepos') } });
+        }
+
+        function startAffichage() {
+            loader.style.display = "none";
+            var mainDiv = document.getElementsByClassName("mainDiv");
+            mainDiv[0].style.display = 'flex';
+            var Musique = new sound("/son/m1.mp3");
+            Musique.play();
+
+            gsap.to('#dc1', 1, { opacity: 1 });
+            gsap.to('#dc1', 2, { text: "LES TROUS NOIRS", ease: "rough({ template: none.out, strength: 20, points: 20, taper: 'none', randomize: true, clamp: false})".easeIn, });
+            gsap.to('#dc2', 2, { opacity: 1, delay: 1.2 });
+            gsap.to('#dc2-1', 2, { opacity: 1, delay: 2 });
 
 
-    <%- include('footerDestinations'); -%> 
-</div>
-<script >
-    window.onload = function () {
-        var loader = document.getElementById("loader");
-        gsap.to(loader, { duration: 0.1, scale:0.5,opacity:0,onComplete:startAffichage });
-    }
-    
-    function startAffichage(){
-        loader.style.display = "none";
-        var mainDiv = document.getElementsByClassName("mainDiv");
-        mainDiv[0].style.display= 'flex';
+        }
+        var controller = new ScrollMagic.Controller();
 
-        
+        var dc3 = new TimelineMax();
+        dc3.fromTo("#dc3", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg1" }).setTween(dc3).addTo(controller);
+
+        var dc4 = new TimelineMax();
+        dc4.fromTo("#dc4", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg2" }).setTween(dc4).addTo(controller);
+
+        var dc5 = new TimelineMax();
+        dc5.fromTo("#dc5", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg3" }).setTween(dc5).addTo(controller);
+
+        var dc6 = new TimelineMax();
+        dc6.fromTo("#dc6", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg4" }).setTween(dc6).addTo(controller);
+
+        var dc7 = new TimelineMax();
+        dc7.fromTo("#dc7", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg5" }).setTween(dc7).addTo(controller);
+
+        var dc8 = new TimelineMax();
+        dc8.fromTo("#dc8", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg6" }).setTween(dc8).addTo(controller);
+
+        var dc9 = new TimelineMax();
+        dc9.fromTo("#dc9", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg7" }).setTween(dc9).addTo(controller);
+
+        var dc10 = new TimelineMax();
+        dc10.fromTo("#dc10", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, onComplete:videodstart });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg8" }).setTween(dc10).addTo(controller); // Video triggers
+
+        var dc11 = new TimelineMax();
+        dc11.fromTo("#dc11", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg9" }).setTween(dc11).addTo(controller);
+
+        var dc12 = new TimelineMax();
+        dc12.fromTo("#dc12", { scale: 0.95, y:100 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg10" }).setTween(dc12).addTo(controller);
+
+        var dc13 = new TimelineMax();
+        dc13.fromTo("#dc13", { scale: 0.95 }, { duration: 1, opacity: 1, scale: 1,y:0, delay: 0.2 });
+        var scene = new ScrollMagic.Scene({ triggerElement: "#trg11" }).setTween(dc13).addTo(controller);
+
+        function videodstart(){
+            var vid = document.getElementById("dc10");
+            vid.play();
+        }
+    </script>
 
 
-    }
-</script>
-
-<! --=====================================================================-->
-<%- include('include-endpage'); -%> 
-
-
-
-
+    <! --=====================================================================-->
+        <%- include('include-endpage'); -%>

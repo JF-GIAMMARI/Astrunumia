@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
 
+
 }
 
 .row {
@@ -139,7 +140,8 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        margin-top: 5%;
+        margin-top: 10%;
+
     }
     .row {
         display: flex;
@@ -163,12 +165,12 @@
         width: 100%;
     }
     .row1 .lefttexteDiv h1 {
-        font-size: 15vw;
+        font-size: 14vw;
     }
     .row1 .lefttexteDiv h2 {
         font-size: 4.6vw;
         font-weight: 300;
-        padding-top: 1.5%;
+        padding-top: 4%;
     }
     .row1 .lefttexteDiv div {
         display: none;
@@ -192,8 +194,8 @@
         display: flex;
         flex-direction: column;
         background-color: #28282B;
-        justify-content: center;
-        align-items: center;
+       
+        
         border-radius: 0.2em 0.2em 0.2em 0.2em;
         width: 37vh;
         height: 37vh;
@@ -204,6 +206,7 @@
         display: none;
         flex-direction: column;
         color: black;
+        text-align: left;
     }
     .frontcarte {
         display: flex;
@@ -214,6 +217,9 @@
         font-size: 5vw;
         padding-top: 4%;
         font-weight: 300;
+        margin-left: 6%;
+        margin-bottom: 4%;
+        text-align: left;
     }
     .frontcarte {
         align-self: center;
@@ -228,7 +234,7 @@
         font-weight: 400;
         width: 90%;
         margin: auto;
-        text-align: justify;
+        text-align: left;
         padding: 0%;
     }
     .backcarte h3 {

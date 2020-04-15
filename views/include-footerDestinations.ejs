@@ -1,0 +1,134 @@
+<div class="footerDestination" onload="init();">
+    <div class="topbarre">
+        <h1>Pour commenter soyez commandants !</h1>
+
+    <div class="btnpartage">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://astrunumia.fr/destinations/1" target="_blank"class="fa fa-facebook"></a>
+        <a href="https://twitter.com/intent/tweet?text=Voyage%20vers%20les%20trous%20noirs%20%C3%A0%20bord%20du%20vaisseau%20Astrunumia%20!%0Ahttps%3A//astrunumia.fr/destinations/1"  target="_blank" class="fa fa-twitter"></a>
+    </div>
+   
+
+
+    <form class="btnlike" action="/destinations/avis" method="post">   
+        <input type="hidden" id="valeur" name="valeur" value="1">
+        <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+
+        <button type="submit"></button>
+        <h4><% if (locals.aime) { %><%=aime%><% }else{%>0<%} %></h4>
+    </form>
+    
+    <form class="btndislike" action="/destinations/avis" method="post">   
+        <input type="hidden" id="valeur" name="valeur" value="2">
+        <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+
+        <button type="submit"></button>
+        <h4><% if (locals.aimepas) { %><%=aimepas%><% }else{%>0<%} %></h4>
+    </form>
+    </div>
+    <% if (locals.alert) { %>
+        <div id="alertebottom" class="alerte">
+          <%=alert%>
+          <span class="fermeturebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div><%}%>
+        
+    <form class="publicationCommentaire" action="/destinations/commentaire" method="post">   
+        <input type="hidden" id="idDestination" name="idDestination" value="<% if (locals.id) { %><%=id%><% } %>">
+        <div class="pubcleft">
+       
+
+        <textarea rows="1"  id="texte" name="texte" required maxlength="500" minleength="4" placeholder="Exprimez vous commandant"></textarea>
+        </div>
+        <div class="pubcleft">
+        <button type="submit">Publier</button>
+        </div>
+    </form>
+    
+    <div class="commentaire">
+
+        <% if (locals.commentaire){
+        for(let i = locals.commentaire.length-1 ; i != -1 ; i--){
+            if (locals.utilisateurcom[i] != "-1"){ %>
+                <div class="conteneurCommentaire">
+                    <h1><%=utilisateurcom[i]%></h1>
+                    <p><%=commentaire[i]%></p>
+                </div>
+                <%}
+            
+       }}%>
+   
+    </div>      
+
+
+</div>
+
+<script>
+
+
+
+  // Animation de l'encart d'alerte d'erreur
+  gsap.fromTo(".alerte", { opacity: 0 }, { duration: 1, opacity: 1 });
+
+  //Animation de fermeture de l'encart d'alerte
+  var close = document.getElementsByClassName("fermeturebtn");
+  var i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+      var div = this.parentElement;
+      gsap.fromTo(".alerte", { opacity: 1 }, { duration: 1, opacity: 0 });
+      setTimeout(function () { div.style.display = "none"; }, 600);
+    }
+  }
+
+
+var tx = document.getElementsByTagName('textarea');
+for (var i = 0; i < tx.length; i++) {
+  tx[i].setAttribute('style', 'height: auto;overflow-y:hidden;');
+  tx[i].addEventListener("input", OnInput, false);
+}
+
+function OnInput() {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+}
+
+function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function setcookiepos() {
+            document.cookie = "cookiepos=" + window.scrollY + "; max-age=7;";
+        }
+
+        var footer = document.getElementsByClassName('footerDestination')[0];
+        footer.addEventListener("mouseenter", setcookiepos);
+        footer.addEventListener("mouseleave", setcookiepos);
+        var btnlike = document.getElementsByClassName('btnlike')[0];
+        btnlike.addEventListener("mouseenter", setcookiepos);
+        btnlike.addEventListener("mouseleave", setcookiepos);
+        var btndislike = document.getElementsByClassName('btndislike')[0];
+        btndislike.addEventListener("mouseenter", setcookiepos);
+        btndislike.addEventListener("mouseleave", setcookiepos);
+        var btnpartage = document.getElementsByClassName('btnpartage')[0];
+        btnpartage.addEventListener("mouseenter", setcookiepos);
+        btnpartage.addEventListener("mouseleave", setcookiepos);
+        var commentaire = document.getElementsByClassName('commentaire')[0];
+        commentaire.addEventListener("mouseenter", setcookiepos);
+        commentaire.addEventListener("mouseleave", setcookiepos);
+        var publicationCommentaire = document.getElementsByClassName('publicationCommentaire')[0];
+        publicationCommentaire.addEventListener("mouseenter", setcookiepos);
+        publicationCommentaire.addEventListener("mouseleave", setcookiepos);
+
+
+</script>

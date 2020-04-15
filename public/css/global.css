@@ -12,12 +12,20 @@
     src: url("/css/fonts/Didot.ttf") format("truetype");
    }
 
+   @font-face {
+    font-family: 'Acaslon';
+    src: url("/css/fonts/acaslon.ttf") format("truetype");
+   }
+
 body{
     font-family: 'Poppins', serif;
     font-weight: 300;
     background: #1B1B1B;
     cursor: url("/img/cursor.png"), auto;
     
+}
+h1,h2,h3,h4,h5,p{
+    cursor: url("/img/cursor.png"), auto;
 }
 
 a{

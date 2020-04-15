@@ -151,41 +151,50 @@
   <div class="topnav">
     <a href="/accueil" class="active logotitle">ASTRUNUMIA</a>
 
-    <a href="javascript:void(0);" class="icon" onclick="switchmenu()">
+    <!-- Crédits de l'animation SVG https://codepen.io/ainalem/pen/LJYRxz-->
+      <a href="javascript:void(0);" class="icon" onclick="switchmenu()">
       <svg class="ham hamRotate ham1" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
-        <path class="line top"
-          d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+        <path class="line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
         <path class="line middle" d="m 30,50 h 40" />
-        <path class="line bottom"
-          d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
-      </svg>
-    </a>
+        <path class="line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+      </svg></a>
+
   </div>
   <div id="liens">
     <a id="a1h" href="/accueil">Accueil </a>
-    <a id="a2h" href="/passager/vote">Vote</a>
-    <a id="a3h" href="/equipage">Equipage</a>
-    <a id="a4h" href="/passager/authentification">Mon Passe</a>
+    <a id="a2h" href="/passager/vote">Votes</a>
+    <a id="a3h" href="/equipage">Équipage</a>
+    <a id="a4h" href="/passager/authentification">Mon Pass</a>
   </div>
 
   <script>
     // Animation du menu Mobile
+    var link = document.getElementById("liens");
     function switchmenu() {
       Haptics.vibrate(10);
-      var x = document.getElementById("liens");
-      if (x.style.display === "flex") {
-        x.style.display = "none";
+      
+      if (link.style.display === "flex") {
+        gsap.to("#a4h",{ duration: 0.6, opacity: 0, y: 0, delay: 0});
+        gsap.to("#a3h",{ duration: 0.6, opacity: 0, y: 0, delay: 0.1 });
+        gsap.to("#a2h",{ duration: 0.6, opacity: 0, y: 0, delay: 0.2 });
+        gsap.to("#a1h",{ duration: 0.6, opacity: 0, y: 0, delay: 0.3 ,onComplete:switchdisplay  });
+        gsap.to(link,{ duration: 0.6, opacity: 0, delay: 0.3 });
+
+        
+        
       } else {
-        x.style.display = "flex";
-        gsap.to("#a1h", { opacity: 0 });
-        gsap.to("#a2h", { opacity: 0 });
-        gsap.to("#a3h", { opacity: 0 });
-        gsap.to("#a4h", { opacity: 0 });
-        gsap.fromTo("#a1h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0 });
-        gsap.fromTo("#a2h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0.2 });
-        gsap.fromTo("#a3h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0.4 });
-        gsap.fromTo("#a4h", { opacity: 0, x: -200 }, { duration: 0.6, opacity: 1, x: 0, delay: 0.6 });
+        link.style.display = "flex";
+        gsap.fromTo(link,{ opacity: 0,},{ duration: 0.6, opacity: 1, delay: 0.4 });
+        gsap.fromTo("#a1h", { opacity: 0, y: -200 }, { duration: 0.6, opacity: 1, y: 0, delay: 0 });
+        gsap.fromTo("#a2h", { opacity: 0, y: -150 }, { duration: 0.5, opacity: 1, y: 0, delay: 0.2 });
+        gsap.fromTo("#a3h", { opacity: 0, y: -100 }, { duration: 0.4, opacity: 1, y: 0, delay: 0.4 });
+        gsap.fromTo("#a4h", { opacity: 0, y: -50 }, { duration: 0.3, opacity: 1, y: 0, delay: 0.6 });
       }
     }
+
+    function switchdisplay(){
+      link.style.display = "none";
+    }
+    
   </script>
 </div>
