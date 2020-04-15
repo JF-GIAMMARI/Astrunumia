@@ -6,7 +6,7 @@ Modules regroupant les fonctions concernant le TOKEN crypté
 
 // Importations des dépendances
 var jwt = require('jsonwebtoken');
-const JWT_SIGN_SECRET = 'xtyugihzdfenjuidazoflekjbcxnazifepvojhjcs';
+const JWT_SIGN_SECRET = 'amodifier';
 
 // Fonction pour les Json Web Token 
 module.exports = {
