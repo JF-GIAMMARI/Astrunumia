@@ -142,7 +142,7 @@
                 gsap.to(scroll1, { duration: 1, y: 0, delay: 6.5, ease: "bounce.out", onComplete: bounce1 });
             }
 
-
+            if(screen.width > 550){
             // Affichage au scroll
             var controller = new ScrollMagic.Controller();
             var tl1 = new TimelineMax({ onComplete: articleaff1 });
@@ -150,37 +150,45 @@
             var tl3 = new TimelineMax({ onComplete: articleaff3 });
 
             function articleaff1() {
-                var value = 0.7
-                if(screen.width < 550){
-                    value = 1;
-                }
+                var value = 0.7;
                 gsap.fromTo(articles[0], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
                 gsap.fromTo(asides[0], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
                 gsap.fromTo(bandeauimg[0], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
             }
 
             function articleaff2() {
-                var value = 0.7
-                if(screen.width < 550){
-                    value = 1;
-                }
+                var value = 0.7;
                 gsap.fromTo(articles[1], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
                 gsap.fromTo(asides[1], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
                 gsap.fromTo(bandeauimg[1], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
             }
 
             function articleaff3() {
-                var value = 0.7
-                if(screen.width < 550){
-                    value = 1;
-                }
+                var value = 0.7;
                 gsap.fromTo(articles[2], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
                 gsap.fromTo(asides[2], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
                 gsap.fromTo(bandeauimg[2], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
             }
+
             var scene = new ScrollMagic.Scene({ triggerElement: "#row2", triggerHook: 0 }).setTween(tl1).addTo(controller);
             var scene = new ScrollMagic.Scene({ triggerElement: "#tg1", triggerHook: 0 }).setTween(tl2).addTo(controller);
             var scene = new ScrollMagic.Scene({ triggerElement: "#tg2", triggerHook: 0 }).setTween(tl3).addTo(controller);
+            }else{
+                gsap.fromTo(articles[0], { opacity:0 }, { duration: 1, opacity: 1 });
+                gsap.fromTo(asides[0], { opacity:0 }, { duration: 1, opacity: 1 });
+                gsap.fromTo(bandeauimg[0], { opacity:0 }, { duration: 1, opacity: 1 });
+
+                gsap.fromTo(articles[1], { opacity:0 }, { duration: 1, opacity: 1 });
+                gsap.fromTo(asides[1], { opacity:0 }, { duration: 1, opacity: 1 });
+                gsap.fromTo(bandeauimg[1], { opacity:0 }, { duration: 1, opacity: 1 });
+
+                gsap.fromTo(articles[2], { opacity:0 }, { duration: 1, opacity: 1 });
+                gsap.fromTo(asides[2], { opacity:0 }, { duration: 1, opacity: 1 });
+                gsap.fromTo(bandeauimg[2], { opacity:0 }, { duration: 1, opacity: 1 });
+
+            }
+   
+
 
             //Animations des actions sur les articles
 
