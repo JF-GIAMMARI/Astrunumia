@@ -15,8 +15,9 @@
                 de partir découvrir la naissance de l’un d’entre eux pour mieux comprendre leur
                 fonctionnement.</p>
             <span id="trg1"></span>
-            <p id="dc2-1" class="dc">Accrochez vous bien, on décolle !</p>
-            <img id="dc3" class="dc" src="/img/destinations/1/1.png">
+            <p id="dc2-1" class="dc">Accrochez-vous bien, on décolle !</p>
+            <img id="scroll1" class="bottomScroll" src="/img/accueil/bas.png">
+            <img id="dc3" class="dc" src="/img/destinations/1/1.jpg"  alt="naine jaune illustrations astrunumia article trou noir" title="Naine Jaune Astrunumia">
             <span id="trg2"></span>
             <p id="dc4" class="dc">Tout au long de sa vie, l’étoile fusionne l’hydrogène qui la compose
                 en atome d’hélium. Sous l’effet de la gravitation, la densité et la température de son
@@ -24,23 +25,23 @@
                 en plus rouge. L’échange d’énergie entre le noyau et les couches externes provoque une
                 expansion de l’astre lui permettant d’atteindre jusqu’à 100 fois sa taille initiale…</p>
             <span id="trg3"></span>
-            <img id="dc5" class="dc" src="/img/destinations/1/2.png">
+            <img id="dc5" class="dc" src="/img/destinations/1/2.jpg" alt="geante rouge illustrations astrunumia article trou noir" title="Géante Jaune Astrunumia">
             <span id="trg4"></span>
-            <img id="dc6" class="dc" src="/img/destinations/1/3.png">
+            <img id="dc6" class="dc" src="/img/destinations/1/3.jpg" alt="supernova illustrations astrunumia article trou noir" title="Supernova Astrunumia">
             <span id="trg5"></span>
-            <img id="dc7" class="dc" src="/img/destinations/1/4.png">
+            <img id="dc7" class="dc" src="/img/destinations/1/4.jpg" alt="etoile résiduelle illustrations astrunumia article trou noir" title="Etoile résiduelle Astrunumia">
             <span id="trg6"></span>
-            <img id="dc8" class="dc" src="/img/destinations/1/5.png">
+            <img id="dc8" class="dc" src="/img/destinations/1/5.jpg" alt="singularité illustrations astrunumia article trou noir" title=" Singularité Astrunumia">
             <span id="trg7"></span>
-            <img id="dc9" class="dc" src="/img/destinations/1/6.png">
+            <img id="dc9" class="dc" src="/img/destinations/1/6.jpg" alt="Espace temps flexible geante illustrations astrunumia article trou noir" title="Déformation espace temps Astrunumia">
             <span id="trg8"></span>
-            <video id="dc10" class="dc" loop muted preload="auto"><source src="/img/destinations/1/7.mp4" type="video/mp4"></video>
+            <video id="dc10" class="dc" loop muted preload="auto" alt="Simulation trou noir astrunumia article trou noir blender aftereffect" title="Simumation Trou noir" ><source src="/img/destinations/1/7.mp4" type="video/mp4"></video>
             <span id="trg9"></span>
             <p id="dc11" class="dc">Mais jusqu’à présent nous avons pu découvrir la naissance d’un corps
                 banal qui peuple d’un nombre infini notre univers. Or, il existe des trous noirs jouant un
                 rôle bien plus important.</p>
             <span id="trg10"></span>
-            <img id="dc12" class="dc" src="/img/destinations/1/8.png">
+            <img id="dc12" class="dc" src="/img/destinations/1/8.jpg" alt="trou noir vaisseau illustrations astrunumia article" title="Trou Noir illustrations">
             <span id="trg11"></span>
             <p id="dc13" class="dc">À défaut de comprendre ce qu’il se cache en leur cœur, nous savons
                 qu’ils renferment en eux un pouvoir de création et de destruction ultime. Ils seraient
@@ -69,9 +70,25 @@
             gsap.to('#dc1', 2, { text: "LES TROUS NOIRS", ease: "rough({ template: none.out, strength: 20, points: 20, taper: 'none', randomize: true, clamp: false})".easeIn, });
             gsap.to('#dc2', 2, { opacity: 1, delay: 1.2 });
             gsap.to('#dc2-1', 2, { opacity: 1, delay: 2 });
+            gsap.fromTo(scroll1, { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.8, ease: "bounce.out", onComplete: bounce1 });
+
+            gsap.registerPlugin(ScrollToPlugin);
+          
 
 
         }
+
+        var scroll1 = document.getElementById("scroll1");
+            scroll1.style.cursor = 'pointer';
+            scroll1.addEventListener("click", function () {
+                gsap.to(window, { duration: 1, scrollTo: { y: "#dc3", offsetY: 100 } });
+            });
+
+            function bounce1() {
+                gsap.to(scroll1, { duration: 1, y: -40, delay: 6 });
+                gsap.to(scroll1, { duration: 1, y: 0, delay: 6.5, ease: "bounce.out", onComplete: bounce1 });
+            }
+
         var controller = new ScrollMagic.Controller();
 
         var dc3 = new TimelineMax();

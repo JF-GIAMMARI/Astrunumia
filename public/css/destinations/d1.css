@@ -33,25 +33,31 @@ video {
    opacity: 0;
 }
 
+#scroll1{
+   width: 4vw;
+   margin-top: 7%;
+   opacity: 0;
+}
+
 #dc1 {
    font-size: 3vw;
    text-align: center;
    letter-spacing: 1.5vw;
-   margin-top: 22%;
+   margin-top: 15%;
    font-family: 'Didot', Arial, Helvetica, sans-serif;
 }
 
 #dc2 {
    font-size: 1.3vw;
    text-align: center;
-   margin-top: 20%;
+   margin-top: 7%;
    width: 50%;
 }
 
 #dc2-1 {
    text-align: center;
    font-size: 1.3vw;
-   margin-top: 2%;
+   margin-top: 3%;
 }
 
 #dc3 {

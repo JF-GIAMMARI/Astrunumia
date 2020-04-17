@@ -133,11 +133,9 @@ app.get('/credits', function (req, res) { // Route de la page crédits
 // Récupérations de l'ensemble des cookies nécéssaire
   var HeaderIco = req.cookies.HeaderIco;
   var HeaderUsername = req.cookies.HeaderUsername;
-  // Rendu de la page Accueil avec les variables EJS
+  // Rendu de la page  avec les variables EJS
   res.render('credits', {headerico: HeaderIco, headerusername: HeaderUsername});
 });
-
-
 
 app.use('/', apiRouter); // Appelle du routeur regroupant l'ensemble des routes de l'API
 

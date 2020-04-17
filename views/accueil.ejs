@@ -12,16 +12,16 @@
                 <h2 id="soustextetop">Notre nouvelle destination</h2>
                 <div id="divtop"></div>
             </div>
-            <img id="scroll1" class="bottomScroll" src="/img/accueil/bas.png">
+            <img id="scroll1" class="bottomScroll" src="/img/accueil/bas.png" alt="scroll bouton" title="scroll">
         </div>
         <div id="row2" class="barreinferieur"><%- include('include-barrelat'); -%></div>
         <h1 class="mobileRow1">Bienvenue à bord du vaisseau ASTRUNUMIA. L’équipage vous souhaite un excellent voyage.</h1>
         <article class="article">
-            <img id="imgd1" class="imgd" src="/img/accueil/d1.png">
-            <img id="imgd1" class="imgdM" src="/img/accueil/d1M.png">
+            <img id="imgd1" class="imgd" src="/img/accueil/d1.jpg" alt="trou noir gargantua article astrunumia" title="Direction les trous noirs !">
+            <img id="imgd1" class="imgdM" src="/img/accueil/d1M.jpg" alt="trou noir gargantua article astrunumia" title="Direction les trous noirs !">
 
             <aside class="mainAside">
-                <img class="bandeauimg" src="/img/accueil/icoasavoir1.png">
+                <img class="bandeauimg" src="/img/accueil/icoasavoir1.png" alt="photo stephen Hawking" >
                 <div class="bandeau">
                     <h1 id="tg1" class="titre">Acteur majeur</h1>
                     <h3>Stephen Hawking</h3>
@@ -37,10 +37,10 @@
             </aside>
         </article>
         <article class="article">
-            <img id="imgd2" class="imgd" src="/img/accueil/d2.png">
-            <img id="imgd2" class="imgdM" src="/img/accueil/d2M.png">
+            <img id="imgd2" class="imgd" src="/img/accueil/d2.jpg" alt="cosmogonie article astrunumia" title="Direction les cosmogonies !">
+            <img id="imgd2" class="imgdM" src="/img/accueil/d2M.jpg" alt="cosmogonie article astrunumia" title="Direction les cosmogonies !">
             <aside class="mainAside">
-                <img class="bandeauimg" src="/img/accueil/icoasavoir2.png">
+                <img class="bandeauimg" src="/img/accueil/icoasavoir2.png" alt="photo livre l'idee de creation" >
                 <div class="bandeau">
 
                     <h1 id="tg2" class="titre"> Ouvrage</h1>
@@ -54,10 +54,10 @@
             </aside>
         </article>
         <article class="article">
-            <img id="imgd3" class="imgd" src="/img/accueil/d3.png">
-            <img id="imgd3" class="imgdM" src="/img/accueil/d3M.png">
+            <img id="imgd3" class="imgd" src="/img/accueil/d3.jpg" alt="matiere noirs astrunumia article" title="Direction vers la matiere noire !">
+            <img id="imgd3" class="imgdM" src="/img/accueil/d3M.jpg" alt="matiere noirs astrunumia article" title="Direction vers la matiere noire !">
             <aside class="mainAside">
-                <img class="bandeauimg" src="/img/accueil/icoasavoir3.png">
+                <img class="bandeauimg" src="/img/accueil/icoasavoir3.png" alt="photo vera rubin">
                 <div class="bandeau">
 
                     <h1 class="titre">Acteur majeur</h1>
@@ -151,23 +151,23 @@
 
             function articleaff1() {
                 var value = 0.7;
-                gsap.fromTo(articles[0], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
-                gsap.fromTo(asides[0], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
-                gsap.fromTo(bandeauimg[0], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
+                gsap.fromTo(articles[0], { opacity: 0, scale: 0.95, }, { duration: 1, opacity: value, scale: 1, delay: 0 });
+                gsap.fromTo(asides[0], { opacity: 0, scale: 0.95,  }, { duration: 1, opacity: 1, scale: 1, delay: 0.2 });
+                gsap.fromTo(bandeauimg[0], { opacity: 0, scale: 0.85, }, { duration: 1, opacity: 1, scale: 1,delay: 0.4 });
             }
 
             function articleaff2() {
                 var value = 0.7;
-                gsap.fromTo(articles[1], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
-                gsap.fromTo(asides[1], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
-                gsap.fromTo(bandeauimg[1], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
+                gsap.fromTo(articles[1], { opacity: 0, scale: 0.95  }, { duration: 1, opacity: value, scale: 1, delay: 0 });
+                gsap.fromTo(asides[1], { opacity: 0, scale: 0.95 }, { duration: 1, opacity: 1, scale: 1,  delay: 0.2 });
+                gsap.fromTo(bandeauimg[1], { opacity: 0, scale: 0.85}, { duration: 1, opacity: 1, scale: 1,  delay: 0.4 });
             }
 
             function articleaff3() {
                 var value = 0.7;
-                gsap.fromTo(articles[2], { opacity: 0, scale: 0.95, x: 200 }, { duration: 1, opacity: value, scale: 1, x: 0, delay: 0 });
-                gsap.fromTo(asides[2], { opacity: 0, scale: 0.95, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.2 });
-                gsap.fromTo(bandeauimg[2], { opacity: 0, scale: 0.85, y: -100 }, { duration: 1, opacity: 1, scale: 1, y: 0, delay: 0.4 });
+                gsap.fromTo(articles[2], { opacity: 0, scale: 0.95,  }, { duration: 1, opacity: value, scale: 1, delay: 0 });
+                gsap.fromTo(asides[2], { opacity: 0, scale: 0.95}, { duration: 1, opacity: 1, scale: 1,delay: 0.2 });
+                gsap.fromTo(bandeauimg[2], { opacity: 0, scale: 0.85}, { duration: 1, opacity: 1, scale: 1, delay: 0.4 });
             }
 
             var scene = new ScrollMagic.Scene({ triggerElement: "#row2", triggerHook: 0 }).setTween(tl1).addTo(controller);
@@ -238,5 +238,8 @@
 
 
     </script>
+
     <! --=====================================================================-->
         <%- include('include-endpage'); -%>
+
+            
