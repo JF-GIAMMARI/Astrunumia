@@ -34,7 +34,7 @@ app.use(noCache());
 
 //*******************Configuration des routes**********************//
 
-
+/*
 app.get('/', function (req, res) { // Route Initial -> Initialisation des cookies de vote (Barre Latérale)
 
   var cookiestatus = req.cookies.cookiestatus;
@@ -141,8 +141,16 @@ app.use('/', apiRouter); // Appelle du routeur regroupant l'ensemble des routes 
 
 app.use(function (req, res, next) {   // Route par défaut en cas d'erreur 404
   return res.status(404).redirect('/accueil');
-});
+});*/
 
+
+app.get('/', function (req, res) { // Route de la page crédits
+  // Récupérations de l'ensemble des cookies nécéssaire
+    res.render('build');
+  });
+  app.use(function (req, res, next) {   // Route par défaut en cas d'erreur 404
+  return res.status(404).redirect('/');
+});
 // Lancement du serveur [Port 8080]
 app.listen(8080, function () {
   console.log('Serveur Astrunumia en écoute');

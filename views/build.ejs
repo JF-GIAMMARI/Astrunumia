@@ -1,0 +1,32 @@
+<%- include('include-prehead'); -%>
+<link rel="stylesheet" type="text/css" href="/css/build.css">
+<link rel="stylesheet" type="text/css" href="/css/cookie.css">
+<title>Astrunumia</title>
+</head>
+
+<body><! --=======================================================Début de la page -->
+ 
+    <h1 id="texte">Préparation du lancement<span id="point">.</span><span id="point">.</span ><span id="point">.</span>  </h1>
+    <h2 id="date"></h2>
+    <img id="load" src="/img/loader2.svg">
+
+</body><! --======================================================= Fin -->
+      </html>
+      <script>
+        // Animations des éléments de la page 
+        window.onload = function () {
+          gsap.fromTo("#texte", { opacity: 0, scale: 0.5 }, { scale: 1, duration: 1, opacity: 1, delay: 0.2 });
+          gsap.to('#date', 2, { text: "Décollage le 18/04/2020 à 17H", ease: "rough({ template: none.out, strength: 1, points: 20, taper: 'none', randomize: true, clamp: false})".easeIn, delay: 2.5 });
+          gsap.fromTo("#load", { opacity: 0, scale: 0.5 }, { scale: 0.7, duration: 1, opacity: 1, delay: 5 });
+          gsap.from("#point", { duration: 1, opacity:0,stagger : 0.4, delay:1, ease: "elastic", onComplete: inverse });
+          
+            function inverse(){
+                gsap.to("#point", { duration: 0.2, opacity:0,stagger : 0.4, delay:1, ease: "elastic", onComplete: inverse2 });
+            }
+            function inverse2(){
+                gsap.to("#point", { duration: 1, opacity:1,stagger : 0.4, delay:1, ease: "elastic", onComplete: inverse });
+            }
+
+
+        }
+      </script>
