@@ -236,9 +236,11 @@ footer {
         letter-spacing: 0.3em;
         color: #FFFFFF;
         text-transform: uppercase;
-        margin-left: 3.5vw;
+        
         color: white;
-        padding: 6% 5% 6% 5%;
+        align-self: center;
+        justify-self: center;
+        margin-left: 7vw;
         text-decoration: none;
         display: flex;
         flex-direction: column;

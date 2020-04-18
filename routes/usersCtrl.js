@@ -75,11 +75,11 @@ module.exports = { // Instanciation du module
       return res.status(400).cookie('alert', 'L\'email est invalide', { expires: new Date(Date.now() + 1000) })
         .redirect(301, '/passager/enregistrement');
     }
-
+/*
     if (!PASSWORD_REGEX.test(password)) {
       return res.status(400).cookie('alert', 'Le mot de passe est invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial)', { expires: new Date(Date.now() + 1000) })
         .redirect(301, '/passager/enregistrement');
-    }
+    }*/
 
     asyncLib.waterfall([ // Suite de fonction asynchrone (Waterfall)
       function (done) {
@@ -257,10 +257,11 @@ module.exports = { // Instanciation du module
           }
 
           if (password) { // Mot de passe + Salage
+            /*
             if (!PASSWORD_REGEX.test(password)) {
               return res.status(400).cookie('alert', 'Le mot de passe est invalide (1 Minuscule, 1 Majuscule, 1 Chiffre, 1 Caractére spécial)', { expires: new Date(Date.now() + 1000) })
                 .redirect(301, '/passager/profile');
-            }
+            }*/
 
             var salt = bcrypt.genSaltSync(5);
             password = bcrypt.hashSync(password, salt);
