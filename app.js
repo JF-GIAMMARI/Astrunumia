@@ -15,6 +15,7 @@ var models = require('./models')
 var asyncLib = require('async');
 
 
+
 //Instanciation du serveur web
 var app = express();
 
@@ -139,18 +140,20 @@ app.get('/credits', function (req, res) { // Route de la page crédits
 
 app.use('/', apiRouter); // Appelle du routeur regroupant l'ensemble des routes de l'API
 
+
 app.use(function (req, res, next) {   // Route par défaut en cas d'erreur 404
   return res.status(404).redirect('/accueil');
 });*/
 
-
+/* MAINTENACE*/
 app.get('/', function (req, res) { // Route de la page crédits
   // Récupérations de l'ensemble des cookies nécéssaire
     res.render('build');
   });
   app.use(function (req, res, next) {   // Route par défaut en cas d'erreur 404
   return res.status(404).redirect('/');
-});
+});/**/ 
+
 // Lancement du serveur [Port 8080]
 app.listen(8080, function () {
   console.log('Serveur Astrunumia en écoute');

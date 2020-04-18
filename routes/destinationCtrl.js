@@ -8,6 +8,17 @@ Modules regroupant les fonctions relative aux destinations
 var jwtUtils = require('../utils/jwt.utils');
 var models = require('../models');
 var asyncLib = require('async');
+var nodemailer = require('nodemailer');
+
+'use strict';
+const fs = require('fs');
+let rawdata = fs.readFileSync('./mail.json');
+let maildata = JSON.parse(rawdata);
+
+const PASSWORD = maildata.password;
+const MAIL1 = maildata.mail1;
+const MAIL2 = maildata.mail2;
+const HOST = maildata.host;
 
 
 module.exports = { // Instanciation du module
@@ -333,6 +344,57 @@ module.exports = { // Instanciation du module
           texte: texte,
         })
           .then(function (VoteCheck) {
+
+            //Envoie du mail au webmaster
+            try {
+              var smtpTransport = nodemailer.createTransport({
+                host:  HOST,
+                port: 465,
+                secure : true,
+                auth: {
+                    user: MAIL1,
+                    pass: PASSWORD
+                }
+            });
+            
+              var mailOptions = {
+                from: MAIL1,
+                to: MAIL1,
+                subject: "Utilisateur : "+userid,
+                text: texte,
+                html: '<br><b>'+texte+'</b>'
+              };
+              
+              smtpTransport.sendMail(mailOptions, function(error, info){
+                if(error){
+                   return console.log(error);
+                }
+                console.log('Mail envoyer ' + info.response);
+              });
+              
+              smtpTransport.close();
+
+
+              var mailOptions = {
+                from: MAIL1,
+                to: MAIL2,
+                subject: "Utilisateur : "+userid,
+                text: texte,
+                html: '<br><b>'+texte+'</b>'
+              };
+              
+              smtpTransport.sendMail(mailOptions, function(error, info){
+                if(error){
+                   return console.log(error);
+                }
+                console.log('Mail envoyer ' + info.response);
+              });
+              
+              smtpTransport.close();
+            }
+            catch(error) {
+              console.error(error);
+            }
             callback(null, 'done');
           })
           .catch(function (err) {
